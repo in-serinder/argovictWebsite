@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HomeView from './views/HomeView.vue';
+import RootView from './views/Root.vue';
 import { onMounted } from 'vue';
 import { createI18n } from 'vue-i18n';
 /*语言设置*/
@@ -57,7 +57,7 @@ import { createI18n } from 'vue-i18n';
 <template>
   <!-- 将span改为div，div是块级元素 -->
   <div class="app-container">
-    <HomeView />
+    <RootView />
   </div>
 </template>
 

@@ -1,0 +1,168 @@
+.BriefSelf {
+  display: flex;
+  flex-direction: column;
+  /* justify-content:; */
+  /* align-items: center; */
+  width: 100%;
+  height: 100%;
+  /* background-color: #fff; */
+  /* background-color: aqua; */
+}
+
+.brief_introduce {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.brief {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 50%;
+  /* background-color: #f5f5f5; */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* 头像 */
+.brief_avatar {
+  width: 200px;
+  height: 200px;
+  /* background-color: #000; */
+  /* border: 1px solid #000; */
+}
+
+.brief_avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+
+.brief_name {
+  display: flex;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 15px;
+  justify-content: center;
+  width: 300px;
+  /* border: 1px solid #000; */
+}
+
+.brief_description {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  font-size: 16px;
+  margin-top: 15px;
+  text-align: center;
+  width: 60%;
+  line-height: 1.5em;
+  /* border: 1px solid #000; */
+}
+
+.brief_description span {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 3px;
+  /* border: 1px solid black; */
+}
+
+/* .brief_description p::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  margin-top: 15px;
+} */
+
+.brief_description span::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #3a3434;
+  transition: width 0.5s;
+}
+
+.brief_description span:hover::before {
+  width: 100%;
+}
+
+/* 联系方式 */
+.brief_contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 10px;
+  height: 300px;
+  width: 100%;
+  /* background-color: #f5f5f5; */
+}
+
+.brief_contact ul {
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
+}
+
+.brief_contact ul li {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 0 20px;
+  cursor: pointer;
+  /* background-color: aqua; */
+}
+
+.brief_contact ul li p {
+  position: absolute;
+  display: flex;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 13px;
+  top: 10px;
+  font-weight: bold;
+  transform: scale(1);
+  color: transparent;
+  transition: all 0.5s ease-in-out;
+  /* transform 2s ease-in-out; */
+}
+
+.brief_contact ul li:hover p {
+  /* transform: translateY(-5px); */
+  color: #000;
+  top: 40px;
+}
+
+.brief_contact ul li img {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+.brief_contact ul li:hover img {
+  transform: scale(1.2);
+}
+
+/* 底部网站信息 */
+
+.brief_footer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  bottom: 40px;
+}

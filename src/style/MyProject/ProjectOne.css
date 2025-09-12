@@ -1,0 +1,79 @@
+.projectOne {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: #f5f5f5;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.projectOne:hover {
+  box-shadow: 0 0 10px #666;
+  top: -8px;
+  left: 10px;
+}
+
+.projectOne a {
+  color: #ed8d0f;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.projectOneTitle {
+  font-size: 20px;
+  margin: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.projectOneName {
+  font-size: 16px;
+  /* margin: 10px; */
+  margin-left: 10px;
+  font-weight: bold;
+  color: #666;
+}
+
+.projectOneName ul {
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.projectOneName ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* text-decoration: #333;
+  text-decoration-line: underline;
+  text-decoration-color: #333; */
+  margin-right: 20px;
+}
+
+.projectOneName ul li img {
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+.projectOneUrl {
+  margin-top: 10px;
+}
+
+.projectOneUrl img {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.projectOneDesc {
+  margin-left: 10px;
+  margin-top: 10px;
+  color: #666;
+}

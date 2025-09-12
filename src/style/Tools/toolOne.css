@@ -1,0 +1,70 @@
+.toolOne {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+
+  /* 背景图代替 */
+  /* 左上 */
+  background-image:
+    linear-gradient(to right, #333, #333), linear-gradient(to bottom, #333, #333),
+    linear-gradient(to left, #333, #333), linear-gradient(to top, #333, #333);
+
+  background-size:
+    25% 2px,
+    /* 1. 左上右线：长度25%，厚度2px */ 2px 50%,
+    25% 2px,
+    /* 7. 右下左线：长度25%，厚度2px */ 2px 50%; /* 8. 右下上线 */
+  background-repeat: no-repeat;
+  background-position:
+    top left,
+    /* 1. 左上右线：顶部左侧 */ top left,
+    bottom right,
+    /* 7. 右下左线：底部右侧 */ bottom right; /* 8. 右下上线：底部右侧 */
+  padding-bottom: 8px;
+
+  transition: all 0.5s;
+}
+
+.toolOne:hover {
+  box-shadow: 0 0 10px #666;
+  top: -5px;
+  left: 8px;
+}
+
+.toolOne_available {
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+}
+
+.toolOne_available img {
+  width: 80px;
+}
+
+/* 工具图标和工具名 */
+
+.toolOneName {
+  font-size: 16px;
+  margin: 10px;
+  font-weight: bold;
+  color: #666;
+  text-align: center;
+}
+
+.toolOneName img {
+  margin-right: 10px;
+  width: 20px;
+}
+
+.toolsDescr {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
