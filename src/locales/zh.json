@@ -1,0 +1,32 @@
+{
+  "message": {
+    "home": "首页",
+    "about": "关于我们",
+    "contact": "联系我们",
+    "project": "项目",
+    "tools": "工具",
+    "skill": "技能",
+    "language": "语言",
+    "commission": "委托",
+    "workbench": "工作台",
+    "blog": "博客",
+    "english": "English",
+    "chinese": "中文",
+    "deutsch": "Deutsch",
+    "welcome": "欢迎来到Argovict",
+    "matrix": "Matrix",
+    "youtube": "YouTube",
+    "twitter": "Twitter",
+    "github": "GitHub",
+    "email": "电子邮箱",
+    "telegram": "Telegram",
+    "discord": "Discord",
+    "server": "服务器",
+    "join": "加入",
+    "brief": "电子工程师、业余无线电爱好者，呼号BG4530。",
+    "tag": "标签",
+    "tagline": "业余无线电爱好者社区。",
+    "admin": "管理员",
+    "skill_things": "业余无线电、嵌入式系统、电子电路、编程、3D建模"
+  }
+}

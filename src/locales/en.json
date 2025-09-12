@@ -1,0 +1,32 @@
+{
+  "message": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "project": "Project",
+    "tools": "Tools",
+    "skill": "Skill",
+    "language": "Language",
+    "commission": "Commission",
+    "workbench": "Workbench",
+    "blog": "Blog",
+    "english": "English",
+    "chinese": "中文",
+    "deutsch": "Deutsch",
+    "welcome": "Welcome to Argovict",
+    "matrix": "Matrix",
+    "youtube": "Youtube",
+    "twitter": "Twitter",
+    "github": "Github",
+    "email": "Email",
+    "telegram": "Telegram",
+    "discord": "Discord",
+    "server": "Server",
+    "join": "Join",
+    "brief": "Electronic engineer, amateur radio enthusiast, call sign BG4530.",
+    "tag": "Tag",
+    "tagline": "A community of amateur radio enthusiasts.",
+    "admin": "Admin",
+    "skill_things": "Amateur radio, embedded systems, electronic circuits, programming, 3D modeling"
+  }
+}
