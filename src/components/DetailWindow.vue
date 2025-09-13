@@ -3,5 +3,5 @@
 </template>
 
 <script setup lang="ts">
-import '@/style/commissionPage.css'
+// import { ref } from 'vue'
 </script>

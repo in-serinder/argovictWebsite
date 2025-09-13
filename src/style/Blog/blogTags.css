@@ -1,0 +1,24 @@
+.blogOne_content_tag {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* flex-grow: 1; */
+  /* border: 1px solid #ccc; */
+  font-size: 12px;
+  padding: 0;
+  width: fit-content;
+  color: #999;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.blogOne_content_tag:hover {
+  color: #ed8d0f;
+}
+
+.blogOne_content_tag img {
+  width: 12px;
+  height: 12px;
+  margin: 3px;
+}

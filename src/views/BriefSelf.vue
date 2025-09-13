@@ -56,7 +56,7 @@ import '@/style/briefselfPage.css'
 function handleClick(type: string) {
   switch (type) {
     case 'github':
-      window.open('https://github.com/ArgoVICT', '_blank');
+      window.open('https://github.com/in-serinder', '_blank');
       break;
     case 'matrix':
       window.open('https://matrix.to/#/@ArgoVICT:matrix.org', '_blank');
@@ -65,13 +65,13 @@ function handleClick(type: string) {
       window.open('https://discord.com/users/853245228442292224', '_blank');
       break;
     case 'bilibili':
-      window.open('https://space.bilibili.com/123456', '_blank');
+      window.open('https://space.bilibili.com/569365028', '_blank');
       break;
     case 'twitter':
-      window.open('https://twitter.com/ArgoVICT', '_blank');
+      window.open('https://x.com/DoubleHans45', '_blank');
       break;
     case 'email':
-      window.open('mailto:ArgoVICT@outlook.com', '_blank');
+      window.open('mailto:fentanlym@tutamail.com', '_blank');
       break;
     default:
       break;

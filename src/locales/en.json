@@ -29,6 +29,21 @@
     "tag": "Tag",
     "tagline": "A community of amateur radio enthusiasts.",
     "admin": "Admin",
-    "skill_things": "Amateur radio, embedded systems, electronic circuits, programming, 3D modeling"
+    "skill_things": "Amateur radio, embedded systems, electronic circuits, programming, 3D modeling",
+    "search": "Search",
+    "date": "Date",
+    "search_placeholder": "Search for posts...",
+    "no_result": "No results found.",
+    "404": "404 Not Found",
+    "500": "500 Internal Server Error",
+    "503": "503 Service Unavailable",
+    "504": "504 Gateway Timeout",
+    "403": "403 Forbidden",
+    "401": "401 Unauthorized",
+    "400": "400 Bad Request",
+    "502": "502 Bad Gateway",
+    "service_unavailable": "Service Unavailable",
+    "stop": "Stop",
+    "loading": "Loading"
   }
 }

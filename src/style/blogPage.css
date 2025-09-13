@@ -1,0 +1,43 @@
+.blogPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  /* background-color: #fff; */
+  background-color: #f5f5f5;
+  padding: 10px;
+}
+
+.blogBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  height: 100%;
+  width: calc(100% - 260px);
+  /* background-color: #fff; */
+}
+
+.BlogOfOne {
+  position: relative;
+  display: flex;
+  height: 160px;
+  width: 100%;
+  /* background-color: red; */
+  margin-bottom: 10px;
+}
+
+/* 博客筛选栏 */
+
+.blogFilter {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 250px;
+  margin-left: 10px;
+  /* background-color: #fff; */
+  background-color: antiquewhite;
+}

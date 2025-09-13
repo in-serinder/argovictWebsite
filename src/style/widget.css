@@ -3,3 +3,46 @@
   height: 40px;
   background-color: #000;
 }
+
+.divider_x {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 80%;
+  height: 2px;
+  background-color: #000;
+}
+
+/* all */
+button {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+
+  background-color: #ed8d0f;
+  transition: all 0.5s;
+}
+
+button:hover::before {
+  width: 100%;
+}
+
+input {
+  outline: none;
+  height: 23px;
+
+  /* border: none; */
+}
