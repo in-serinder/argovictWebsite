@@ -8,6 +8,9 @@ import Blog from '@/views/Blog.vue'
 import Commission from '@/views/Commission.vue'
 import Page404 from '@/views/404.vue'
 
+// child route
+import BlogDetail from '@/views/Blog/BlogDetail.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -30,6 +33,13 @@ const router = createRouter({
       path: '/blog',
       name: 'blog',
       component: Blog,
+      children: [
+        {
+          path: 'detail',
+          name: 'blogDetail',
+          component: BlogDetail,
+        },
+      ],
     },
     {
       path: '/commission',

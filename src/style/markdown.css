@@ -1,0 +1,6 @@
+/* 代码块样式 */
+div.markdown-render {
+  color: #2c3e50 !important;
+  /* 再加一个明显样式用于测试（如背景色） */
+  background-color: #f0f8ff !important;
+}

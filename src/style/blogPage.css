@@ -5,9 +5,11 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  /* background-color: #fff; */
+  /* background-color: #000; */
   background-color: #f5f5f5;
   padding: 10px;
+
+  /* z-index: 1000; */
 }
 
 .blogBar {
@@ -40,4 +42,7 @@
   margin-left: 10px;
   /* background-color: #fff; */
   /* background-color: antiquewhite; */
+}
+
+.blogContainer {
 }

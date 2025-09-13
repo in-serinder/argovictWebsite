@@ -73,6 +73,7 @@ import { createI18n } from 'vue-i18n';
 /* 确保html和body占据全屏 */
 html,
 body {
+  min-width: 1024px;
   width: 100%;
   height: 100%;
   overflow: hidden;
