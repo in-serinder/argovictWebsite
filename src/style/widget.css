@@ -12,6 +12,23 @@
   background-color: #000;
 }
 
+.Pbar {
+  position: relative;
+  width: 2px;
+  height: 30px;
+  background-color: #ed8d0f;
+}
+
+.Pbar::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 2px;
+  top: 0;
+  background-color: #ccc;
+}
+
 /* all */
 button {
   position: relative;
@@ -45,4 +62,13 @@ input {
   height: 23px;
 
   /* border: none; */
+}
+
+a {
+  color: #ed8d0f;
+  text-decoration: none;
+}
+
+a:active {
+  color: #ed8d0f;
 }

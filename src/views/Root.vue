@@ -3,12 +3,15 @@
 <!-- 日后使用入站动画 -->
 
 <template>
+  <!-- 详细框 -->
+  <DetailWindow v-show="detailWindow_Show" @click="closeDetailWindow"></DetailWindow>
+  <!-- 根页面 -->
   <span class="rootPage">
     <div class="Router_title">
       <!-- 副标题 -->
       <div class="Router_title_subtitle ">
         <!-- <h1>ArgoVICT</h1> -->
-        <img src="@/assets/picture/ArgovictLogo.png" alt="">
+        <a href="/"><img src="@/assets/picture/ArgovictLogo.png" alt=""></a>
       </div>
       <!-- 索引栏 -->
       <div class="Router_title_table">
@@ -57,6 +60,16 @@
 import '@/style/rootPage.css'
 import '@/style/widget.css'
 import BriefSelf from './BriefSelf.vue'
+import DetailWindow from '@/components/DetailWindow.vue'
+
+import { onMounted, ref } from 'vue'
+
+const detailWindow_Show = ref<boolean>(false)
+
+const closeDetailWindow = () => {
+  detailWindow_Show.value = false;
+  console.log(detailWindow_Show.value)
+}
 
 </script>
 

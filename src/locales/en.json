@@ -44,6 +44,12 @@
     "502": "502 Bad Gateway",
     "service_unavailable": "Service Unavailable",
     "stop": "Stop",
-    "loading": "Loading"
+    "loading": "Loading",
+    "building": "The Website is under construction.",
+    "building_footer": "Thank you for your patience.",
+    "building_footer_2": "We are working hard to get the website ready.",
+    "come_back": "Please come back later.",
+    "404_per": "Perhaps the entered URL is incorrect, please try again. Or return to the homepage",
+    "lang": "en-US"
   }
 }

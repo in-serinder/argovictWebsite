@@ -2,13 +2,14 @@
 import { createI18n } from 'vue-i18n'
 import en from '@/locales/en.json'
 import zh from '@/locales/zh.json'
+import de from '@/locales/de.json'
 
-const LocalesList = ['en', 'zh'] as const
+const LocalesList = ['en', 'zh', 'de'] as const
 type LocalesListType = (typeof LocalesList)[number]
 
 export const getBrowserLanguage = (): LocalesListType => {
   const browserLang = navigator.language.slice(0, 2) as LocalesListType
-
+  console.log(browserLang)
   return LocalesList.includes(browserLang) ? browserLang : 'en'
 }
 
@@ -19,7 +20,7 @@ const i18n = createI18n({
   messages: {
     en,
     zh,
-    // du, // 若导入则添加
+    de, // 若导入则添加
   },
 })
 

@@ -136,7 +136,7 @@
   font-size: 13px;
   top: 10px;
   font-weight: bold;
-  transform: scale(1);
+
   color: transparent;
   transition: all 0.5s ease-in-out;
   /* transform 2s ease-in-out; */
@@ -151,7 +151,9 @@
 .brief_contact ul li img {
   width: 35px;
   height: 35px;
+  transform: scale(1);
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
 }
 .brief_contact ul li:hover img {
   transform: scale(1.2);

@@ -13,10 +13,13 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@vuepic/vue-datepicker": "^11.0.2",
     "pinia": "^3.0.3",
+    "v-calendar": "^3.0.0-alpha.7",
     "vue": "^3.5.17",
     "vue-i18n": "^11.1.12",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "vue3-datepicker": "^0.4.0"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",

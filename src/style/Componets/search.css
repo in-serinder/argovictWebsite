@@ -31,7 +31,7 @@
 }
 
 .search input:focus ~ img {
-  left: 135px;
+  left: 145px;
 }
 .search input:focus {
   text-indent: 5px;

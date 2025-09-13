@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 // import { createI18n } from 'vue-i18n'
 import i18n from '@/stores/i8n'
+import VueDatePicker from '@vuepic/vue-datepicker'
+import '@vuepic/vue-datepicker/dist/main.css'
 
 import App from './App.vue'
 import router from './router'
@@ -28,7 +30,7 @@ import './style/index.css'
  * 启动应用
  */
 const app = createApp(App)
-
+app.component('VueDatePicker', VueDatePicker)
 app.use(createPinia())
 app.use(router)
 app.use(i18n)
