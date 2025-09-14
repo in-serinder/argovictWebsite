@@ -1,6 +1,6 @@
 <template>
-    <div class="blogMarkdown">
-        <div v-html="currentHTML"></div>
+    <div class="blogMarkdown" id="blogMarkdown">
+        <div v-html="currentHTML" class="blogMarkdown_content"></div>
     </div>
 </template>
 
@@ -12,21 +12,37 @@ import MarkdownIt from 'markdown-it';
 import axios from 'axios';
 import mdHighlight from 'markdown-it-highlightjs';
 import anchor from 'markdown-it-anchor';
-import { ref, onMounted, computed, watch } from 'vue';
+import { ref, onMounted, computed, watch, onUnmounted, nextTick } from 'vue';
+import { useRoute } from 'vue-router';
 import Renderer from 'markdown-it/lib/renderer.mjs';
+// import router from '@/router';
+// import { hash } from 'v-calendar/dist/types/src/utils/helpers.js';
+
+const dynamicContent = ref<string[]>([]);
+// const containerRef = ref<HTMLDivElement | null>(null);
+
 
 
 const mdParser = new MarkdownIt({
     html: true,
     linkify: true,
     typographer: true,
+    highlight: (str, lang) => {
+        if (lang && hljs.getLanguage(lang)) {
+            return `<pre><code class="hljs language-${lang}">${hljs.highlight(str, { language: lang }).value}</code></pre>`;
+        } else {
+            return `<pre><code class="hljs">${str}</code></pre>`;
+        }
+    }
+    // 其余配置
 }).use(mdHighlight, {
     hljs: hljs
 }).use(anchor, {
     slugify: (str) => {
-        return str
-            .replace(/[^\w\s-]/g, '') //连字符
-            .replace(/\s+/g, '-'); //语法字符
+
+        str = str.replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+        // console.log(str);
+        return str;
     }
 });
 
@@ -34,6 +50,8 @@ const mdParser = new MarkdownIt({
 const md = ref(`# test `);
 
 const markdown = ref('');
+
+const route = useRoute();
 /*
 渲染器修改
 */
@@ -69,8 +87,18 @@ mdParser.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
 // 代码块
 mdParser.renderer.rules.code_block = (tokens, idx, options, env, self) => {
     const codeblock_ele = codeblock(tokens, idx, options, env, self);
+    // const token = tokens[idx];
+    // const lang = token.info ? token.info.trim() : 'plaintext';
 
-    return `<div class="code-block"><div class="code-block-title"></div> ${codeblock_ele} </div>`;
+    // token.attrJoin('class', 'code-block');
+
+    // token.attrSet('data-lang', lang);
+
+    // // 代码块html
+    // console.log(lang)
+
+
+    return `<div class="code-block"><div class="code-block-title">${lang}</div> ${codeblock_ele} </div>`;
 };
 // 表格 拼装
 
@@ -121,15 +149,100 @@ const currentHTML = computed(() => {
     return mdParser.render(md.value);
 });
 
+/*描点相关start*/
 
-// 启用监听
+// 滚动到指定锚点
+const chineseRegex = /[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef]/g;
+const englishRegex = /-([a-z])/g;
+const scrollToAnchor = (hash) => {
+    if (!hash) {
+        return;
+    }
+
+    const targetID = hash
+        .replace('#', '')
+        .replace(chineseRegex, '')
+        .replace(englishRegex, (match, p1) => '-' + p1.toUpperCase());
+    // console.log(targetID);
+
+    const targetElement = document.getElementById(targetID);
+    if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+const handleAnchorClick = (e) => {
+    const target = e.target.closest('a[href^="#"]'); // 匹配以#开头的链接
+    if (target) {
+        e.preventDefault(); // 阻止默认跳转（避免路由刷新）
+        const hash = target.getAttribute('href');
+        // 更新URL的hash（会触发上面的watch）
+        window.location.hash = hash;
+    }
+};
+
+/*描点相关end*/
+
+// const container = document.querySelector('.blogDetail_content');
+// 高度修复
+const fixHeight = () => {
+    const contentRef = document.getElementById('blogMarkdown')
+    const containerRef = document.getElementById('blogcontent')
+
+
+    console.log('markdown高度', contentRef.clientHeight);
+    console.log('content高度', containerRef.clientHeight);
+    // console.log('cha', containerRef?.clientHeight + contentRef?.clientHeight)
+    // containerRef.style.height = `${contentRef?.clientHeight + 500}px`;//预留1000
+
+    containerRef.style.height = '5000px';
+    console.log('调整高度', containerRef.clientHeight);
+}
+
+
+
+/*监听相关start*/
+
+watch(() => route.hash, (newHash) => {
+    scrollToAnchor(newHash);
+
+}, {
+    immediate: true
+});
+
+
+
+
 watch(
     () => md.value,
     (newValue) => {
         markdown.value = mdParser.render(newValue);
+
     },
     { immediate: true }
 );
+
+
+
+watch(
+    () => currentHTML.value,
+    (newValue) => {
+        // markdown.value = mdParser.render(newValue);
+        // scrollToAnchor(route.hash);
+        nextTick(() => {
+            scrollToAnchor(route.hash); // shabi
+
+            nextTick(() => {
+                console.log('加载md');
+                fixHeight();
+            })
+        });
+    },
+    { immediate: true }
+);
+
+/*监听相关end*/
+
 
 onMounted(async () => {
     try {
@@ -138,11 +251,22 @@ onMounted(async () => {
         });
         md.value = response.data;
         // console.log('获取到的内容:', md.value);
+        // 载入界面
+
+        // 添加锚点点击事件监听
+        document.addEventListener('click', handleAnchorClick);
+
     } catch (error) {
         console.error('请求失败:', error);
         md.value = '# 加载失败\n\n无法获取内容';
     }
 });
+
+onUnmounted(() => {
+    // 移除事件监听
+    document.removeEventListener('click', handleAnchorClick);
+});
+
 </script>
 
 

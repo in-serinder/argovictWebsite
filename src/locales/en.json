@@ -50,6 +50,9 @@
     "building_footer_2": "We are working hard to get the website ready.",
     "come_back": "Please come back later.",
     "404_per": "Perhaps the entered URL is incorrect, please try again. Or return to the homepage",
-    "lang": "en-US"
+    "lang": "en-US",
+    "submit": "Submit",
+    "blog_comments": "Comments",
+    "blog_comments_placeholder": "Leave a comment"
   }
 }

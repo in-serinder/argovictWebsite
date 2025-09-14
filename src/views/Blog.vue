@@ -11,9 +11,10 @@
             <BlogFilter />
         </div>
         <!-- 博客详情 -->
-        <div class="blogContainer">
-            <router-view></router-view>
-        </div>
+        <!-- <div class="blogContainer"> -->
+        <!-- <router-view></router-view> -->
+        <!-- </div> -->
+
 
     </div>
 </template>

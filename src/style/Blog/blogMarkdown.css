@@ -5,11 +5,19 @@
   height: fit-content;
   padding: 30px 50px 50px 30px;
   margin: 20px 10px 10px 30px;
+  margin-bottom: 20px;
   /* border: 1px solid #615e67; */
   line-height: 2;
   /* padding: 10px; */
+  /* overflow-y: auto; */
+  /* background-color: aquamarine; */
 }
 
+.blogMarkdown_content {
+  width: 100%;
+  height: fit-content;
+  /* background-color: aqua; */
+}
 .blogMarkdown h1 {
   font-size: 24px;
   font-weight: bold;
@@ -20,9 +28,6 @@
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
-}
-
-.blogMarkdown h3 {
 }
 
 .blogMarkdown p {

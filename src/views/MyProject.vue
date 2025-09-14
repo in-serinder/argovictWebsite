@@ -3,6 +3,27 @@
         <div class="projectOfOne ">
             <ProjectOne />
         </div>
+        <div class="projectOfOne ">
+            <ProjectOne />
+        </div>
+        <div class="projectOfOne ">
+            <ProjectOne />
+        </div>
+        <div class="projectOfOne ">
+            <ProjectOne />
+        </div>
+        <div class="projectOfOne ">
+            <ProjectOne />
+        </div>
+        <div class="projectOfOne ">
+            <ProjectOne />
+        </div>
+        <div class="projectOfOne ">
+            <ProjectOne />
+        </div>
+        <div class="projectOfOne ">
+            <ProjectOne />
+        </div>
 
     </div>
 </template>

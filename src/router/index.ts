@@ -33,13 +33,11 @@ const router = createRouter({
       path: '/blog',
       name: 'blog',
       component: Blog,
-      children: [
-        {
-          path: 'detail',
-          name: 'blogDetail',
-          component: BlogDetail,
-        },
-      ],
+    },
+    {
+      path: '/blog/detail',
+      name: 'blogDetail',
+      component: BlogDetail,
     },
     {
       path: '/commission',

@@ -69,15 +69,42 @@ pre {
   z-index: 10;
 }
 
-.pre::after {
+pre::before {
+  position: absolute;
+  content: 'bash';
+  top: 0;
+  left: 0;
+  padding: 2px;
+  background-color: #d96760;
+  width: 100%;
+}
+
+pre::after {
   position: absolute;
   content: '';
   z-index: 20;
-  top: -10px;
+  top: 0;
   left: 0;
-  background-color: red;
-  height: 2000px;
+  background-color: transparent;
+  height: 0px;
   width: 100%;
+  content: '';
+  background-image: none;
+  /* background-position: %; */
+  /* background-position: 10px 10px; */
+  background-repeat: no-repeat;
+
+  background-position: 99%;
+  padding: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+pre:hover::after {
+  background-color: #d96760;
+  background-image: url(../assets/svg/copy.svg);
+  background-size: 20px 20px;
+  height: 24px;
+  content: 'Copy';
 }
 
 /* 代码样式 */
@@ -124,4 +151,88 @@ pre {
 
 .hljs-template-variable .hljs-name {
   color: #d96760;
+}
+
+/* 狗屎轮子 */
+
+pre:has(code[class*='language-'])::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  line-height: 30px;
+  padding-left: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+pre:has(code.language-html)::before {
+  content: 'HTML';
+  background-color: #e34c26; /* HTML主题色 */
+}
+pre:has(code.language-css)::before {
+  content: 'CSS';
+  background-color: #264de4; /* CSS主题色 */
+}
+pre:has(code.language-javascript)::before {
+  content: 'JS';
+  background-color: #f7df1e; /* JS主题色 */
+}
+
+pre:has(code.language-bash)::before {
+  content: 'Bash';
+  background-color: #4eaa25; /* Bash主题色 */
+}
+pre:has(code.language-json)::before {
+  content: 'JSON';
+  background-color: #f7df1e; /* JSON主题色 */
+}
+
+pre:has(code.language-plaintext)::before {
+  content: 'Plain Text';
+  background-color: #999999; /* Plain Text主题色 */
+}
+
+pre:has(code.language-python)::before {
+  content: 'Python';
+  background-color: #3572a5; /* Python主题色 */
+}
+
+pre:has(code.language-markdown)::before {
+  content: 'Markdown';
+  color: #fff;
+  background-color: #000000; /* Markdown主题色 */
+}
+
+pre:has(code.language-shell)::before {
+  content: 'Shell';
+  background-color: #4eaa25; /* Shell主题色 */
+}
+
+pre:has(code.language-yaml)::before {
+  content: 'YAML';
+  background-color: #cb171e; /* YAML主题色 */
+}
+
+pre:has(code.language-ini)::before {
+  content: 'INI';
+  background-color: #cb171e; /* INI主题色 */
+}
+
+pre:has(code.language-sql)::before {
+  content: 'SQL';
+  background-color: #e38c00; /* SQL主题色 */
+}
+
+pre:has(code.language-cpp)::before {
+  content: 'C++';
+  background-color: #00599c; /* C++主题色 */
+}
+
+pre:has(code.language-java)::before {
+  content: 'Java';
+  background-color: #b07219; /* Java主题色 */
 }
