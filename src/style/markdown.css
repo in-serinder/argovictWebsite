@@ -1,6 +1,127 @@
-/* 代码块样式 */
-div.markdown-render {
-  color: #2c3e50 !important;
-  /* 再加一个明显样式用于测试（如背景色） */
-  background-color: #f0f8ff !important;
+/* 自定义渲染器使用 */
+
+.markdown-image-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.markdown-image-container img {
+  width: 60%;
+  border-radius: 5px;
+}
+
+.markdown-image-container span {
+  position: relative;
+  font-size: 1em;
+  color: #333;
+  /* text-decoration-color: #333;
+  text-decoration: underline; */
+
+  /* color: #fff; */
+}
+
+.markdown-image-container span::after {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 0;
+  background-color: #333;
+  height: 2px;
+  width: 100%;
+}
+
+/* 代码块 */
+
+.inline-code {
+  padding: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 5px;
+  background-color: #f9f2f4;
+  color: #c7254e;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #262c36; */
+  width: 100%;
+  /* overflow-x: auto; */
+}
+.table-container table {
+  /* width: 100%; */
+  /* background-color: #262c36; */
+}
+
+pre {
+  position: relative;
+  background-color: #262c36;
+  padding: 20px;
+  padding-top: 30px;
+  line-height: 20px;
+  color: #d1d7e0;
+  z-index: 10;
+}
+
+.pre::after {
+  position: absolute;
+  content: '';
+  z-index: 20;
+  top: -10px;
+  left: 0;
+  background-color: red;
+  height: 2000px;
+  width: 100%;
+}
+
+/* 代码样式 */
+
+.hljs-keyword {
+  color: #d96760;
+}
+
+.hljs-title.function_ {
+  color: #ff9b79;
+}
+
+.hljs-number {
+  color: #93cbf9;
+}
+
+.hljs-built_in {
+  color: #61a2e1;
+}
+
+.hljs-meta {
+  color: #9198a1;
+}
+
+.hljs-string {
+  color: #e4990d;
+}
+
+.hljs-tag {
+  color: #407ccb;
+}
+
+.hljs-attr {
+  color: #a3c4ef;
+}
+
+.language-xml .hljs-string {
+  color: #d17736;
+}
+
+.language-xml .hljs-comment {
+  color: #9198a1;
+}
+
+.hljs-template-variable .hljs-name {
+  color: #d96760;
 }

@@ -4,8 +4,8 @@
   flex-wrap: wrap;
   height: fit-content;
   padding: 30px 50px 50px 30px;
-  margin: 5px 10px 10px 30px;
-  border: 1px solid #615e67;
+  margin: 20px 10px 10px 30px;
+  /* border: 1px solid #615e67; */
   line-height: 2;
   /* padding: 10px; */
 }
@@ -25,54 +25,69 @@
 .blogMarkdown h3 {
 }
 
-.blogMarkdown code {
-  /* display: flex; */
-  padding: 5px;
-  border-radius: 5px;
-  color: #fff;
-  background-color: #615e67;
-  height: calc(fit-content+20px);
-  /* background-color: rgb(235, 235, 235, 0.2); */
-}
-
 .blogMarkdown p {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
 
-.blogMarkdown p code {
-  ackground-color: #615e67;
-}
+/*  */
 
 .blogMarkdown ul {
   margin-left: 60px;
 }
 
-.blogMarkdown li::marker {
+.blogMarkdown blockquote p {
+  background-color: transparent;
+  color: #615e67;
 }
 
-.blogMarkdown blockquote {
-  border-left: 4px solid #615e67;
-  margin-left: 20px;
-  padding-left: 10px;
-  color: #666;
-  font-style: italic;
+.blogMarkdown hr {
+  background-color: #323234;
+  /* color: #fff; */
+}
+
+.blogMarkdown .code-block {
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
 .blogMarkdown table {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  width: 100%;
+  /* width: 100%; */
+  border-collapse: collapse; /* 合并边框 */
+  margin: 1.5rem 0;
+  border-radius: 6px;
+  overflow: hidden; /* 配合圆角 */
+  table-layout: auto;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.blogMarkdown p {
-  background-color: #323234;
+.blogMarkdown th {
+  background-color: #333;
   color: #fff;
-  padding: 15px;
-  font-size: 15px;
-  line-height: 0.3;
-  /* color: red; */
+  min-width: 120px;
+  font-weight: 600;
+  padding: 0.8rem 1rem;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 2px solid #c6c6c6;
+}
+
+.blogMarkdown td {
+  padding: 0.8rem 1rem;
+  min-width: 120px;
+  border-bottom: 1px solid #c6c6c6;
+  vertical-align: top;
+  color: #475569;
+}
+
+hr {
+  height: 2px;
+  border: none;
+  background-color: #323234;
+}
+
+ol {
+  margin-left: 60px;
 }

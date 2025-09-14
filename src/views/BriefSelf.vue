@@ -59,7 +59,7 @@ function handleClick(type: string) {
       window.open('https://github.com/in-serinder', '_blank');
       break;
     case 'matrix':
-      window.open('https://matrix.to/#/@ArgoVICT:matrix.org', '_blank');
+      window.open('https://matrix.to/#/@Aden:matrix.org', '_blank');
       break;
     case 'discord':
       window.open('https://discord.com/users/853245228442292224', '_blank');
