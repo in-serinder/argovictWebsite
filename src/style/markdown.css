@@ -17,7 +17,7 @@
 .markdown-image-container span {
   position: relative;
   font-size: 1em;
-  color: #333;
+  color: #666;
   /* text-decoration-color: #333;
   text-decoration: underline; */
 
@@ -29,7 +29,7 @@
   position: absolute;
   top: 25px;
   left: 0;
-  background-color: #333;
+  background-color: #666;
   height: 2px;
   width: 100%;
 }
