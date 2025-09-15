@@ -72,3 +72,22 @@ a {
 a:active {
   color: #ed8d0f;
 }
+
+hr {
+  height: 2px;
+  margin-top: 2px;
+  margin-bottom: 3px;
+}
+
+/* 侧边栏 */
+
+html {
+  scrollbar-color: #ed8d0f #fefefe;
+
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+.placeholder-bottom {
+  height: 100px;
+}

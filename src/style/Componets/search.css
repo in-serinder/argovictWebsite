@@ -15,6 +15,7 @@
 }
 
 .search input {
+  /* position: relative; */
   text-indent: 20px;
   width: 100%;
 
@@ -31,6 +32,8 @@
 }
 
 .search input:focus ~ img {
+  /* position: absolute; */
+  /* right: 10px; */
   left: 145px;
 }
 .search input:focus {
@@ -39,12 +42,20 @@
 
 .searchInput {
   /* position: absolute; */
-
+  /* position: relative; */
   /* border: 1px solid #ccc; */
   /* border-radius: 15px; */
-
+  /* background-color: aqua; */
   padding-right: 10px;
   padding-left: 5px;
   font-size: 14px;
   outline: none;
 }
+
+/* .searchInput img {
+  left: 8px;
+  right: 20px;
+  top: 2px;
+
+  transition: all 0.5s ease-in-out;
+} */

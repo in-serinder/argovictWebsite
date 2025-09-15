@@ -44,7 +44,7 @@
         <div class="divider_x"></div>
         <!-- 评论 -->
         <div class="blogDetail_comments">
-            <h4>{{ $t('blog_comments') }}</h4>
+            <h4>{{ $t('message.blog_comments') }}</h4>
             <div class="commit_continer"></div>
         </div>
         <!-- 占位 -->

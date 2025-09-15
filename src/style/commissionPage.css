@@ -1,0 +1,41 @@
+/* 换-命名风格 */
+.commission-page {
+  height: 100vh;
+  width: 100%;
+  /* flex导致高度塌陷 */
+  /* display: flex; */
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.commission-container {
+  display: flex;
+  flex-direction: column;
+  /* overflow-y: auto; */
+  padding: 0 10px 20px;
+  padding-bottom: 20px;
+}
+
+.commission-boards {
+  /* display: flex; */
+  position: relative;
+  width: 100%;
+  height: 180px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  /* background-color: aqua; */
+}
+
+.commission-items-container {
+  display: flex;
+  justify-content: center;
+  /* flex-grow: 1; */
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 0 10px;
+  gap: 20px;
+  /* overflow-y: auto; */
+  /* overflow-y: hidden; */
+  /* background-color: beige; */
+}

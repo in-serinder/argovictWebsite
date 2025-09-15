@@ -24,7 +24,8 @@
         <div class="projectOfOne ">
             <ProjectOne />
         </div>
-
+        <!-- 占位 -->
+        <div class="placeholder-bottom"></div>
     </div>
 </template>
 

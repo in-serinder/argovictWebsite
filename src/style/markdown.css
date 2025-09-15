@@ -69,6 +69,11 @@ pre {
   z-index: 10;
 }
 
+pre span {
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 pre::before {
   position: absolute;
   content: 'bash';
@@ -141,6 +146,18 @@ pre:hover::after {
   color: #a3c4ef;
 }
 
+.hljs-property {
+  color: #549af6;
+}
+
+.hljs-params {
+  color: #97bef0;
+}
+
+.hljs-comment {
+  color: #9198a1;
+}
+
 .language-xml .hljs-string {
   color: #d17736;
 }
@@ -157,7 +174,7 @@ pre:hover::after {
 
 pre:has(code[class*='language-'])::before {
   position: absolute;
-  top: 0;
+  top: 0px;
   left: 0;
   width: 100%;
   height: 20px;
@@ -196,6 +213,27 @@ pre:has(code.language-plaintext)::before {
   background-color: #999999; /* Plain Text主题色 */
 }
 
+pre:has(code.language-toml)::before {
+  content: 'TOML';
+  background-color: #cb171e; /* TOML主题色 */
+  color: #fff;
+}
+
+pre:has(code.language-xml)::before {
+  content: 'XML';
+  background-color: #2b7489; /* XML主题色 */
+}
+
+pre:has(code.language-ruby)::before {
+  content: 'Ruby';
+  background-color: #701516; /* Ruby主题色 */
+}
+
+pre:has(code.language-go)::before {
+  content: 'Go';
+  background-color: #00add8; /* Go主题色 */
+}
+
 pre:has(code.language-python)::before {
   content: 'Python';
   background-color: #3572a5; /* Python主题色 */
@@ -232,7 +270,58 @@ pre:has(code.language-cpp)::before {
   background-color: #00599c; /* C++主题色 */
 }
 
+pre:has(code.language-c)::before {
+  content: 'C';
+  background-color: #00599c; /* C主题色 */
+}
+
+pre:has(code.language-rust)::before {
+  content: 'Rust';
+  background-color: #dea584; /* Rust主题色 */
+}
+
+pre:has(code.language-csharp)::before {
+  content: 'C#';
+  background-color: #239120; /* C#主题色 */
+}
+
+pre:has(code.language-php)::before {
+  content: 'PHP';
+  background-color: #777bb4; /* PHP主题色 */
+}
+
+pre:has(code.language-typescript)::before {
+  content: 'TypeScript';
+  background-color: #2b7489; /* TypeScript主题色 */
+}
+
 pre:has(code.language-java)::before {
   content: 'Java';
   background-color: #b07219; /* Java主题色 */
 }
+
+pre:has(code.language-swift)::before {
+  content: 'Swift';
+  background-color: #f05138; /* Swift主题色 */
+}
+
+pre:has(code.language-kotlin)::before {
+  content: 'Kotlin';
+  background-color: #0095d5; /* Kotlin主题色 */
+}
+pre:has(code.language-dart)::before {
+  content: 'Dart';
+  background-color: #00b4ab; /* Dart主题色 */
+}
+
+pre:has(code.language-r)::before {
+  content: 'R';
+  background-color: #239120; /* R主题色 */
+}
+
+pre:has(code.language-vue)::before {
+  content: 'Vue';
+  background-color: #42b883; /* Vue主题色 */
+}
+
+/* 代码块结束 */

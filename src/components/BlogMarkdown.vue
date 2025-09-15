@@ -15,11 +15,11 @@ import anchor from 'markdown-it-anchor';
 import { ref, onMounted, computed, watch, onUnmounted, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 import Renderer from 'markdown-it/lib/renderer.mjs';
+import { has } from 'markdown-it/lib/common/utils.mjs';
 // import router from '@/router';
 // import { hash } from 'v-calendar/dist/types/src/utils/helpers.js';
 
 const dynamicContent = ref<string[]>([]);
-// const containerRef = ref<HTMLDivElement | null>(null);
 
 
 
@@ -55,7 +55,7 @@ const route = useRoute();
 /*
 渲染器修改
 */
-const originalFence = mdParser.renderer.rules.fence as (...args: any[]) => string;
+// const originalFence = mdParser.renderer.rules.fence as (...args: any[]) => string;
 
 const imageRender = mdParser.renderer.rules.image; //图片
 const codeline = mdParser.renderer.rules.code_inline;
@@ -69,7 +69,7 @@ const codeblock = mdParser.renderer.rules.fence;
 
 // 图片
 mdParser.renderer.rules.image = (tokens, idx, options, env, self) => {
-    const image_ele = imageRender(tokens, idx, options, env, self);
+    const image_ele = imageRender ? imageRender(tokens, idx, options, env, self) : '';
 
     const altText = tokens[idx].content || 'image';
     // return `<img src="${src}" alt="${alt}" />`;
@@ -78,7 +78,7 @@ mdParser.renderer.rules.image = (tokens, idx, options, env, self) => {
 
 // 行内代码
 mdParser.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
-    const code_ele = codeline(tokens, idx, options, env, self);
+    const code_ele = codeline ? codeline(tokens, idx, options, env, self) : '';
 
     return `<span class="inline-code">${code_ele}</span>`;
 };
@@ -86,7 +86,7 @@ mdParser.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
 
 // 代码块
 mdParser.renderer.rules.code_block = (tokens, idx, options, env, self) => {
-    const codeblock_ele = codeblock(tokens, idx, options, env, self);
+    const codeblock_ele = codeblock ? codeblock(tokens, idx, options, env, self) : '';
     // const token = tokens[idx];
     // const lang = token.info ? token.info.trim() : 'plaintext';
 
@@ -98,7 +98,7 @@ mdParser.renderer.rules.code_block = (tokens, idx, options, env, self) => {
     // console.log(lang)
 
 
-    return `<div class="code-block"><div class="code-block-title">${lang}</div> ${codeblock_ele} </div>`;
+    return `<div class="code-block"><div class="code-block-title"></div> ${codeblock_ele} </div>`;
 };
 // 表格 拼装
 
@@ -154,7 +154,15 @@ const currentHTML = computed(() => {
 // 滚动到指定锚点
 const chineseRegex = /[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef]/g;
 const englishRegex = /-([a-z])/g;
-const scrollToAnchor = (hash) => {
+const scrollToAnchor = (hash: string) => {
+    // 
+    const container = document.getElementById('blogContainer');
+
+    // container.value?.scrollTo({
+    //     // top: 0,
+    //     // behavior: 'smooth'
+    // });
+
     if (!hash) {
         return;
     }
@@ -165,38 +173,49 @@ const scrollToAnchor = (hash) => {
         .replace(englishRegex, (match, p1) => '-' + p1.toUpperCase());
     // console.log(targetID);
 
+    // 目标id为描点终点，
     const targetElement = document.getElementById(targetID);
     if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
+        // targetElement.scrollIntoView({
+        //     block: 'start',
+        //     behavior: 'smooth'
+        // });
+        container?.scrollTo({
+            top: targetElement.offsetTop,
+            behavior: 'smooth'
+        })
     }
 }
 
-const handleAnchorClick = (e) => {
-    const target = e.target.closest('a[href^="#"]'); // 匹配以#开头的链接
+const handleAnchorClick = (e: MouseEvent) => {
+    const targetElement = e.target as Element | null;
+
+    const target = targetElement?.closest('a[href^="#"]'); // 匹配以#开头的链接
     if (target) {
         e.preventDefault(); // 阻止默认跳转（避免路由刷新）
         const hash = target.getAttribute('href');
         // 更新URL的hash（会触发上面的watch）
-        window.location.hash = hash;
+        window.location.hash = String(hash);
     }
 };
+
 
 /*描点相关end*/
 
 // const container = document.querySelector('.blogDetail_content');
 // 高度修复
 const fixHeight = () => {
-    const contentRef = document.getElementById('blogMarkdown')
-    const containerRef = document.getElementById('blogcontent')
+    // const contentRef = document.getElementById('blogMarkdown')
+    // const containerRef = document.getElementById('blogcontent')
 
 
-    console.log('markdown高度', contentRef.clientHeight);
-    console.log('content高度', containerRef.clientHeight);
-    // console.log('cha', containerRef?.clientHeight + contentRef?.clientHeight)
-    // containerRef.style.height = `${contentRef?.clientHeight + 500}px`;//预留1000
+    // console.log('markdown高度', contentRef.clientHeight);
+    // console.log('content高度', containerRef.clientHeight);
+    // // console.log('cha', containerRef?.clientHeight + contentRef?.clientHeight)
+    // // containerRef.style.height = `${contentRef?.clientHeight + 500}px`;//预留1000
 
-    containerRef.style.height = '5000px';
-    console.log('调整高度', containerRef.clientHeight);
+    // containerRef.style.height = '5000px';
+    // console.log('调整高度', containerRef.clientHeight);
 }
 
 
@@ -245,6 +264,10 @@ watch(
 
 
 onMounted(async () => {
+    // containerRef.value = document.getElementById('blogContainer');
+
+
+    // 测试
     try {
         const response = await axios.get('http://localhost:8000/', {
             responseType: 'text'

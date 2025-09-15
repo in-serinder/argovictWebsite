@@ -13,6 +13,11 @@
   /* background-color: aquamarine; */
 }
 
+.blogMarkdown hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .blogMarkdown_content {
   width: 100%;
   height: fit-content;

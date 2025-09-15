@@ -1,7 +1,9 @@
 <template>
     <div class="search">
-        <span class="searchInput "><input type="text" :placeholder="$t('message.search')"><img
-                src="@/assets/svg/search.svg" alt=""></span>
+        <span class="searchInput">
+            <input type="text" :placeholder="$t('message.search')">
+            <img src="@/assets/svg/search.svg" alt="">
+        </span>
 
         <button>{{ $t('message.search') }}</button>
 

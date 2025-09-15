@@ -1,0 +1,93 @@
+.commission-board-body {
+  /* display: flex; */
+  background-color: #000;
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100vw;
+  height: 100%;
+  /* overflow-y: auto; */
+}
+
+.commission-board-split {
+  width: 100vw;
+  height: 10px;
+  margin: 0;
+  background-color: #ed8d0f;
+  box-shadow: 0px 0px 10px 10px #ccc;
+}
+
+.commission-board-scroll {
+  width: 100%;
+  height: 100%;
+}
+
+.commission-board-scroll-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: unset;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.commission-board-scroll ul {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  background-color: #666;
+  /* overflow-x: auto; */
+  transition: all 1s ease-in-out;
+}
+
+/* .commission-board-scroll ul:hover {
+  transform: translateX(-100%);
+} */
+
+.commission-board-scroll li {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 120px;
+}
+
+.commission-board-scroll li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.commission-board-scroll li:nth-child(1) {
+  background-color: #fff;
+}
+
+.commission-board-scroll li:nth-child(2) {
+  background-color: #b52c2c;
+  left: 100%;
+}
+
+.commission-board-scroll li:nth-child(3) {
+  background-color: #2c9b2c;
+  left: 200%;
+}
+
+.commission-board-scroll li:nth-child(4) {
+  background-color: #2c529b;
+  left: 300%;
+}
+
+/* .commission-board-scroll-item:hover img {
+  background-color: #fff;
+  left: -2000px;
+} */
