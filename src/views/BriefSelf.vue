@@ -45,6 +45,10 @@
     <!-- 底部网站信息 -->
     <div class="brief_footer">
       <p>© 2025 ArgoVICT. All rights reserved.</p>
+      <!-- <p>Powered by Vue 3</p> -->
+      <p><a href="/asset">{{ $t('message.asset_use') }}</a></p>
+
+
     </div>
 
   </div>

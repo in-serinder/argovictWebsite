@@ -7,6 +7,7 @@ import Tools from '@/views/Tools.vue'
 import Blog from '@/views/Blog.vue'
 import Commission from '@/views/Commission.vue'
 import Page404 from '@/views/404.vue'
+import AssestUse from '@/views/AssestUse.vue'
 
 // child route
 import BlogDetail from '@/views/Blog/BlogDetail.vue'
@@ -48,6 +49,11 @@ const router = createRouter({
       path: '/:pathMatch(.*)*',
       name: '404',
       component: Page404,
+    },
+    {
+      path: '/asset',
+      name: 'asset',
+      component: AssestUse,
     },
   ],
 })

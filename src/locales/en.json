@@ -58,7 +58,15 @@
     "preview_placeholder": "Preview comment",
     "refer_quotation": "Refer to the quotation",
     "billing_table": "Quotation table",
-    "page_building_title": "Page Building"
+    "page_building_title": "Page Building",
+    "asset_use": "Asset Use",
+    "asset_use_list": "Asset Use List",
+    "type": "Type",
+    "image": "Image",
+    "media": "Media",
+    "audio": "Audio",
+    "video": "Video",
+    "other": "Other"
   },
   "tag": {
     "english": "English",
