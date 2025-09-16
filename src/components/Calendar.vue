@@ -14,7 +14,8 @@
         <!-- <div class="calendar_content"></div> -->
         <!-- <date-picker></date-picker> -->
         <div class="calendar_content">
-            <VueDatePicker :locale="getBrowserLanguage()" day-picker inline class="calendar_dp"></VueDatePicker>
+            <VueDatePicker :locale="getBrowserLanguage()" day-picker inline class="calendar_dp" v-model="datePick">
+            </VueDatePicker>
         </div>
 
     </div>
@@ -23,14 +24,27 @@
 
 <script setup lang="ts">
 import '@/style/Componets/Calendar.css'
-// import DatePicker from 'vue3-datepicker'
+import VueDatePicker from '@vuepic/vue-datepicker';
 // import 'vue3-datepicker/dist/index.css';
 // import '@vuepic/vue-datepicker/dist/main.css'
 
-// import { ref } from 'vue'
+import { ref, watch, defineProps } from 'vue'
+
+const { receivedDate } = defineProps(['receivedDate'])
+
+
+const datePick = ref(new Date());
+
+watch(datePick, (newVal, oldVal) => {
+    // console.log(newVal, oldVal)
+    // console.log(datePick.value.getDate())
+    // datePickFa.value = newVal;
+    receivedDate(newVal);
+
+})
 
 function getBrowserLanguage() {
-    // return navigator.language.slice(0, 2);
+
     return navigator.language;
 }
 </script>

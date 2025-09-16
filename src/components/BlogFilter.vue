@@ -8,10 +8,11 @@
         <!-- 日期筛选 -->
         <div class="dateFilter">
             <div class="dateFilter_title"> <img src="@/assets/svg/date.svg" alt="date">
-                <span>{{ $t('message.date') }} - (2025-9-13)</span>
+                <span>{{ $t('message.date') }} - ({{ datePick.getFullYear() }}-{{ datePick.getMonth() + 1
+                    }}-{{ datePick.getDate() }})</span>
             </div>
             <div class="dateFilter_calendar">
-                <Calendar />
+                <Calendar :receivedDate="receivedDate" />
             </div>
 
 
@@ -62,4 +63,19 @@ import '@/style/Blog/blogFilter.css'
 import Search from '@/components/Search.vue'
 import Calendar from '@/components/Calendar.vue'
 import BlogOnTags from '@/components/BlogOnTags.vue'
+import { ref, watch } from 'vue'
+
+const datePick = ref(new Date());
+
+const receivedDate = ((date: Date) => {
+    datePick.value = date;
+})
+
+watch(datePick, (newVal, oldVal) => {
+    // console.log(newVal, oldVal)
+    console.log(datePick.value.getDate())
+})
+
+
+
 </script>
