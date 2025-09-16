@@ -7,7 +7,7 @@
   margin: 20px 10px 10px 30px;
   margin-bottom: 20px;
   /* border: 1px solid #615e67; */
-  line-height: 2;
+  line-height: 2.2;
   /* padding: 10px; */
   /* overflow-y: auto; */
   /* background-color: aquamarine; */
@@ -100,4 +100,48 @@ hr {
 
 ol {
   margin-left: 60px;
+}
+
+.blogMarkdown em {
+  /* background-color: #c6c6c6; */
+  position: relative;
+}
+
+.blogMarkdown em strong {
+  background-color: none;
+}
+
+.blogMarkdown em:not(:has(*))::after {
+  content: '';
+  position: absolute;
+  width: 105%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  background-color: #000;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.blogMarkdown em:not(:has(*)):hover::after {
+  width: 0;
+}
+/* 
+.blogMarkdown em::after {
+  content: '';
+  position: absolute;
+  width: 105%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  background-color: #000;
+  cursor: pointer;
+
+  transition: all 0.5s ease-in-out;
+} */
+
+.blogMarkdown em:hover::after {
+  width: 0;
 }

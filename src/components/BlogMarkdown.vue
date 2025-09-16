@@ -25,6 +25,7 @@ const dynamicContent = ref<string[]>([]);
 
 const mdParser = new MarkdownIt({
     html: true,
+    breaks: true,
     linkify: true,
     typographer: true,
     highlight: (str, lang) => {
@@ -58,8 +59,10 @@ const route = useRoute();
 // const originalFence = mdParser.renderer.rules.fence as (...args: any[]) => string;
 
 const imageRender = mdParser.renderer.rules.image; //图片
-const codeline = mdParser.renderer.rules.code_inline;
-const codeblock = mdParser.renderer.rules.fence;
+const codelineRender = mdParser.renderer.rules.code_inline;
+const codeblockRender = mdParser.renderer.rules.fence;
+// const emRender = mdParser.renderer.rules.em!;
+// const hiedline = mdParser.renderer.rules.html_inline.
 
 
 
@@ -78,7 +81,7 @@ mdParser.renderer.rules.image = (tokens, idx, options, env, self) => {
 
 // 行内代码
 mdParser.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
-    const code_ele = codeline ? codeline(tokens, idx, options, env, self) : '';
+    const code_ele = codelineRender ? codelineRender(tokens, idx, options, env, self) : '';
 
     return `<span class="inline-code">${code_ele}</span>`;
 };
@@ -86,7 +89,7 @@ mdParser.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
 
 // 代码块
 mdParser.renderer.rules.code_block = (tokens, idx, options, env, self) => {
-    const codeblock_ele = codeblock ? codeblock(tokens, idx, options, env, self) : '';
+    const codeblock_ele = codeblockRender ? codeblockRender(tokens, idx, options, env, self) : '';
     // const token = tokens[idx];
     // const lang = token.info ? token.info.trim() : 'plaintext';
 
@@ -139,11 +142,27 @@ mdParser.renderer.rules.td_open = function (tokens, idx, options, env, self) {
     return `<td${self.renderAttrs(token)}>`;
 };
 
+// 斜体
+// mdParser.renderer.rules.em = (tokens, idx, options, env, self) => {
+//     const em_ele = emRender ? emRender(tokens, idx, options, env, self) : '';
+//     return `<div class="markdown-em-cover">${em_ele}</div>`;
+// }
+
+mdParser.renderer.rules.em = (tokens, idx, options, env, self) => {
+    const emContent = self.renderChildren(tokens, idx, options, env);
+    return `<div class="markdown-em-cover"><em>${emContent}</em></div>`;
+};
 
 
 
-const tokens = mdParser.parse('| Header |\n| ------ |\n| Cell   |', {});
-console.log(tokens.map(t => ({ type: t.type, tag: t.tag, attrs: t.attrs })));
+
+
+
+
+
+// const tokens = mdParser.parse('| Header |\n| ------ |\n| Cell   |', {});
+// 展示
+// console.log(tokens.map(t => ({ type: t.type, tag: t.tag, attrs: t.attrs })));
 
 const currentHTML = computed(() => {
     return mdParser.render(md.value);

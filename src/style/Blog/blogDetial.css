@@ -1,5 +1,5 @@
 .blogDetail {
-  display: flex;
+  /* display: flex; */
   position: relative;
   flex-direction: column;
   justify-content: flex-start;
@@ -14,6 +14,13 @@
   left: 0;
   /* background-color: red; */
   /* background-color: #fff; */
+}
+
+.blogDetail-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .blogDetail_title {
@@ -92,9 +99,9 @@
 }
 
 .placeholder {
-  height: 660px;
+  height: 200px;
   width: 100%;
-  background-color: #ed8d0f;
+  /* background-color: #ed8d0f; */
 }
 
 .blogDetail_body {
