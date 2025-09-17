@@ -19,7 +19,7 @@ import { has } from 'markdown-it/lib/common/utils.mjs';
 // import router from '@/router';
 // import { hash } from 'v-calendar/dist/types/src/utils/helpers.js';
 
-const dynamicContent = ref<string[]>([]);
+// const dynamicContent = ref<string[]>([]);
 
 
 
@@ -148,10 +148,10 @@ mdParser.renderer.rules.td_open = function (tokens, idx, options, env, self) {
 //     return `<div class="markdown-em-cover">${em_ele}</div>`;
 // }
 
-mdParser.renderer.rules.em = (tokens, idx, options, env, self) => {
-    const emContent = self.renderChildren(tokens, idx, options, env);
-    return `<div class="markdown-em-cover"><em>${emContent}</em></div>`;
-};
+// mdParser.renderer.rules.em = (tokens, idx, options, env, self) => {
+//     const emContent = self.renderChildren(tokens, idx, options, env);
+//     return `<div class="markdown-em-cover"><em>${emContent}</em></div>`;
+// };
 
 
 

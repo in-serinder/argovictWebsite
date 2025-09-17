@@ -17,8 +17,43 @@
 }
 
 .commission-board-scroll {
+  position: relative;
   width: 100%;
   height: 100%;
+}
+
+.commission-board-scroll-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: #ed8d0f; */
+  /* box-shadow: 0px 0px 10px 10px #ccc; */
+}
+
+.commission-board-scroll-btn button {
+  width: 30px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 20px;
+  margin-right: 50px;
+}
+
+.commission-board-scroll-btn button:hover {
+  background-color: #fff;
+}
+
+.commission-board-scroll-btn button:active {
+  background-color: #ccc;
 }
 
 .commission-board-scroll-item {

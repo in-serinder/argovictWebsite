@@ -30,7 +30,10 @@
   width: fit-content;
   height: fit-content;
   transform: scale(0.3);
+  filter: drop-shadow(15px 5px 3px #666);
   object-fit: cover;
+
+  transition: all 0.5s ease-out;
 }
 
 .pb-title {
@@ -52,4 +55,8 @@
 
 .pb-padding-area:hover .pb-title h1 {
   text-shadow: 25px 25px 3px #666;
+}
+
+.pb-padding-area:hover .pb-image img {
+  filter: drop-shadow(23px 20px 3px #666);
 }

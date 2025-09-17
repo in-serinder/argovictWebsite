@@ -17,6 +17,11 @@
             <!-- <div class="commission-board-scroll-item">
                 <img src="@/assets/picture/Tired.jpg" alt="">
             </div> -->
+            <!-- 切换按钮 -->
+            <div class="commission-board-scroll-btn">
+                <button @click="changeLeft(-100)">&lt;</button>
+                <button @click="changeLeft(100)">&gt;</button>
+            </div>
         </div>
     </div>
 </template>
@@ -29,19 +34,33 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 
 let timer: NodeJS.Timeout | null = null;
+const left = ref(0);
+
+const changeLeft = (val: number) => {
+    left.value += val;
+
+    const board = document.querySelector('.commission-board-scroll ul') as HTMLElement;
+    if (left.value > 300) {
+        left.value = 0;
+    }
+    board.style.transform = `translateX(${-left.value}%)`;
+}
+
 
 onMounted(() => {
-    let left = 0;
-    const board = document.querySelector('.commission-board-scroll ul') as HTMLElement;
+
+    // const board = document.querySelector('.commission-board-scroll ul') as HTMLElement;
 
 
     timer = setInterval(() => {
+
+        changeLeft(100);
         // console.log('滚动');
-        left += 100;
-        if (left > 300) {
-            left = 0;
-        }
-        board.style.transform = `translateX(${-left}%)`;
+        // left.value += 100;
+        // if (left.value > 300) {
+        //     left.value = 0;
+        // }
+        // board.style.transform = `translateX(${-left.value}%)`;
         // console.log(board.style.transform);
     }, 3000);
 })

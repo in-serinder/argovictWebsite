@@ -1,4 +1,4 @@
-import { Token, Renderer } from 'markdown-it'
+// import { Token, Renderer } from 'markdown-it'
 
 export interface Post {
   id: number
@@ -17,8 +17,8 @@ export interface Project {
   projectName: string
 }
 
-declare module 'markdown-it' {
-  interface Renderer {
-    renderChildren(tokens: Token[], idx: number, options: any, env: any): string
-  }
-}
+// declare module 'markdown-it' {
+//   interface Renderer {
+//     renderChildren(tokens: Token[], idx: number, options: any, env: any): string
+//   }
+// }

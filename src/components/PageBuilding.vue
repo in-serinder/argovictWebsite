@@ -3,7 +3,8 @@
         <div class="pb-padding-area">
             <!-- 图片 -->
             <div class="pb-image">
-                <img src="@/assets/picture/eg1.png" alt="">
+                <!-- <img src="@/assets/picture/eg1.png" alt=""> -->
+                <img src="@/assets/picture/eg1_f.png" alt="">
             </div>
             <!-- 标语 -->
             <div class="pb-title">
