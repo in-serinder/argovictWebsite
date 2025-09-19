@@ -28,8 +28,8 @@
             </div>
             <!-- 标签 -->
             <div class="blogDetail_tags">
-                <div class="tagFilter_content_item" v-for="tag in parseTags" :key="tag">
-                    <BlogOnTags :tag="tag" />
+                <div class="tagFilter_content_item">
+                    <!-- <BlogOnTags v-for="tag in blogAttribut?.tags" :key="tag" :tag="tag" /> -->
                 </div>
 
 
@@ -57,15 +57,16 @@ import BlogMarkdown from '@/components/BlogMarkdown.vue'
 import BlogMoveAss from '@/components/BlogMoveAss.vue'
 import BlogOnTags from '@/components/BlogOnTags.vue'
 import PageBuilding from '@/components/PageBuilding.vue'
-import { ref, onMounted, computed, Ref } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import type { Ref } from 'vue'
 import axios from 'axios'
 import { useRoute } from 'vue-router'
-import type { BlogItem } from '@/interfance'
-import { useTagStore } from '@/stores/tag'
-import { useViewCountStore } from '@/stores/viewCount'
+import type { BlogItem, RawBlogItem } from '@/interfance'
 
-const tagStore = useTagStore()
-const viewCountStore = useViewCountStore
+
+
+
+
 
 const Loading: Ref<boolean> = ref(true);
 const blogAttribut: Ref<BlogItem | null> = ref(null);
@@ -85,18 +86,6 @@ const getBlogDetail = async () => {
         // console.log("huoq", res)
         blogID.value = res.data.ID
         blogAttribut.value = res.data as BlogItem
-        // blogAttribut.value = res.data.map(item => ({
-        //     title: item.title,
-        //     date: item.date,
-        //     author: item.author,
-        //     id: item.ID,
-        //     description: item.description,
-        //     image: item.headerImageurl,
-        //     viewCount: item.view_count,
-        //     tags: item.tags.split(',')
-        // } as BlogItem));
-
-        // console.log("huoq", blogAttribut.value)
         addViewCount(blogID.value)
 
     } catch (err) {
@@ -117,16 +106,6 @@ const addViewCount = async (id: string) => {
 }
 
 
-// tag需要解析
-const parseTags = computed(() => {
-    try {
-        const tags = JSON.parse(blogAttribut.value?.tags || '[]');
-        return Array.isArray(tags) ? tags : [];
-    } catch (error) {
-        console.log(error)
-        return [];
-    }
-})
 
 
 onMounted(() => {

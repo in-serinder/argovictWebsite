@@ -26,12 +26,12 @@ const ToolList = ref<ToolItem[]>([]);
 const getToolList = async () => {
     try {
         const response = await axios.get('http://8.130.191.142:6324/master/info/tables/tools');
-        ToolList.value = response.data.map((item) => ({
+        ToolList.value = response.data.map((item: ToolItem) => ({
             name: item.name,
             description: item.description,
             url: item.url,
             version: item.version,
-            image: item.imageurl,
+            imageurl: item.imageurl,
         }));
         console.log('ToolList', ToolList.value);
     } catch (error) {

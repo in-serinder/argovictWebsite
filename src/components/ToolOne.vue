@@ -4,7 +4,7 @@
         <div class="toolOne_available" v-show="false"><img src="@/assets/svg/disable.svg" alt=""></div>
         <!-- 工具图标和工具名 -->
 
-        <div class="toolOneName"><img :src="tool.image" alt="">{{ tool.name }}</div>
+        <div class="toolOneName"><img :src="tool.imageurl" alt="">{{ tool.name }}</div>
         <!-- 工具描述 -->
         <span class="toolsDescr">{{ tool.description }}</span>
     </div>

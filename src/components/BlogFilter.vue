@@ -9,7 +9,7 @@
         <div class="dateFilter">
             <div class="dateFilter_title"> <img src="@/assets/svg/date.svg" alt="date">
                 <span>{{ $t('message.date') }} - ({{ datePick.getFullYear() }}-{{ datePick.getMonth() + 1
-                    }}-{{ datePick.getDate() }})</span>
+                }}-{{ datePick.getDate() }})</span>
             </div>
             <div class="dateFilter_calendar">
                 <Calendar :receivedDate="receivedDate" />
@@ -28,29 +28,9 @@
             <div class="tagFilter_content">
                 <!-- 标签存放 -->
                 <div class="tagFilter_content_item">
-                    <BlogOnTags />
+                    <!-- <BlogOnTags /> -->
                 </div>
-                <div class="tagFilter_content_item">
-                    <BlogOnTags />
-                </div>
-                <div class="tagFilter_content_item">
-                    <BlogOnTags />
-                </div>
-                <div class="tagFilter_content_item">
-                    <BlogOnTags />
-                </div>
-                <div class="tagFilter_content_item">
-                    <BlogOnTags />
-                </div>
-                <div class="tagFilter_content_item">
-                    <BlogOnTags />
-                </div>
-                <div class="tagFilter_content_item">
-                    <BlogOnTags />
-                </div>
-                <div class="tagFilter_content_item">
-                    <BlogOnTags />
-                </div>
+
 
             </div>
         </div>

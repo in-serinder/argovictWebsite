@@ -17,6 +17,17 @@ export interface Project {
   projectName: string
 }
 
+export interface RawBlogItem {
+  title: string
+  date: string
+  author: string
+  ID: string
+  description: string
+  heardImageURL: string
+  View: number
+  tags: string
+}
+
 export interface BlogItem {
   ID: string
   title: string
@@ -25,7 +36,7 @@ export interface BlogItem {
   image: string
   View: number
   date: string
-  tags: string
+  tags: string[]
 }
 
 export interface ProjectItem {
@@ -44,5 +55,5 @@ export interface ToolItem {
   description: string
   url: string
   version: string
-  image: string
+  imageurl: string
 }

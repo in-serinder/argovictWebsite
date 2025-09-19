@@ -23,7 +23,7 @@
 import '@/style/blogPage.css'
 import BlogOne from '@/components/BlogOne.vue'
 import BlogFilter from '@/components/BlogFilter.vue'
-import type { BlogItem } from '@/interfance'
+import type { BlogItem, RawBlogItem } from '@/interfance'
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import type { Ref } from 'vue'
@@ -37,7 +37,7 @@ const getBlogList = async () => {
     try {
         const res = await axios.get(requestURL.value)
         console.log(res.data)
-        blogList.value = res.data.map(item => ({
+        blogList.value = res.data.map((item: RawBlogItem) => ({
             title: item.title,
             date: item.date,
             author: item.author,
@@ -45,7 +45,7 @@ const getBlogList = async () => {
             description: item.description,
             image: item.heardImageURL,
             View: item.View,
-            tags: item.tags.split(',')
+            tags: item.tags ? JSON.parse(item.tags) : []
         } as BlogItem));
 
         console.log(blogList.value)

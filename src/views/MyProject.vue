@@ -21,7 +21,7 @@ const projectList = ref<ProjectItem[]>([]);
 const getProjectList = async () => {
     try {
         const response = await axios.get('http://8.130.191.142:6324/master/info/tables/project');
-        projectList.value = response.data.map((item) => ({
+        projectList.value = response.data.map((item: ProjectItem) => ({
             name: item.name,
             title: item.title,
             description: item.description,

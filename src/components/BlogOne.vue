@@ -15,7 +15,7 @@
             <div class="blogOne_content_time"><img src="@/assets/svg/time.svg" alt="">{{ blog.date }}</div>
             <!-- 标签 -->
             <div class="blogOne_content_tag">
-                <BlogOnTags v-for="tag in parseTags" :key="tag" :tag="tag" />
+                <BlogOnTags v-for="tag in blog.tags" :key="tag" :tag="tag" />
             </div>
         </div>
         <!-- 头图 -->
@@ -32,25 +32,25 @@ import '@/style/Blog/blogOne.css'
 import BlogOnTags from '@/components/BlogOnTags.vue'
 import type { BlogItem } from '@/interfance'
 import { ref, defineProps, computed } from 'vue'
-import { useTagStore } from '@/stores/tag'
+// import { useTagStore } from '@/stores/tag'
 
 
-const tagStore = useTagStore()
+// const tagStore = useTagStore()
 
 const { blog } = defineProps<{
     blog: BlogItem
 }>()
 
 // tag需要解析
-const parseTags = computed(() => {
-    try {
-        const tags = JSON.parse(blog.tags);
-        return Array.isArray(tags) ? tags : [];
-    } catch (error) {
-        console.log(error)
-        return [];
-    }
-})
+// const parseTags = computed(() => {
+//     try {
+//         const tags = JSON.parse(blog.tags);
+//         return Array.isArray(tags) ? tags : [];
+//     } catch (error) {
+//         console.log(error)
+//         return [];
+//     }
+// })
 
 
 
