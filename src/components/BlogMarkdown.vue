@@ -12,14 +12,17 @@ import MarkdownIt from 'markdown-it';
 import axios from 'axios';
 import mdHighlight from 'markdown-it-highlightjs';
 import anchor from 'markdown-it-anchor';
-import { ref, onMounted, computed, watch, onUnmounted, nextTick } from 'vue';
+import { ref, onMounted, computed, watch, onUnmounted, nextTick, defineProps } from 'vue';
 import { useRoute } from 'vue-router';
 import Renderer from 'markdown-it/lib/renderer.mjs';
-import { has } from 'markdown-it/lib/common/utils.mjs';
+
+// import { has } from 'markdown-it/lib/common/utils.mjs';
+
 // import router from '@/router';
 // import { hash } from 'v-calendar/dist/types/src/utils/helpers.js';
 
 // const dynamicContent = ref<string[]>([]);
+
 
 
 
@@ -191,6 +194,8 @@ const scrollToAnchor = (hash: string) => {
         .replace(chineseRegex, '')
         .replace(englishRegex, (match, p1) => '-' + p1.toUpperCase());
     // console.log(targetID);
+    console.log('hash', hash)
+    console.log('hashtoID', targetID)
 
     // 目标id为描点终点，
     const targetElement = document.getElementById(targetID);
@@ -243,6 +248,8 @@ const fixHeight = () => {
 
 watch(() => route.hash, (newHash) => {
     scrollToAnchor(newHash);
+    // mdFucker.scrollToHash(newHash);
+    // console.log('hash', newHash);
 
 }, {
     immediate: true
@@ -288,7 +295,7 @@ onMounted(async () => {
 
     // 测试
     try {
-        const response = await axios.get('http://localhost:8000/', {
+        const response = await axios.get('http://8.130.191.142:6324/blog/markdown/' + route.params.id, {
             responseType: 'text'
         });
         md.value = response.data;

@@ -41,6 +41,8 @@
   border-radius: 15px;
   margin-bottom: 5px;
   /* background-size: cover; */
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px #ccc;
 }
 
 /* 内容区 */

@@ -5,23 +5,22 @@
         <div class="blogOne_content">
             <!-- 博客标题 -->
             <div class="blogOne_content_title">
-                Blog One
+                {{ blog.title }}
             </div>
             <!-- 博客内容 -->
             <div class="blogOne_content_abstract">
-                Blog One Content
+                {{ blog.description }}
             </div>
             <!-- 发布时间 -->
-            <div class="blogOne_content_time"><img src="@/assets/svg/time.svg" alt="">2024-06-10</div>
+            <div class="blogOne_content_time"><img src="@/assets/svg/time.svg" alt="">{{ blog.date }}</div>
             <!-- 标签 -->
             <div class="blogOne_content_tag">
-                <BlogOnTags />
-                <BlogOnTags />
+                <BlogOnTags v-for="tag in parseTags" :key="tag" :tag="tag" />
             </div>
         </div>
         <!-- 头图 -->
         <div class="blogOne_header">
-            <img src="@/assets/picture/Tired.jpg" alt="">
+            <img :src="blog.image" alt="">
         </div>
     </div>
 
@@ -31,4 +30,30 @@
 <script setup lang="ts">
 import '@/style/Blog/blogOne.css'
 import BlogOnTags from '@/components/BlogOnTags.vue'
+import type { BlogItem } from '@/interfance'
+import { ref, defineProps, computed } from 'vue'
+import { useTagStore } from '@/stores/tag'
+
+
+const tagStore = useTagStore()
+
+const { blog } = defineProps<{
+    blog: BlogItem
+}>()
+
+// tag需要解析
+const parseTags = computed(() => {
+    try {
+        const tags = JSON.parse(blog.tags);
+        return Array.isArray(tags) ? tags : [];
+    } catch (error) {
+        console.log(error)
+        return [];
+    }
+})
+
+
+
+
+
 </script>

@@ -77,3 +77,7 @@
   margin-top: 10px;
   color: #666;
 }
+
+.projectOneName ul li span {
+  margin-left: 20px;
+}

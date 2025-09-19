@@ -9,15 +9,16 @@
             <div class="blogDetail_info">
                 <ul>
                     <!-- 作者 -->
-                    <li><img src="@/assets/svg/user.svg" alt="user">Author</li>
+                    <li><img src="@/assets/svg/user.svg" alt="user" v-if="blogAttribut?.author">Author: {{
+                        blogAttribut?.author }}</li>
                     <!-- 发布时间 -->
-                    <li><img src="@/assets/svg/time.svg" alt="user">2025-9-13</li>
+                    <li><img src="@/assets/svg/time.svg" alt="user"> {{ blogAttribut?.date }}</li>
                     <!-- 字数 -->
-                    <li><img src="@/assets/svg/word.svg" alt="user">Words: 1000</li>
+                    <li><img src="@/assets/svg/word.svg" alt="user">Words: {{ blogAttribut?.description?.length }}</li>
                     <!-- 阅读量 -->
-                    <li><img src="@/assets/svg/view.svg" alt="user">Views: 1000</li>
+                    <li><img src="@/assets/svg/view.svg" alt="user">Views: {{ blogAttribut?.View }}</li>
                     <!-- 文章ID -->
-                    <li><img src="@/assets/svg/id.svg" alt="user">:1000</li>
+                    <li><img src="@/assets/svg/id.svg" alt="user">:{{ blogAttribut?.ID }}</li>
                 </ul>
             </div>
             <div class="divider_x"></div>
@@ -27,18 +28,11 @@
             </div>
             <!-- 标签 -->
             <div class="blogDetail_tags">
-                <div class="tagFilter_content_item">
-                    <BlogOnTags />
+                <div class="tagFilter_content_item" v-for="tag in parseTags" :key="tag">
+                    <BlogOnTags :tag="tag" />
                 </div>
-                <div class="tagFilter_content_item">
-                    <BlogOnTags />
-                </div>
-                <div class="tagFilter_content_item">
-                    <BlogOnTags />
-                </div>
-                <div class="tagFilter_content_item">
-                    <BlogOnTags />
-                </div>
+
+
 
             </div>
             <div class="divider_x"></div>
@@ -63,6 +57,85 @@ import BlogMarkdown from '@/components/BlogMarkdown.vue'
 import BlogMoveAss from '@/components/BlogMoveAss.vue'
 import BlogOnTags from '@/components/BlogOnTags.vue'
 import PageBuilding from '@/components/PageBuilding.vue'
+import { ref, onMounted, computed, Ref } from 'vue'
+import axios from 'axios'
+import { useRoute } from 'vue-router'
+import type { BlogItem } from '@/interfance'
+import { useTagStore } from '@/stores/tag'
+import { useViewCountStore } from '@/stores/viewCount'
+
+const tagStore = useTagStore()
+const viewCountStore = useViewCountStore
+
+const Loading: Ref<boolean> = ref(true);
+const blogAttribut: Ref<BlogItem | null> = ref(null);
+const blogID: Ref<string> = ref('')
+const route = useRoute()
+
+
+const blogAttribut_requestURL: Ref<string> = ref(`http://8.130.191.142:6324/blog/info/`);
+
+
+
+
+const getBlogDetail = async () => {
+    try {
+        const res = await axios.get(blogAttribut_requestURL.value + route.params.id)
+        // console.log(res.data)
+        // console.log("huoq", res)
+        blogID.value = res.data.ID
+        blogAttribut.value = res.data as BlogItem
+        // blogAttribut.value = res.data.map(item => ({
+        //     title: item.title,
+        //     date: item.date,
+        //     author: item.author,
+        //     id: item.ID,
+        //     description: item.description,
+        //     image: item.headerImageurl,
+        //     viewCount: item.view_count,
+        //     tags: item.tags.split(',')
+        // } as BlogItem));
+
+        // console.log("huoq", blogAttribut.value)
+        addViewCount(blogID.value)
+
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+
+
+const addViewCount = async (id: string) => {
+    if (!id) return
+    try {
+        console.log('addViewCount', id)
+        await axios.get(`http://8.130.191.142:6324/blog/count/view/${id}`)
+    } catch (error) {
+        console.error('Failed to add view count', error)
+    }
+}
+
+
+// tag需要解析
+const parseTags = computed(() => {
+    try {
+        const tags = JSON.parse(blogAttribut.value?.tags || '[]');
+        return Array.isArray(tags) ? tags : [];
+    } catch (error) {
+        console.log(error)
+        return [];
+    }
+})
+
+
+onMounted(() => {
+    getBlogDetail()
+    //    viewCountStore.addViewCount
+
+
+
+})
 
 
 </script>
