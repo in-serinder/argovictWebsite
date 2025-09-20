@@ -25,6 +25,7 @@ export interface RawBlogItem {
   description: string
   heardImageURL: string
   View: number
+  wordCount: number
   tags: string
 }
 
@@ -36,6 +37,7 @@ export interface BlogItem {
   image: string
   View: number
   date: string
+  wordCount: number
   tags: string[]
 }
 

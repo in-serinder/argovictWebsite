@@ -14,7 +14,7 @@
                     <!-- 发布时间 -->
                     <li><img src="@/assets/svg/time.svg" alt="user"> {{ blogAttribut?.date }}</li>
                     <!-- 字数 -->
-                    <li><img src="@/assets/svg/word.svg" alt="user">Words: {{ blogAttribut?.description?.length }}</li>
+                    <li><img src="@/assets/svg/word.svg" alt="user">Words: {{ blogAttribut?.wordCount }}</li>
                     <!-- 阅读量 -->
                     <li><img src="@/assets/svg/view.svg" alt="user">Views: {{ blogAttribut?.View }}</li>
                     <!-- 文章ID -->
