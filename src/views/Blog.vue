@@ -10,7 +10,7 @@
                 <!-- <p>{{ $t('message.no_search_result') }}</p> -->
                 <NoSearchResult />
             </div>
-            <div class="BlogOfOne" v-for="item in blogList" :key="item.ID">
+            <div class="BlogOfOne" v-for="item in blogList" :key="item.date">
                 <BlogOne :blog="item" @click="toPostDetail(item)" />
             </div>
         </div>

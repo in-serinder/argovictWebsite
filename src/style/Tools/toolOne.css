@@ -51,8 +51,12 @@
 /* 工具图标和工具名 */
 
 .toolOneName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 16px;
-  margin: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   font-weight: bold;
   color: #666;
   text-align: center;
@@ -60,7 +64,7 @@
 
 .toolOneName img {
   margin-right: 10px;
-  width: 20px;
+  width: 26px;
 }
 
 .toolsDescr {
