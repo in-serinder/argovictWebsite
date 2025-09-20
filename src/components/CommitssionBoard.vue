@@ -19,8 +19,8 @@
             </div> -->
             <!-- 切换按钮 -->
             <div class="commission-board-scroll-btn">
-                <button @click="changeLeft(-100)">&lt;</button>
-                <button @click="changeLeft(100)">&gt;</button>
+                <button @click="styleStore.changeToLeft(-100)">&lt;</button>
+                <button @click="styleStore.changeToLeft(100)">&gt;</button>
             </div>
         </div>
     </div>
@@ -29,32 +29,25 @@
 
 <script setup lang="ts">
 import '@/style/Commission/commissionBoard.css'
-import { time } from 'console';
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { useStyleStore } from '@/stores/style';
+
+
+const styleStore = useStyleStore();
 
 
 let timer: NodeJS.Timeout | null = null;
-const left = ref(0);
 
-const changeLeft = (val: number) => {
-    left.value += val;
-
-    const board = document.querySelector('.commission-board-scroll ul') as HTMLElement;
-    if (left.value > 300) {
-        left.value = 0;
-    }
-    board.style.transform = `translateX(${-left.value}%)`;
-}
 
 
 onMounted(() => {
 
-    // const board = document.querySelector('.commission-board-scroll ul') as HTMLElement;
 
 
     timer = setInterval(() => {
 
-        changeLeft(100);
+        // changeLeft(100);
+        styleStore.changeToLeft(100);
         // console.log('滚动');
         // left.value += 100;
         // if (left.value > 300) {

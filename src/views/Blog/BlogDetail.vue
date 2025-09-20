@@ -24,7 +24,7 @@
             <div class="divider_x"></div>
             <!-- 文章内容 -->
             <div class="blogDetail_content" id="blogcontent">
-                <BlogMarkdown />
+                <BlogMarkdown id="blogMarkdown" />
             </div>
             <!-- 标签 额外功能-->
             <div class="blogDetail_tags">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="blogDetail-footer-f">
-                    <img src="@/assets/svg/print.svg" alt="" @click="miscStore.printWindow">
+                    <img src="@/assets/svg/print.svg" alt="" @click="miscStore.printWindow('blogMarkdown')">
                     <span class="shareIcon" @click="miscStore.shareWebPage('shareIcon')"><img
                             src="@/assets/svg/share.svg" alt=""></span>
 

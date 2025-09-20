@@ -8,8 +8,26 @@ export const useMiscStore = defineStore('misc', {
   },
 
   actions: {
-    printWindow() {
+    printWindow(printPageId: string) {
+      const targetElement = document.getElementById(printPageId)
+      if (!targetElement) {
+        console.error(`未找到 ID 为 ${printPageId} 的元素`)
+        return
+      }
+
+      const originalContent = document.body.innerHTML
+
+      const printContainer = document.createElement('div')
+      printContainer.innerHTML = targetElement.outerHTML
+      document.body.innerHTML = printContainer.innerHTML
+
       window.print()
+
+      setTimeout(() => {
+        document.body.innerHTML = originalContent
+        window.dispatchEvent(new Event('load'))
+      }, 0)
+      //   window.print()
       //   console.log('打印')
     },
     async shareWebPage(className: string) {
