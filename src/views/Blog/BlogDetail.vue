@@ -34,24 +34,25 @@
                     </div>
                 </div>
                 <div class="blogDetail-footer-f">
-                    <img src="@/assets/svg/print.svg" alt="">
-                    <img src="@/assets/svg/share.svg" alt="">
+                    <img src="@/assets/svg/print.svg" alt="" @click="miscStore.printWindow">
+                    <span class="shareIcon" @click="miscStore.shareWebPage('shareIcon')"><img
+                            src="@/assets/svg/share.svg" alt=""></span>
+
                 </div>
             </div>
             <div class="divider_x"></div>
             <!-- 评论 -->
             <div class="blogDetail_comments">
-                <span>
-                    <h4>{{ $t('message.blog_comments') }}</h4>
-                    <div class="commit_continer">
-                        <PageBuilding />
-                    </div>
-                </span>
+
+                <h4>{{ $t('message.blog_comments') }}</h4>
+                <div class="commit_continer">
+                    <PageBuilding />
+                </div>
 
 
             </div>
             <!-- 占位 -->
-            <div class="placeholder"> 占位</div>
+            <div class="placeholder"> </div>
         </div>
         <!-- 文章移动辅助 -->
         <BlogMoveAss />
@@ -69,6 +70,12 @@ import type { Ref } from 'vue'
 import axios from 'axios'
 import { useRoute } from 'vue-router'
 import type { BlogItem } from '@/interfance'
+import { useMiscStore } from '@/stores/misc'
+import { useViewCountStore } from '@/stores/viewCount'
+
+
+const viewCountStore = useViewCountStore()
+const miscStore = useMiscStore()
 
 // 单独转换tag
 const tags: Ref<string[]> = computed(() => {
@@ -98,26 +105,15 @@ const getBlogDetail = async () => {
         // console.log("huoq", res)
         blogID.value = res.data.ID
         blogAttribut.value = res.data as BlogItem
-        addViewCount(blogID.value)
-        console.log('blogAttribut', blogAttribut.value)
-        console.log('tags', tags.value)
+        viewCountStore.addViewCount(blogID.value)
+        // console.log('blogAttribut', blogAttribut.value)
+        // console.log('tags', tags.value)
 
     } catch (err) {
         console.log(err)
     }
 }
 
-
-
-const addViewCount = async (id: string) => {
-    if (!id) return
-    try {
-        // console.log('addViewCount', id)
-        await axios.get(`http://8.130.191.142:6324/blog/count/view/${id}`)
-    } catch (error) {
-        console.error('Failed to add view count', error)
-    }
-}
 
 
 

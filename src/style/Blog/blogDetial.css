@@ -112,8 +112,9 @@
 
 .blogDetail_comments {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
+  /* background-color: aqua; */
   width: 100%;
   font-size: 18px;
   padding: 15px;
@@ -129,7 +130,7 @@
 }
 
 .commit_continer {
-  width: 100%;
+  width: inherit;
   min-height: 300px;
   margin-top: 20px;
   border: 1px solid #ccc;
@@ -138,12 +139,14 @@
 .blogDetail-footer-f {
   display: flex;
   flex-direction: row;
+  margin-right: 20px;
   padding: 5px;
 }
 
 .blogDetail-footer-f img {
   width: 25px;
   height: 25px;
+  margin-right: 10px;
   margin: 5px;
 }
 
@@ -158,4 +161,26 @@
   background-color: black;
   width: 100%;
   height: 400px;
+}
+
+.shareIcon {
+  position: relative;
+  cursor: pointer;
+}
+
+.shareIcon::after {
+  content: 'Copy Success';
+  position: absolute;
+  font-size: 14px;
+  font-weight: bold;
+  width: 40px;
+  top: 20px;
+  left: 0;
+  opacity: 0;
+}
+
+.shared::after {
+  animation: bubbleDialog 1s ease-in-out forwards;
+  /* transform: translateY(-100px); */
+  /* top: 20px; */
 }

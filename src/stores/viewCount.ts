@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
-// 明确定义方法类型
-interface ViewCountActions {
-  addViewCount: (id: string) => Promise<void>
-}
-
-export const useViewCountStore = defineStore<'viewCount', {}, {}, ViewCountActions>('viewCount', {
+export const useViewCountStore = defineStore('viewCount', {
+  state() {
+    return {
+      viewCount: 0,
+    }
+  },
   actions: {
     async addViewCount(id: string) {
       if (!id) return
