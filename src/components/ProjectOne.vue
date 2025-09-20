@@ -20,7 +20,7 @@
         </div>
         <!-- 项目地址 -->
         <div class="projectOneUrl">
-            <a>{{ project.url }}</a>
+            <a :href="project.url" target="_blank">{{ project.url }}</a>
         </div>
         <!-- 描述 -->
         <div class="projectOneDesc">
