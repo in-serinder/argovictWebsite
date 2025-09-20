@@ -63,6 +63,10 @@ const getBlogList = async () => {
             tags: item.tags ? JSON.parse(item.tags) : []
         } as BlogItem));
 
+        blogList.value = blogList.value.sort((a, b) => {
+            return new Date(b.date).getTime() - new Date(a.date).getTime()
+        })
+
         // console.log(blogList.value)
     } catch (err) {
         console.log(err)
