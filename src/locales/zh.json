@@ -66,7 +66,13 @@
     "media": "媒体",
     "audio": "音频",
     "video": "视频",
-    "other": "其他"
+    "other": "其他",
+    "search_result": "搜索结果",
+    "based_on": "基于",
+    "according_to": "根据",
+    "result": "结果",
+    "have": "有",
+    "no_search_result": "未找到搜索结果。"
   },
   "tag": {
     "english": "English",

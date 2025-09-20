@@ -13,6 +13,11 @@
                     <a href="https://www.pixiv.net/artworks/91174244" target="_blank">PlaceHolder Page - 8pin-DIP
                         (2016/12/11)</a>
                     <a href="https://www.pixiv.net/artworks/98216966" target="_blank">Home Page avatar -nsrad jsndsh</a>
+                    <a href="https://www.pixiv.net/users/60562229" target="_blank">More About (Exmaple
+                        avatar,article,backgroundImage and more) - Pixiv Ravimo</a>
+
+                    <a href="https://www.pixiv.net/artworks/111474344" target="_blank">No Search Result - Void
+                        Linux-chan</a>
                 </li>
             </ul>
             <!-- asset end-->

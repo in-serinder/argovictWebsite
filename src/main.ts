@@ -11,6 +11,7 @@ import router from './router'
 /* 引入全局样式 */
 import './style/index.css'
 import './style/markdown.css'
+import '@/style/animation.css'
 /*i18n引入*/
 // import en from '@/locales/en.json'
 // import zh from '@/locales/zh.json'

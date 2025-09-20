@@ -11,6 +11,10 @@
   margin-right: 10px;
   cursor: pointer;
   transition: all 0.5s;
+
+  /* margin-right: 20px; */
+  /* background-color: #ed8d0f;
+  border-radius: 15px; */
 }
 
 .blogOne_content_tag:hover {

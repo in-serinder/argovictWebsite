@@ -1,14 +1,23 @@
 <template>
     <div class="blogPage">
+
+
+
         <!-- 博客栏 -->
         <div class="blogBar">
+            <!-- 无搜索结果占位 -->
+            <div v-if="search_flag">
+                <!-- <p>{{ $t('message.no_search_result') }}</p> -->
+                <NoSearchResult />
+            </div>
             <div class="BlogOfOne" v-for="item in blogList" :key="item.ID">
                 <BlogOne :blog="item" @click="toPostDetail(item)" />
             </div>
         </div>
         <!-- 博客筛选栏 -->
         <div class="blogFilter">
-            <BlogFilter />
+
+            <BlogFilter :searchBlog="searchBlog" />
         </div>
         <!-- 博客详情 -->
         <!-- <div class="blogContainer"> -->
@@ -23,20 +32,26 @@
 import '@/style/blogPage.css'
 import BlogOne from '@/components/BlogOne.vue'
 import BlogFilter from '@/components/BlogFilter.vue'
+import NoSearchResult from '@/components/NoSearchResult.vue'
 import type { BlogItem, RawBlogItem } from '@/interfance'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import axios from 'axios'
 import type { Ref } from 'vue'
 import { useRouter } from 'vue-router'
 
+
+const router = useRouter()
+const search_flag = ref(false)
 const requestURL: Ref<string> = ref('http://8.130.191.142:6324/master/info/tables/post');
 const blogList: Ref<BlogItem[]> = ref([]);
 // const blogID 
 
+
+// 获取博客列表
 const getBlogList = async () => {
     try {
         const res = await axios.get(requestURL.value)
-        console.log(res.data)
+        // console.log(res.data)
         blogList.value = res.data.map((item: RawBlogItem) => ({
             title: item.title,
             date: item.date,
@@ -48,7 +63,7 @@ const getBlogList = async () => {
             tags: item.tags ? JSON.parse(item.tags) : []
         } as BlogItem));
 
-        console.log(blogList.value)
+        // console.log(blogList.value)
     } catch (err) {
         console.log(err)
     }
@@ -57,13 +72,10 @@ const getBlogList = async () => {
 
 
 
-onMounted(() => {
-    getBlogList()
-})
 
 
 // 跳转详情页
-const router = useRouter()
+
 const toPostDetail = (blog: BlogItem) => {
     console.log(blog)
     router.push({
@@ -74,7 +86,25 @@ const toPostDetail = (blog: BlogItem) => {
     })
 }
 
+// 搜索结果后更改blogOne目标
+const searchBlog = (Goalblog: BlogItem[]) => {
+    blogList.value = Goalblog;
 
+    if (Goalblog.length === 0) {
+        search_flag.value = true;
+    } else {
+        search_flag.value = false;
+    }
+    console.log(Goalblog)
+}
+
+onMounted(() => {
+    getBlogList()
+})
+
+// watch(searchBlog, (newVal, oldVal) => {
+//     console.log('searchBlog', newVal, oldVal);
+// })
 
 
 </script>

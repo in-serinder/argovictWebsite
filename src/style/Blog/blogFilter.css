@@ -121,3 +121,23 @@
   /* border: 1px solid #333; */
   height: 30px;
 }
+
+.search-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  align-items: flex-start;
+  /* background-color: antiquewhite; */
+  font-size: 12px;
+}
+
+.search-result p {
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.search-result span {
+  margin-left: 20px;
+}

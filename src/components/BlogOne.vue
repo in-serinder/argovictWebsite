@@ -20,7 +20,7 @@
         </div>
         <!-- 头图 -->
         <div class="blogOne_header">
-            <img :src="blog.image" alt="">
+            <img :src="blog.image ? blog.image : '@/assets/picture/Tired.jpg'" alt="">
         </div>
     </div>
 

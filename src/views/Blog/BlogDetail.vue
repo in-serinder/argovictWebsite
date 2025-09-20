@@ -3,7 +3,7 @@
         <div class="blogDetail-content-container">
             <!-- 标题 -->
             <div class="blogDetail_title">
-                <h1>Post Title</h1>
+                <h1>{{ blogAttribut?.title }}</h1>
             </div>
             <!-- 文章信息 -->
             <div class="blogDetail_info">
@@ -26,22 +26,29 @@
             <div class="blogDetail_content" id="blogcontent">
                 <BlogMarkdown />
             </div>
-            <!-- 标签 -->
+            <!-- 标签 额外功能-->
             <div class="blogDetail_tags">
-                <div class="tagFilter_content_item">
-                    <!-- <BlogOnTags v-for="tag in blogAttribut?.tags" :key="tag" :tag="tag" /> -->
+                <div class="blogDetail-tags-contrainer">
+                    <div v-for="tag in tags" :key="tag">
+                        <BlogOnTags :tag="tag" />
+                    </div>
                 </div>
-
-
-
+                <div class="blogDetail-footer-f">
+                    <img src="@/assets/svg/print.svg" alt="">
+                    <img src="@/assets/svg/share.svg" alt="">
+                </div>
             </div>
             <div class="divider_x"></div>
             <!-- 评论 -->
             <div class="blogDetail_comments">
-                <h4>{{ $t('message.blog_comments') }}</h4>
-                <div class="commit_continer">
-                    <PageBuilding />
-                </div>
+                <span>
+                    <h4>{{ $t('message.blog_comments') }}</h4>
+                    <div class="commit_continer">
+                        <PageBuilding />
+                    </div>
+                </span>
+
+
             </div>
             <!-- 占位 -->
             <div class="placeholder"> 占位</div>
@@ -61,9 +68,15 @@ import { ref, onMounted, computed } from 'vue'
 import type { Ref } from 'vue'
 import axios from 'axios'
 import { useRoute } from 'vue-router'
-import type { BlogItem, RawBlogItem } from '@/interfance'
+import type { BlogItem } from '@/interfance'
 
-
+// 单独转换tag
+const tags: Ref<string[]> = computed(() => {
+    if (Array.isArray(blogAttribut.value?.tags)) {
+        return blogAttribut.value.tags as string[]
+    }
+    return blogAttribut.value ? JSON.parse(blogAttribut.value?.tags) : []
+})
 
 
 
@@ -74,19 +87,20 @@ const blogID: Ref<string> = ref('')
 const route = useRoute()
 
 
-const blogAttribut_requestURL: Ref<string> = ref(`http://8.130.191.142:6324/blog/info/`);
 
 
 
 
 const getBlogDetail = async () => {
     try {
-        const res = await axios.get(blogAttribut_requestURL.value + route.params.id)
+        const res = await axios.get(`http://8.130.191.142:6324/blog/info/${route.params.id}`)
         // console.log(res.data)
         // console.log("huoq", res)
         blogID.value = res.data.ID
         blogAttribut.value = res.data as BlogItem
         addViewCount(blogID.value)
+        console.log('blogAttribut', blogAttribut.value)
+        console.log('tags', tags.value)
 
     } catch (err) {
         console.log(err)
@@ -98,7 +112,7 @@ const getBlogDetail = async () => {
 const addViewCount = async (id: string) => {
     if (!id) return
     try {
-        console.log('addViewCount', id)
+        // console.log('addViewCount', id)
         await axios.get(`http://8.130.191.142:6324/blog/count/view/${id}`)
     } catch (error) {
         console.error('Failed to add view count', error)

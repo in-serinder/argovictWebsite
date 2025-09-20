@@ -57,3 +57,15 @@ export interface ToolItem {
   version: string
   imageurl: string
 }
+
+export interface TagItem {
+  name: string
+  count: number
+}
+
+export interface SearchResult {
+  keyword: string
+  results: BlogItem[]
+  total: number
+  success: boolean
+}

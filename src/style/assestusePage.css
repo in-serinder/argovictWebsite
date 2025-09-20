@@ -27,8 +27,9 @@
 .assetUse-container ul {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin-left: 50px;
   margin-top: 20px;
   list-style: none;
 }
