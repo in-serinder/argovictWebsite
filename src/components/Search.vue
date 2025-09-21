@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import '@/style/Componets/search.css'
-import { ref, defineProps, watch } from 'vue'
+import { ref, defineProps } from 'vue'
 import type { Ref } from 'vue'
 import axios from 'axios';
 import type { RawBlogItem, BlogItem, SearchResult } from '@/interfance';

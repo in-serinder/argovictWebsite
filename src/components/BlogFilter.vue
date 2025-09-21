@@ -9,7 +9,7 @@
             <div v-if="searchResult">
                 <p>{{ $t('message.search_result') }}:</p>
                 <span>{{ $t('message.based_on') }}"{{
-                    searchResult.keyword }} " {{ $t('message.have') }}{{ searchResult.total }} {{ $t('message.result')
+                    searchResult.keyword }} " {{ $t('message.have') }} {{ searchResult.total }} {{ $t('message.result')
                     }}
                 </span>
             </div>
@@ -19,7 +19,7 @@
         <div class="dateFilter">
             <div class="dateFilter_title"> <img src="@/assets/svg/date.svg" alt="date">
                 <span>{{ $t('message.date') }} - ({{ datePick.getFullYear() }}-{{ datePick.getMonth() + 1
-                    }}-{{ datePick.getDate() }})</span>
+                }}-{{ datePick.getDate() }})</span>
             </div>
             <div class="dateFilter_calendar">
                 <Calendar :receivedDate="receivedDate" />
@@ -54,7 +54,7 @@ import Search from '@/components/Search.vue'
 import Calendar from '@/components/Calendar.vue'
 import BlogOnTags from '@/components/BlogOnTags.vue'
 import { ref, watch, onMounted, defineProps } from 'vue'
-import type { BlogItem, TagItem, SearchResult } from '@/interfance';
+import type { TagItem, SearchResult } from '@/interfance';
 import axios from 'axios'
 
 const datePick = ref(new Date());
