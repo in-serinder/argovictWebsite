@@ -8,6 +8,7 @@ export const useScrollStore = defineStore('scroll', {
   state() {
     return {
       scrollTop: 0,
+      targetID: '',
     }
   },
   actions: {
@@ -20,6 +21,7 @@ export const useScrollStore = defineStore('scroll', {
       const target = targetElement?.closest('a[href^="#"]') // 匹配以#开头的链接
       if (target) {
         e.preventDefault() // 阻止默认跳转（避免路由刷新）
+
         const hash = target.getAttribute('href')
         // 更新URL的hash（会触发上面的watch）
         window.location.hash = String(hash)
@@ -33,16 +35,21 @@ export const useScrollStore = defineStore('scroll', {
         return
       }
 
-      const targetID = hash
-        .replace('#', '')
-        .replace(chineseRegex, '')
-        .replace(englishRegex, (match, p1) => '-' + p1.toUpperCase())
+      // const targetID = hash
+      //   .replace('#', '')
+      //   .replace(chineseRegex, '')
+      //   // .replace(englishRegex, (match, p1) => '-' + p1.toUpperCase())
+      //   .replace(englishRegex, (match, p1) => '-' + p1.toLowerCase())
+
+      // 如果全中文
+
       // console.log(targetID);
+      this.buildTargetID(hash)
       console.log('hash', hash)
-      console.log('hashtoID', targetID)
+      console.log('hashtoID', this.targetID)
 
       // 目标id为描点终点，
-      const targetElement = document.getElementById(targetID)
+      const targetElement = document.getElementById(this.targetID)
       if (targetElement) {
         // targetElement.scrollIntoView({
         //     block: 'start',
@@ -53,6 +60,32 @@ export const useScrollStore = defineStore('scroll', {
           behavior: 'smooth',
         })
       }
+    },
+
+    buildTargetID(hash: string) {
+      this.targetID = hash
+      // .replace('#', '') //大标题标签
+      // .replace(chineseRegex, '') //去中文
+      // .replace(englishRegex, (match, p1) => '-' + p1.toUpperCase())
+      // .replace(englishRegex, (match, p1) => '-' + p1.toLowerCase())
+
+      // 第二部
+      this.targetID = hash
+        .replace(/^#+\s*/, '')
+        .replace(chineseRegex, '')
+        .split('-')
+        .map((word) => {
+          if (/^\d+$/.test(word)) {
+            return word
+          }
+          return word.toLocaleLowerCase()
+        })
+        .join('-')
+        .replace(/(?<=\d)-(?=\s*$)/, '')
+      // .replace(englishRegex, (match, p1) => {
+      //   return match.charAt(0) + p1.toUpperCase()
+      // })
+      // .replace('-', '')
     },
   },
 })

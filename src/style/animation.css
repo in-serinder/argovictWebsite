@@ -29,3 +29,14 @@
     transform: translateY(0);
   }
 }
+
+@keyframes heidinleft {
+  0% {
+    transform: translateX(-100px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}

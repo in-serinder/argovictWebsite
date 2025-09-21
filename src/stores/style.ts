@@ -19,5 +19,11 @@ export const useStyleStore = defineStore('style', {
       }
       board.style.transform = `translateX(${-left.value}%)`
     },
+    whenPageChange(container: string) {
+      const page = document.getElementById(container)
+      if (page) {
+        page.style.animation = 'heidinleft 0.5s ease-in-out'
+      }
+    },
   },
 })

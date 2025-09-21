@@ -94,6 +94,7 @@ watch(
 onMounted(async () => {
     // containerRef.value = document.getElementById('blogContainer');
     mdFucker.reParseMarkDown()
+    mdFucker.rebuildMarkdownTitleToID()
 
     // 测试
     try {

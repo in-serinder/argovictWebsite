@@ -1,5 +1,5 @@
 <template>
-  <div class="BriefSelf">
+  <div class="BriefSelf" id="BriefSelf">
     <div class="brief">
       <div style="height: 140px;"></div>
       <!-- 头像 -->
@@ -56,6 +56,11 @@
 
 <script setup lang="ts">
 import '@/style/briefselfPage.css'
+import { useStyleStore } from '@/stores/style';
+import { onBeforeUnmount } from 'vue';
+
+const styleStore = useStyleStore();
+
 
 function handleClick(type: string) {
   switch (type) {
@@ -81,4 +86,9 @@ function handleClick(type: string) {
       break;
   }
 }
+
+
+onBeforeUnmount(() => {
+  // styleStore.whenPageChange('BriefSelf')
+})
 </script>

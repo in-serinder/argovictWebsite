@@ -5,6 +5,9 @@ import anchor from 'markdown-it-anchor'
 import hljs from 'highlight.js'
 import { computed } from 'vue'
 
+const chineseRegex = /[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef]/g
+const englishRegex = /-([a-z])/g
+
 export const userMarkDownFucker = defineStore('mdFucker', {
   state() {
     return {
@@ -109,6 +112,49 @@ export const userMarkDownFucker = defineStore('mdFucker', {
         return `<td${self.renderAttrs(token)}>`
       }
     },
+
+    toIDRuler(title: string) {
+      return title
+        .replace(/^#+\s*/, '') // 移除开头的#和空格
+        .replace(chineseRegex, '') // 移除中文
+        .replace(/\./g, '') // 移除点号
+        .replace(/[^a-zA-Z0-9-]/g, '-') // 将非数字字母的字符替换为连字符
+        .split('-') // 按连字符拆分
+        .filter((word) => word) // 过滤空字符串（避免连续多个连字符）
+        .map((word) => word.toLowerCase()) // 转为全小写
+        .join('-')
+
+      // .map((word) => {
+      //   if (/^\d+$/.test(word)) {
+      //     return word
+      //   }
+      //   return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+      // })
+      // .join('-')
+      // .replace(englishRegex, (match, p1) => {
+      //   return match.charAt(0) + p1.toUpperCase()
+      // })
+    },
+
+    rebuildMarkdownTitleToID() {
+      const ruler = this.toIDRuler
+
+      const defaultHeadingOpen =
+        this.mdParser.renderer.rules.heading_open ||
+        function (tokens, idx, options, env, self) {
+          return self.renderToken(tokens, idx, options)
+        }
+
+      this.mdParser.renderer.rules.heading_open = function (tokens, idx, options, env, self) {
+        const token = tokens[idx]
+        const contentToken = tokens[idx + 1]
+        const titleText = contentToken.content
+        const customId = ruler(titleText)
+        token.attrSet('id', customId)
+        return defaultHeadingOpen(tokens, idx, options, env, self)
+      }
+    },
+
     // 不使用
     computed: {
       getHtml(markdown: string) {
