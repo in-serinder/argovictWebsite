@@ -19,7 +19,7 @@
         <div class="dateFilter">
             <div class="dateFilter_title"> <img src="@/assets/svg/date.svg" alt="date">
                 <span>{{ $t('message.date') }} - ({{ datePick.getFullYear() }}-{{ datePick.getMonth() + 1
-                }}-{{ datePick.getDate() }})</span>
+                    }}-{{ datePick.getDate() }})</span>
             </div>
             <div class="dateFilter_calendar">
                 <Calendar :receivedDate="receivedDate" />
@@ -56,6 +56,10 @@ import BlogOnTags from '@/components/BlogOnTags.vue'
 import { ref, watch, onMounted, defineProps } from 'vue'
 import type { TagItem, SearchResult } from '@/interfance';
 import axios from 'axios'
+import { useGetDataByServerStore } from '@/stores/getdatabyserver'
+import { get } from 'node:http'
+
+const getdatabyserver = useGetDataByServerStore()
 
 const datePick = ref(new Date());
 const tagList = ref<TagItem[]>([]);
@@ -84,6 +88,8 @@ const getTagList = async () => {
     }
 }
 
+
+// 搜索结果 手动搜索和日期搜索复用
 const getSerchResult = (SearchResult: SearchResult) => {
     searchResult.value = SearchResult;
 }
@@ -97,7 +103,10 @@ onMounted(() => {
 
 watch(datePick, (newVal, oldVal) => {
     // console.log(newVal, oldVal)
-    console.log(datePick.value.getDate())
+    console.log(`${newVal.getFullYear()}-${datePick.value.getMonth() + 1 > 9 ? datePick.value.getMonth() + 1 : ('0' + (newVal.getMonth() + 1))}-${newVal.getDate() > 9 ? newVal.getDate() : '0' + newVal.getDate()}`)
+    const currentDate: string = `${newVal.getFullYear()}-${datePick.value.getMonth() + 1 > 9 ? datePick.value.getMonth() + 1 : ('0' + (newVal.getMonth() + 1))}-${newVal.getDate() > 9 ? newVal.getDate() : '0' + newVal.getDate()}`
+    // console.log(getdatabyserver.getDataByDate(currentDate))
+    searchBlog(getdatabyserver.getDataByDate('2025-08-04'))
 })
 
 watch(searchResult, (newVal, oldVal) => {

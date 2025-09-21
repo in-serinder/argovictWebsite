@@ -92,6 +92,7 @@ const toPostDetail = (blog: BlogItem) => {
 
 // 搜索结果后更改blogOne目标
 const searchBlog = (Goalblog: BlogItem[]) => {
+
     blogList.value = Goalblog;
 
     if (Goalblog.length === 0) {
@@ -109,6 +110,9 @@ onMounted(() => {
 // watch(searchBlog, (newVal, oldVal) => {
 //     console.log('searchBlog', newVal, oldVal);
 // })
+watch(blogList, (newVal, oldVal) => {
+    console.log('searchBlog', newVal, oldVal);
+})
 
 
 </script>
