@@ -19,7 +19,7 @@
         <div class="dateFilter">
             <div class="dateFilter_title"> <img src="@/assets/svg/date.svg" alt="date">
                 <span>{{ $t('message.date') }} - ({{ datePick.getFullYear() }}-{{ datePick.getMonth() + 1
-                }}-{{ datePick.getDate() }})</span>
+                    }}-{{ datePick.getDate() }})</span>
             </div>
             <div class="dateFilter_calendar">
                 <Calendar :receivedDate="receivedDate" />
@@ -32,8 +32,7 @@
         <!-- 标签筛选 -->
         <div class="tagFilter">
             <div class="tagFilter_title">
-                <img :src="darkMode.isDarkMode ? '/src/assets/svg/light/tags_light.svg' : '/src/assets/svg/tags.svg'"
-                    alt="tag">
+                <img :src="darkMode.isDarkMode ? tagsIconLight : tagsIcon" alt="tag">
                 <span>{{ $t('message.tag') }}</span>
             </div>
             <div class="tagFilter_content">
@@ -115,6 +114,10 @@ watch(searchResult, (newVal, oldVal) => {
     console.log(newVal, oldVal)
 
 })
+
+// 导入图片
+import tagsIcon from '@/assets/svg/tags.svg'
+import tagsIconLight from '@/assets/svg/light/tags_light.svg'
 
 
 </script>

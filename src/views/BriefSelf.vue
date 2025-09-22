@@ -21,33 +21,27 @@
     <div class="brief_contact">
       <!-- <h1>联系方式</h1> -->
       <ul>
-        <li><img
-            :src="darkModeStore.isDarkMode ? '/src/assets/svg/light/github_light.svg' : '/src/assets/svg/github.svg'"
-            alt="github" @click="handleClick('github')">
+        <li><img :src="darkModeStore.isDarkMode ? githubIconLight : githubIcon" alt="github"
+            @click="handleClick('github')">
           <p>Github</p>
         </li>
-        <li><img
-            :src="darkModeStore.isDarkMode ? '/src/assets/svg/light/matrix_ligth.svg' : '/src/assets/svg/matrix.svg'"
-            alt="matrix" @click="handleClick('matrix')">
+        <li><img :src="darkModeStore.isDarkMode ? matrixIconLight : matrixIcon" alt="matrix"
+            @click="handleClick('matrix')">
           <p>Matrix</p>
         </li>
-        <li><img
-            :src="darkModeStore.isDarkMode ? '/src/assets/svg/light/discord_ligth.svg' : '/src/assets/svg/discord.svg'"
-            alt="discord" @click="handleClick('discord')">
+        <li><img :src="darkModeStore.isDarkMode ? discordIconLight : discordIcon" alt="discord"
+            @click="handleClick('discord')">
           <p>Discord</p>
         </li>
-        <li><img
-            :src="darkModeStore.isDarkMode ? '/src/assets/svg/light/BILIBILI_LOGO_light.svg' : '/src/assets/svg/BILIBILI_LOGO.svg'"
-            alt="bilibili" @click="handleClick('bilibili')">
+        <li><img :src="darkModeStore.isDarkMode ? bilibiliIconLight : bilibiliIcon" alt="bilibili"
+            @click="handleClick('bilibili')">
           <p>Bilibili</p>
         </li>
-        <li><img
-            :src="darkModeStore.isDarkMode ? '/src/assets/svg/light/twiter_ligth.svg' : '/src/assets/svg/twiter.svg'"
-            alt="twitter" @click="handleClick('twitter')">
+        <li><img :src="darkModeStore.isDarkMode ? twitterIconLight : twitterIcon" alt="twitter"
+            @click="handleClick('twitter')">
           <p>Twitter</p>
         </li>
-        <li><img :src="darkModeStore.isDarkMode ? '/src/assets/svg/light/email_light.svg' : '/src/assets/svg/email.svg'"
-            alt="email" @click="handleClick('email')">
+        <li><img :src="darkModeStore.isDarkMode ? emailIconLight : emailIcon" alt="email" @click="handleClick('email')">
           <p>Mail</p>
         </li>
       </ul>
@@ -103,4 +97,19 @@ function handleClick(type: string) {
 onBeforeUnmount(() => {
   // styleStore.whenPageChange('BriefSelf')
 })
+
+// 导入图片
+import githubIcon from '@/assets/svg/github.svg'
+import githubIconLight from '@/assets/svg/light/github_light.svg'
+import matrixIcon from '@/assets/svg/matrix.svg'
+import matrixIconLight from '@/assets/svg/light/matrix_ligth.svg'
+import discordIcon from '@/assets/svg/discord.svg'
+import discordIconLight from '@/assets/svg/light/discord_ligth.svg'
+import bilibiliIcon from '@/assets/svg/BILIBILI_LOGO.svg'
+import bilibiliIconLight from '@/assets/svg/light/BILIBILI_LOGO_light.svg'
+import twitterIcon from '@/assets/svg/twiter.svg'
+import twitterIconLight from '@/assets/svg/light/twiter_ligth.svg'
+import emailIcon from '@/assets/svg/email.svg'
+import emailIconLight from '@/assets/svg/light/email_light.svg'
+
 </script>
