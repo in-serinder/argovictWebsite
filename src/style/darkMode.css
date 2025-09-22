@@ -193,6 +193,14 @@
     padding-bottom: 8px;
   }
 
+  .toolOneName {
+    color: #fefefe;
+  }
+
+  .toolsDescr {
+    color: #fefefe;
+  }
+
   /* 404页面 */
   .board {
     background-color: #282727;
