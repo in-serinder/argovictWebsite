@@ -5,7 +5,7 @@
 ### Features
 
 - Concise personal introduction
-- Resource usage details
+- Assets details
 - Blog showcase
 - Project showcase
 - Tool analysis display
