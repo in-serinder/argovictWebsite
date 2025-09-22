@@ -4,23 +4,24 @@
             <!-- 标题 -->
             <!-- 关闭按钮 -->
             <div class="detailWindow_window_title">
-                <h1>Detail Window</h1>
+                <h1>{{ briefSelfStore.DetailWindowTitle }}</h1>
                 <img src="@/assets/svg/close.svg" alt="close" @click="$emit('click')">
 
             </div>
             <!-- 内容列表 -->
             <div class="detailWindow_window_content">
-                <ul>
+                <ul v-for="item in briefSelfStore.detialwindowItemList" :key="item.title">
                     <!-- Wheel Start -->
                     <li>
                         <div class="Pbar"></div>
                         <!-- 小标题图标 -->
-                        <img src="../assets//svg/github.svg" alt="">
+                        <img :src="item.titleIcon" alt="">
                         <!-- 小标题 -->
-                        <h3>Github</h3>
+                        <h3>{{ item.title }}</h3>
                     </li>
                     <li>
-                        <p>Home Page:</p>
+                        <p>{{ item.content }}:</p>
+                        <a :href="item.link">{{ item.link }}</a>
 
                     </li>
                     <!-- Wheel End -->
@@ -33,5 +34,21 @@
 
 <script setup lang="ts">
 import '@/style/Componets/DetailWindow.css'
-// import { ref } from 'vue'
+import { ref, watch, defineProps } from 'vue'
+import type { detailWindowItem } from '@/interfance';
+import { useBriefSelfStore } from '@/stores/briefSelf';
+
+
+const briefSelfStore = useBriefSelfStore()
+
+
+// const { detialwindowItemList, title } = defineProps<{
+//     detialwindowItemList: detailWindowItem[];
+//     title: string;
+// }>()
+
+
+
+
+
 </script>

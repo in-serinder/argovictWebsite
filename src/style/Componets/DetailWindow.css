@@ -71,6 +71,7 @@
   align-items: center;
   margin-bottom: 5px;
   font-size: 13px;
+  margin-top: 5px;
   font-weight: bold;
 }
 
@@ -82,4 +83,8 @@
 
 .detailWindow_window_content p {
   margin-left: 15px;
+}
+
+.detailWindow_window_content a {
+  margin-left: 5px;
 }

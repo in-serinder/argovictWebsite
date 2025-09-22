@@ -61,12 +61,13 @@
 
 <script setup lang="ts">
 import '@/style/briefselfPage.css'
-import { useStyleStore } from '@/stores/style';
 import { onBeforeUnmount } from 'vue';
 import { useDarkModeStore } from '@/stores/darkmode';
+import { useBriefSelfStore } from '@/stores/briefSelf';
 
-const styleStore = useStyleStore();
+
 const darkModeStore = useDarkModeStore()
+const briefSelfStore = useBriefSelfStore()
 
 function handleClick(type: string) {
   switch (type) {
@@ -74,7 +75,8 @@ function handleClick(type: string) {
       window.open('https://github.com/in-serinder', '_blank');
       break;
     case 'matrix':
-      window.open('https://matrix.to/#/@Aden:matrix.org', '_blank');
+      // window.open('https://matrix.to/#/@Aden:matrix.org', '_blank');
+      briefSelfStore.showMatrixContent()
       break;
     case 'discord':
       window.open('https://discord.com/users/853245228442292224', '_blank');
@@ -86,7 +88,8 @@ function handleClick(type: string) {
       window.open('https://x.com/DoubleHans45', '_blank');
       break;
     case 'email':
-      window.open('mailto:fentanlym@tutamail.com', '_blank');
+      // window.open('mailto:fentanlym@tutamail.com', '_blank');
+      briefSelfStore.showEmailContent()
       break;
     default:
       break;

@@ -77,3 +77,10 @@ export interface asset {
   link?: string
   description: string
 }
+
+export interface detailWindowItem {
+  title: string
+  titleIcon: string
+  content?: string
+  link?: string
+}

@@ -4,7 +4,9 @@
 
 <template>
   <!-- 详细框 -->
-  <DetailWindow v-show="detailWindow_Show" @click="closeDetailWindow"></DetailWindow>
+  <DetailWindow v-show="briefSelfStore.showDetailWindow" @click="briefSelfStore.closeDetailWindow"
+    :detialwindowItemList="detialwindowItemList" :title="detailWindowTitle">
+  </DetailWindow>
   <!-- 根页面 -->
   <span class="rootPage">
     <div class="Router_title">
@@ -62,26 +64,26 @@
 <script setup lang="ts">
 import '@/style/rootPage.css'
 import '@/style/widget.css'
-import BriefSelf from './BriefSelf.vue'
 import DetailWindow from '@/components/DetailWindow.vue'
 import { useDarkModeStore } from '@/stores/darkmode'
 import { onMounted, ref } from 'vue'
-import { on } from 'events'
+import { Ref } from 'vue'
+import type { detailWindowItem } from '@/interfance';
+import { useBriefSelfStore } from '@/stores/briefSelf';
 
 
 
 
 
 
-const detailWindow_Show = ref<boolean>(false)
+
+
+const detailWindowTitle = ref<string>('Detail Window');
 const darkModeStore = useDarkModeStore()
+const briefSelfStore = useBriefSelfStore();
+const detialwindowItemList: Ref<detailWindowItem[]> = ref([])
 
 
-
-const closeDetailWindow = () => {
-  detailWindow_Show.value = false;
-  console.log(detailWindow_Show.value)
-}
 
 
 // 图片引入
