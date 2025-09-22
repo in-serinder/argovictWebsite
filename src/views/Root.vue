@@ -98,7 +98,7 @@ import commissionIcon from '@/assets/svg/workbench.svg'
 import commissionIconLight from '@/assets/svg/light/workbench_light.svg'
 
 
-import darkIcon from '@/assets/svg/dark.svg'
+import darkIcon from '@/assets/svg/light.svg'
 import darkIconLight from '@/assets/svg/light/dark.svg'
 
 import websiteIcon from '@/assets/picture/ArgovictLogo.png'
