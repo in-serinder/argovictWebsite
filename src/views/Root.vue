@@ -5,7 +5,7 @@
 <template>
   <!-- 详细框 -->
   <DetailWindow v-show="briefSelfStore.showDetailWindow" @click="briefSelfStore.closeDetailWindow"
-    :detialwindowItemList="detialwindowItemList" :title="detailWindowTitle">
+    :title="detailWindowTitle">
   </DetailWindow>
   <!-- 根页面 -->
   <span class="rootPage">
@@ -67,8 +67,7 @@ import '@/style/widget.css'
 import DetailWindow from '@/components/DetailWindow.vue'
 import { useDarkModeStore } from '@/stores/darkmode'
 import { onMounted, ref } from 'vue'
-import { Ref } from 'vue'
-import type { detailWindowItem } from '@/interfance';
+
 import { useBriefSelfStore } from '@/stores/briefSelf';
 
 
@@ -81,7 +80,7 @@ import { useBriefSelfStore } from '@/stores/briefSelf';
 const detailWindowTitle = ref<string>('Detail Window');
 const darkModeStore = useDarkModeStore()
 const briefSelfStore = useBriefSelfStore();
-const detialwindowItemList: Ref<detailWindowItem[]> = ref([])
+
 
 
 
