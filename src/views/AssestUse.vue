@@ -4,7 +4,8 @@
             <h1>{{ $t('message.asset_use_list') }}</h1>
             <!-- 资产类型 -->
             <!-- asset start -->
-            <h2><img src="@/assets/svg/image.svg" alt="">{{ $t('message.image') }}</h2>
+            <h2><img :src="darkModeStore.isDarkMode ? '/src/assets/svg/light/image_light.svg' : '/src/assets/svg/image.svg'"
+                    alt="">{{ $t('message.image') }}</h2>
             <div class="divider_x"></div>
             <ul>
                 <!-- 图片 -->
@@ -22,7 +23,8 @@
             </ul>
             <!-- asset end-->
             <!-- asset start -->
-            <h2><img src="@/assets/svg/video.svg" alt="">{{ $t('message.media') }}</h2>
+            <h2><img :src="darkModeStore.isDarkMode ? '/src/assets/svg/light/media_light.svg' : '/src/assets/svg/video.svg'"
+                    alt="">{{ $t('message.media') }}</h2>
             <div class="divider_x"></div>
             <ul>
                 <!-- 视频 -->
@@ -30,7 +32,8 @@
             </ul>
             <!-- asset end-->
             <!-- asset start -->
-            <h2><img src="@/assets/svg/audio.svg" alt="">{{ $t('message.audio') }}</h2>
+            <h2><img :src="darkModeStore.isDarkMode ? '/src/assets/svg/light/audio_light.svg' : '/src/assets/svg/audio.svg'"
+                    alt="">{{ $t('message.audio') }}</h2>
             <div class="divider_x"></div>
             <ul>
                 <!-- 音频 -->
@@ -38,7 +41,8 @@
             </ul>
             <!-- asset end-->
             <!-- asset start -->
-            <h2><img src="@/assets/svg/misc.svg" alt="">{{ $t('message.other') }}</h2>
+            <h2><img :src="darkModeStore.isDarkMode ? '/src/assets/svg/light/misc_light.svg' : '/src/assets/svg/misc.svg'"
+                    alt="">{{ $t('message.other') }}</h2>
             <div class="divider_x"></div>
             <ul>
                 <!-- 其他 -->
@@ -53,5 +57,8 @@
 
 <script setup lang="ts">
 import '@/style/assestusePage.css'
+import { useDarkModeStore } from '@/stores/darkmode';
+
+const darkModeStore = useDarkModeStore();
 
 </script>

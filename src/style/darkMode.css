@@ -192,4 +192,16 @@
       /* 7. 右下左线：底部右侧 */ bottom right; /* 8. 右下上线：底部右侧 */
     padding-bottom: 8px;
   }
+
+  /* 404页面 */
+  .board {
+    background-color: #282727;
+    color: #fefefe;
+    box-shadow: 0 0 10px #fefefe;
+  }
+
+  /* 资源使用声明页 */
+  .assetUse-page {
+    color: #fefefe;
+  }
 }
