@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import RootView from './views/Root.vue';
-import { onMounted } from 'vue';
-import { createI18n } from 'vue-i18n';
+
+// import { onMounted } from 'vue';
+// import { createI18n } from 'vue-i18n';
 /*语言设置*/
 // import en from '@/locales/en.json'
 // import zh from '@/locales/zh.json'
@@ -10,6 +11,8 @@ import { createI18n } from 'vue-i18n';
 
 // const LocalesList = ['en', 'zh', 'du'] as const;
 // type LocalesListType = (typeof LocalesList)[number];
+
+
 
 // // 语言获取
 // const getBrowserLanguage = () => {

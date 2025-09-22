@@ -1,0 +1,195 @@
+.dark-mode {
+  /* 标题栏 路由 */
+  .rootPage {
+    background-color: #1f1e1e;
+  }
+  .Router_title {
+    background-color: #1f1e1e;
+    color: #fff;
+  }
+  .Router_title ul {
+    color: #fff;
+  }
+  .router_link {
+    color: #fff;
+  }
+
+  .routered_link::after {
+    background-color: #fff;
+  }
+
+  /* 小组件 */
+  .divider {
+    background-color: #fff;
+  }
+
+  .divider_x {
+    background-color: #fff;
+  }
+
+  /* 主页 */
+  .BriefSelf {
+    background-color: #1f1e1e;
+    color: #fff;
+  }
+
+  .brief_contact ul li:hover p {
+    color: #fff;
+  }
+
+  .brief_description span::before {
+    background-color: #e99206;
+  }
+
+  .brief_avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid #e99206;
+  }
+
+  /* 博客页 */
+
+  .blogPage {
+    background-color: #313131;
+    color: #fff;
+  }
+
+  .noSearchResult {
+    color: #fefefe;
+  }
+
+  .blogOne {
+    background-color: #282828;
+    color: #fff;
+  }
+
+  .blogOne_content_title {
+    color: #fefefe;
+  }
+
+  .blogOne_content_abstract {
+    color: #fefefebd;
+  }
+
+  .blogFilterBar {
+    background-color: #282828;
+    color: #fff;
+  }
+
+  .tagFilter_title {
+    background-color: #282828;
+    color: #fff;
+  }
+
+  .dateFilter_title {
+    background-color: #282828;
+    color: #fff;
+  }
+
+  .dateFilter_title span {
+    background-color: #282828;
+    color: #fff;
+  }
+
+  .calendar_content {
+    background-color: #282828;
+    color: #fff;
+  }
+
+  /* datapicker */
+  .dp__menu.dp__relative.dp__theme_light {
+    background-color: #282828;
+    color: #fff;
+  }
+  .dp__btn.dp__month_year_select {
+    color: #fefefe;
+  }
+  .dp__calendar_header {
+    color: #fefefe;
+  }
+  .dp__cell_inner.dp__pointer.dp--past.dp__date_hover {
+    color: #fefefe;
+  }
+  .dp__cell_inner.dp__pointer.dp--future.dp__date_hover {
+    color: #fefefe;
+  }
+  .dp__cell_inner.dp__pointer.dp__today.dp__date_hover {
+    color: #fefefe;
+  }
+  .dp__selection_preview {
+    color: #ffffffd6;
+  }
+  /* 博客详情页 */
+  .blogDetail-content-container {
+    background-color: #282727;
+    color: #fff;
+  }
+  .blogDetail_info ul li {
+    color: #fefefed6;
+  }
+  /* md */
+  .table-data-cell {
+    color: #fff;
+  }
+
+  .inline-code {
+    background-color: #243142;
+    color: #c7cdd7;
+    border: 1px solid #305283;
+  }
+
+  .blogMarkdown em:not(:has(*))::after {
+    background-color: #fefefe;
+  }
+
+  /* 项目页面 */
+  .projectPage {
+    background-color: #282727;
+    color: #fff;
+  }
+
+  .projectOne {
+    background-color: #282727;
+    color: #fff;
+  }
+  .projectOne p {
+    color: #fefefe;
+  }
+
+  .projectOne li {
+    color: #fefefecd;
+  }
+  /* 工具页面 */
+  .toolsPage {
+    background-color: #282727;
+    color: #fefefe;
+  }
+
+  .toolsContainer {
+    background-color: #282727;
+    color: #fefefe;
+  }
+
+  .toolOne {
+    background-color: #1e1e1e;
+    color: #fefefe;
+
+    background-image:
+      linear-gradient(to right, #fefefe, #fefefe), linear-gradient(to bottom, #fefefe, #fefefe),
+      linear-gradient(to left, #fefefe, #fefefe), linear-gradient(to top, #fefefe, #fefefe);
+
+    background-size:
+      25% 2px,
+      /* 1. 左上右线：长度25%，厚度2px */ 2px 50%,
+      25% 2px,
+      /* 7. 右下左线：长度25%，厚度2px */ 2px 50%; /* 8. 右下上线 */
+    background-repeat: no-repeat;
+    background-position:
+      top left,
+      /* 1. 左上右线：顶部左侧 */ top left,
+      bottom right,
+      /* 7. 右下左线：底部右侧 */ bottom right; /* 8. 右下上线：底部右侧 */
+    padding-bottom: 8px;
+  }
+}

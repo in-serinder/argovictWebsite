@@ -19,7 +19,7 @@
         <div class="dateFilter">
             <div class="dateFilter_title"> <img src="@/assets/svg/date.svg" alt="date">
                 <span>{{ $t('message.date') }} - ({{ datePick.getFullYear() }}-{{ datePick.getMonth() + 1
-                    }}-{{ datePick.getDate() }})</span>
+                }}-{{ datePick.getDate() }})</span>
             </div>
             <div class="dateFilter_calendar">
                 <Calendar :receivedDate="receivedDate" />
@@ -32,7 +32,8 @@
         <!-- 标签筛选 -->
         <div class="tagFilter">
             <div class="tagFilter_title">
-                <img src="@/assets/svg/tags.svg" alt="tag">
+                <img :src="darkMode.isDarkMode ? '/src/assets/svg/light/tags_light.svg' : '/src/assets/svg/tags.svg'"
+                    alt="tag">
                 <span>{{ $t('message.tag') }}</span>
             </div>
             <div class="tagFilter_content">
@@ -57,9 +58,10 @@ import { ref, watch, onMounted, defineProps } from 'vue'
 import type { TagItem, SearchResult } from '@/interfance';
 import axios from 'axios'
 import { useGetDataByServerStore } from '@/stores/getdatabyserver'
-import { get } from 'node:http'
+import { useDarkModeStore } from '@/stores/darkmode'
 
 const getdatabyserver = useGetDataByServerStore()
+const darkMode = useDarkModeStore()
 
 const datePick = ref(new Date());
 const tagList = ref<TagItem[]>([]);
