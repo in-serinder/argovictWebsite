@@ -71,3 +71,9 @@ export interface SearchResult {
   total: number
   success: boolean
 }
+
+export interface asset {
+  tagsIcon?: string
+  link?: string
+  description: string
+}

@@ -8,8 +8,9 @@
             <div class="divider_x"></div>
             <ul>
                 <!-- 图片 -->
-                <li>
-                    <a href="https://www.pixiv.net/artworks/124907858" target="_blank">404 Page - 404四人组</a>
+                <li v-for="asset in assetList" :key="asset.link">
+                    <a :href="asset.link" target="_blank">{{ asset.description }}</a>
+                    <!-- <a href="https://www.pixiv.net/artworks/124907858" target="_blank">404 Page - 404四人组</a>
                     <a href="https://www.pixiv.net/artworks/91174244" target="_blank">PlaceHolder Page - 8pin-DIP
                         (2016/12/11)</a>
                     <a href="https://www.pixiv.net/artworks/98216966" target="_blank">Home Page avatar -nsrad jsndsh</a>
@@ -17,7 +18,7 @@
                         avatar,article,backgroundImage and more) - Pixiv Ravimo</a>
 
                     <a href="https://www.pixiv.net/artworks/111474344" target="_blank">No Search Result - Void
-                        Linux-chan</a>
+                        Linux-chan</a> -->
                 </li>
             </ul>
             <!-- asset end-->
@@ -54,8 +55,42 @@
 <script setup lang="ts">
 import '@/style/assestusePage.css'
 import { useDarkModeStore } from '@/stores/darkmode';
+import { ref } from 'vue';
+import type { asset } from '@/interfance';
 
 const darkModeStore = useDarkModeStore();
+
+const assetList = ref<asset[]>([
+    {
+        tagsIcon: '',
+        link: 'https://www.pixiv.net/artworks/124907858',
+        description: '404 Page - 404四人组',
+    },
+    {
+        tagsIcon: '',
+        link: 'https://www.pixiv.net/artworks/91174244',
+        description: 'PlaceHolder Page - 8pin-DIP (2016/12/11)',
+    },
+    {
+        tagsIcon: '',
+        link: 'https://www.pixiv.net/artworks/98216966',
+        description: 'Home Page avatar -nsrad jsndsh',
+    },
+    {
+        tagsIcon: '',
+        link: 'https://www.pixiv.net/users/60562229',
+        description: 'More About (Exmaple avatar,article,backgroundImage and more) - Pixiv Ravimo',
+    },
+    {
+        tagsIcon: '',
+        link: 'https://www.pixiv.net/artworks/111474344',
+        description: 'No Search Result - Void Linux-chan',
+    },
+]);
+
+
+
+
 
 // 导入图片
 import imageIcon from '@/assets/svg/image.svg'
