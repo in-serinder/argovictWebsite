@@ -1,6 +1,6 @@
 # ArgovictWebsite
 
-### My first blog website is built using Vue 3 + TypeScript + Pinia
+### My first blog website is built using Vue 3 + TypeScript + Pinia + axios
 
 ### Features
 
@@ -8,6 +8,14 @@
 - Assets details
 - Blog showcase
 - Project showcase
-- Tool analysis display
+- Tools showcase
 
 ### If you modify the URL in the Pinia store and configure the backend service yourself
+
+- `getdatabyserver.ts`
+- `MyProject.vue`
+- `Tools.vue`
+- `Blog.vue`
+- `BlogFilter.vue`
+- `BlogMarkdown.vue`
+- `Search.vue`
