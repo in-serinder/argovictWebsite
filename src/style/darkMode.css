@@ -120,6 +120,13 @@
   .dp__selection_preview {
     color: #ffffffd6;
   }
+
+  .tagFilter_content {
+    background-image:
+      linear-gradient(to right, #fefefe, #fefefe), linear-gradient(to bottom, #fefefe, #fefefe),
+      linear-gradient(to left, #fefefe, #fefefe), linear-gradient(to top, #fefefe, #fefefe);
+  }
+
   /* 博客详情页 */
   .blogDetail-content-container {
     background-color: #282727;
