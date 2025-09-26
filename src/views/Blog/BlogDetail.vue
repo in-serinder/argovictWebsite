@@ -34,9 +34,10 @@
                     </div>
                 </div>
                 <div class="blogDetail-footer-f">
-                    <img src="@/assets/svg/print.svg" alt="" @click="miscStore.printWindow('blogMarkdown')">
+                    <img :src="darkModeStore.isDarkMode ? printLightIcon : printIcon" alt=""
+                        @click="miscStore.printWindow('blogMarkdown')">
                     <span class="shareIcon" @click="miscStore.shareWebPage('shareIcon')"><img
-                            src="@/assets/svg/share.svg" alt=""></span>
+                            :src="darkModeStore.isDarkMode ? shareLightIcon : shareIcon" alt=""></span>
 
                 </div>
             </div>
@@ -72,10 +73,12 @@ import { useRoute } from 'vue-router'
 import type { BlogItem } from '@/interfance'
 import { useMiscStore } from '@/stores/misc'
 import { useViewCountStore } from '@/stores/viewCount'
+import { useDarkModeStore } from '@/stores/darkmode'
 
 
 const viewCountStore = useViewCountStore()
 const miscStore = useMiscStore()
+const darkModeStore = useDarkModeStore()
 
 // 单独转换tag
 const tags: Ref<string[]> = computed(() => {
@@ -125,6 +128,13 @@ onMounted(() => {
 
 
 })
+
+
+// 图片引入
+import printIcon from '@/assets/svg/print.svg'
+import printLightIcon from '@/assets/svg/light/print_light.svg'
+import shareIcon from '@/assets/svg/share.svg'
+import shareLightIcon from '@/assets/svg/light/share_light.svg'
 
 
 </script>
