@@ -83,4 +83,5 @@ export interface detailWindowItem {
   titleIcon: string
   content?: string
   link?: string
+  linkcontent?: string
 }

@@ -150,6 +150,10 @@
     background-color: #fefefe;
   }
 
+  .blogOne_header::after {
+    background: linear-gradient(to right, #282727 4%, #28272700 100%);
+  }
+
   /* 项目页面 */
   .projectPage {
     background-color: #282727;

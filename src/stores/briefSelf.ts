@@ -31,12 +31,14 @@ export const useBriefSelfStore = defineStore('briefSelf', {
           titleIcon: matrixIcon,
           content: 'matrix.org Contact',
           link: '@serinder_aden:matrix.org',
+          linkcontent: '@serinder_aden:matrix.org',
         },
         {
           title: 'argoland.matrix',
           titleIcon: matrixIcon,
           content: 'argoland.matrix Contact',
           link: '@argovict:argoland.matrix',
+          linkcontent: '@argovict:argoland.matrix',
         },
       ]
     },
@@ -48,13 +50,15 @@ export const useBriefSelfStore = defineStore('briefSelf', {
           title: 'Email',
           titleIcon: gmailIcon,
           content: 'Email Contact',
-          link: 'xxxx@gmail.com',
+          linkcontent: 'xxxx@gmail.com',
+          link: 'mailto:xxxx@gmail.com',
         },
         {
           title: 'Tuta',
           titleIcon: tutaIcon,
           content: 'Tuta Contact',
-          link: 'fentanlyum@tuta.com',
+          linkcontent: 'fentanlyum@tutamail.com',
+          link: 'mailto:fentanlyum@tutamail.com',
         },
       ]
     },

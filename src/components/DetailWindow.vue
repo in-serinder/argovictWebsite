@@ -21,7 +21,7 @@
                     </li>
                     <li>
                         <p>{{ item.content }}:</p>
-                        <a :href="item.link">{{ item.link }}</a>
+                        <a :href="item.link">{{ item.linkcontent }}</a>
 
                     </li>
                     <!-- Wheel End -->
@@ -34,18 +34,12 @@
 
 <script setup lang="ts">
 import '@/style/Componets/DetailWindow.css'
-import { ref, watch, defineProps } from 'vue'
-import type { detailWindowItem } from '@/interfance';
 import { useBriefSelfStore } from '@/stores/briefSelf';
 
 
 const briefSelfStore = useBriefSelfStore()
 
 
-// const { detialwindowItemList, title } = defineProps<{
-//     detialwindowItemList: detailWindowItem[];
-//     title: string;
-// }>()
 
 
 
