@@ -6,10 +6,7 @@
             <img src="@/assets/svg/search.svg" alt="">
         </span>
 
-        <!-- 搜索结果 -->
-        <span>
-            <!-- <span>依据{{}}</span> -->
-        </span>
+
 
         <button @click="searchAssociate">{{ $t('message.search') }}</button>
 
