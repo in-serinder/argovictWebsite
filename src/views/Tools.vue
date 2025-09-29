@@ -1,9 +1,9 @@
 <template>
     <div class="toolsPage">
         <!-- 多个工具置于容器中进行排列 -->
-        <div class="toolsContainer" v-for="item in ToolList" :key="item.name">
+        <div class="toolsContainer">
             <!-- 容器限制于One中 -->
-            <div class="toolOfOne">
+            <div class="toolOfOne" v-for="item in ToolList" :key="item.name">
                 <ToolOne :tool="item" />
             </div>
 
@@ -18,7 +18,7 @@ import ToolOne from '@/components/ToolOne.vue'
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
 import type { ToolItem } from '@/interfance';
-import { on } from 'events';
+
 
 
 const ToolList = ref<ToolItem[]>([]);
