@@ -269,4 +269,20 @@
   color: #fefefe;
 }
 
+.atk-name{
+  color: #c7cdd7 !important;
+}
+
+.atk-logout.atk-user-btn svg{
+  color: #c7cdd7;
+}
+
+.atk-list-no-comment{
+  color: #fefefe;
+}
+
+.atk-copyright{
+  color: #c7cdd7 !important;
+}
+
 }

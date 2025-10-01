@@ -76,7 +76,7 @@ import { ref, onMounted, computed } from 'vue'
 import { ArtalkKatexPlugin } from '@artalk/plugin-katex'
 import { ArtalkAuthPlugin } from '@artalk/plugin-auth'
 import axios from 'axios'
-import Artalk from 'artalk'
+import Artalk, { type CommentData } from 'artalk'
 
 import type { BlogItem } from '@/interfance'
 import type { Ref } from 'vue'
@@ -126,7 +126,8 @@ const initArtalk = (() => {
 
     Artalk.init({
         el: document.getElementById('commit') as HTMLElement,
-        pageKey: blogID.value,
+        // pageKey: `/blog/detail/${blogID.value}`,
+        pageKey: window.location.pathname,
         pageTitle: blogAttribut.value?.title,
         // server: '/api',  //使用了vite代理 开发环境
         server: 'http://8.130.191.142', //生产环境
@@ -137,9 +138,18 @@ const initArtalk = (() => {
             ArtalkKatexPlugin,
             // @ts-ignore 
             ArtalkAuthPlugin
-        ]
+        ],
+        avatarURLBuilder: (comment: CommentData) => {
+            if (comment.email_encrypted) {
+                return bfg;
+            }
+            // return comment.avatar;
+        }
 
     })
+
+    console.log("pa", window.location.pathname)
+
 
 
 });
@@ -170,10 +180,12 @@ const getBlogDetail = async () => {
 onMounted(() => {
     getBlogDetail()
 
-    window.addEventListener('DOMContentLoaded', (event: Event) => {
-        console.log(event);
+
+    setTimeout(() => {
         initArtalk();
-    })
+    }, 1500)
+
+
 
 
     //    viewCountStore.addViewCount
@@ -188,6 +200,7 @@ import printIcon from '@/assets/svg/print.svg'
 import printLightIcon from '@/assets/svg/light/print_light.svg'
 import shareIcon from '@/assets/svg/share.svg'
 import shareLightIcon from '@/assets/svg/light/share_light.svg'
+import bfg from '@/assets/picture/default_avatar_alpha.jpg.png'
 
 
 
