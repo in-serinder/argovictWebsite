@@ -43,12 +43,12 @@
             </div>
             <div class="divider_x"></div>
             <!-- 评论 -->
-            <div class="blogDetail_comments">
+            <div class="blogDetail_comments" id="commit">
 
-                <h4>{{ $t('message.blog_comments') }}</h4>
+                <!-- <h4>{{ $t('message.blog_comments') }}</h4>
                 <div class="commit_continer">
                     <PageBuilding />
-                </div>
+                </div> -->
 
 
             </div>
@@ -62,6 +62,8 @@
 
 <script setup lang="ts">
 import '@/style/Blog/blogDetial.css'
+import 'artalk/Artalk.css'
+import 'artalk/ArtalkLite.css'
 import BlogMarkdown from '@/components/BlogMarkdown.vue'
 import BlogMoveAss from '@/components/BlogMoveAss.vue'
 import BlogOnTags from '@/components/BlogOnTags.vue'
@@ -69,6 +71,7 @@ import PageBuilding from '@/components/PageBuilding.vue'
 import { ref, onMounted, computed } from 'vue'
 import type { Ref } from 'vue'
 import axios from 'axios'
+import Artalk from 'artalk'
 import { useRoute } from 'vue-router'
 import type { BlogItem } from '@/interfance'
 import { useMiscStore } from '@/stores/misc'
@@ -91,12 +94,22 @@ const tags: Ref<string[]> = computed(() => {
 
 
 
-const Loading: Ref<boolean> = ref(true);
+
 const blogAttribut: Ref<BlogItem | null> = ref(null);
 const blogID: Ref<string> = ref('')
 const route = useRoute()
 
 
+const initArtalk = (() => {
+    Artalk.init({
+        el: document.getElementById('commit') as HTMLElement,
+        pageKey: blogID.value,
+        pageTitle: blogAttribut.value?.title,
+        server: 'http://8.130.191.142:3366',
+        site: 'blog'
+
+    })
+})
 
 
 
@@ -123,6 +136,7 @@ const getBlogDetail = async () => {
 
 onMounted(() => {
     getBlogDetail()
+    initArtalk();
     //    viewCountStore.addViewCount
 
 
