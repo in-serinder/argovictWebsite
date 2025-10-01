@@ -143,7 +143,7 @@ const initArtalk = (() => {
             if (comment.email_encrypted) {
                 return bfg;
             }
-            // return comment.avatar;
+            return bfg;
         }
 
     })
