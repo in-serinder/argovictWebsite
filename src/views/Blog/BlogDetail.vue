@@ -106,8 +106,8 @@ const initArtalk = (() => {
         el: document.getElementById('commit') as HTMLElement,
         pageKey: blogID.value,
         pageTitle: blogAttribut.value?.title,
-        // server: '/api',  //使用了vite代理 开发环境
-        server: 'https://8.130.191.142', //生产环境
+        server: '/api',  //使用了vite代理 开发环境
+        // server: 'https://8.130.191.142', //生产环境
         site: 'blog'
 
     })

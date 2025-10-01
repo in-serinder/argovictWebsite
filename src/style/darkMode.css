@@ -247,4 +247,15 @@
     /* background-color: #666; */
 }
 
+.atk-grp span{
+  color: #fefefe;
+}
+.atk-plug-btn svg{
+  color: #fefefe;
+}
+
+.atk-actions span{
+  color: #c7cdd7;
+}
+
 }
