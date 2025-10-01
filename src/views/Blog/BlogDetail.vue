@@ -106,7 +106,8 @@ const initArtalk = (() => {
         el: document.getElementById('commit') as HTMLElement,
         pageKey: blogID.value,
         pageTitle: blogAttribut.value?.title,
-        server: '/api',  //使用了vite代理
+        // server: '/api',  //使用了vite代理 开发环境
+        server: 'https://8.130.191.142', //生产环境
         site: 'blog'
 
     })
@@ -137,7 +138,13 @@ const getBlogDetail = async () => {
 
 onMounted(() => {
     getBlogDetail()
-    initArtalk();
+
+    window.addEventListener('DOMContentLoaded', (event: Event) => {
+        console.log(event);
+        initArtalk();
+    })
+
+
     //    viewCountStore.addViewCount
 
 
@@ -150,6 +157,7 @@ import printIcon from '@/assets/svg/print.svg'
 import printLightIcon from '@/assets/svg/light/print_light.svg'
 import shareIcon from '@/assets/svg/share.svg'
 import shareLightIcon from '@/assets/svg/light/share_light.svg'
+import { ECDH } from 'crypto'
 
 
 </script>

@@ -19,8 +19,9 @@ export default defineConfig({
   server:{
         proxy: {
       '/api': {
-        target: 'http://8.130.191.142:3366', 
+        target: 'https://8.130.191.142', 
         changeOrigin: true, // 允许跨域
+        secure:false
         // rewrite: (path) => path.replace(/^\/api/, ''), 
       },
     },
