@@ -223,4 +223,28 @@
   .assetUse-page {
     color: #fefefe;
   }
+
+  /* 评论 */
+  .atk-body p{
+    color: #fefefe;
+  }
+
+  .atk-main-editor{
+    background-color: #1e1e1e;
+  }
+
+  .atk-textarea-wrap{
+    background-color: #1e1e1e !important; 
+  }
+
+  .atk-textarea{
+    background-color: #1e1e1e !important;
+  }
+
+  .blogDetail_comments.artalk input{
+    border-bottom: 1px solid #fefefe;
+    color: #fefefe;
+    /* background-color: #666; */
+}
+
 }

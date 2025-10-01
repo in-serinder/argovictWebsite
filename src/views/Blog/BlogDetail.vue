@@ -41,7 +41,7 @@
 
                 </div>
             </div>
-            <div class="divider_x"></div>
+            <!-- <div class="divider_x"></div> -->
             <!-- 评论 -->
             <div class="blogDetail_comments" id="commit">
 
@@ -64,10 +64,11 @@
 import '@/style/Blog/blogDetial.css'
 import 'artalk/Artalk.css'
 import 'artalk/ArtalkLite.css'
+import '@/style/Blog/blogCommit.css'
 import BlogMarkdown from '@/components/BlogMarkdown.vue'
 import BlogMoveAss from '@/components/BlogMoveAss.vue'
 import BlogOnTags from '@/components/BlogOnTags.vue'
-import PageBuilding from '@/components/PageBuilding.vue'
+// import PageBuilding from '@/components/PageBuilding.vue'
 import { ref, onMounted, computed } from 'vue'
 import type { Ref } from 'vue'
 import axios from 'axios'
