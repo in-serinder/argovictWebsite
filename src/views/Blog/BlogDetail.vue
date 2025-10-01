@@ -65,17 +65,26 @@ import '@/style/Blog/blogDetial.css'
 import 'artalk/Artalk.css'
 import 'artalk/ArtalkLite.css'
 import '@/style/Blog/blogCommit.css'
+
+import 'katex/dist/katex.min.css'
 import BlogMarkdown from '@/components/BlogMarkdown.vue'
 import BlogMoveAss from '@/components/BlogMoveAss.vue'
 import BlogOnTags from '@/components/BlogOnTags.vue'
 // import PageBuilding from '@/components/PageBuilding.vue'
 import { ref, onMounted, computed } from 'vue'
-import type { Ref } from 'vue'
+
+import { ArtalkKatexPlugin } from '@artalk/plugin-katex'
+import { ArtalkAuthPlugin } from '@artalk/plugin-auth'
 import axios from 'axios'
 import Artalk from 'artalk'
-import { useRoute } from 'vue-router'
+
 import type { BlogItem } from '@/interfance'
+import type { Ref } from 'vue'
+
+
+
 import { useMiscStore } from '@/stores/misc'
+import { useRoute } from 'vue-router'
 import { useViewCountStore } from '@/stores/viewCount'
 import { useDarkModeStore } from '@/stores/darkmode'
 
@@ -100,18 +109,40 @@ const blogAttribut: Ref<BlogItem | null> = ref(null);
 const blogID: Ref<string> = ref('')
 const route = useRoute()
 
+declare module 'artalk' {
+    export interface ArtalkConfig {
+        plugins?: Array<(artalk: Artalk) => void>
+    }
+}
+
+// declare module 'artalk' {
+//     interface ArtalkConfig extends OriginalArtalkConfig {
+//         plugins?: Plugin[];
+//     }
+
 
 const initArtalk = (() => {
+
+
     Artalk.init({
         el: document.getElementById('commit') as HTMLElement,
         pageKey: blogID.value,
         pageTitle: blogAttribut.value?.title,
-        server: '/api',  //使用了vite代理 开发环境
-        //server: 'https://8.130.191.142', //生产环境
-        site: 'blog'
+        // server: '/api',  //使用了vite代理 开发环境
+        server: 'http://8.130.191.142', //生产环境
+        site: 'blog',
+        useBackendConf: true,
+        plugins: [
+            // @ts-ignore 
+            ArtalkKatexPlugin,
+            // @ts-ignore 
+            ArtalkAuthPlugin
+        ]
 
     })
-})
+
+
+});
 
 
 
@@ -157,7 +188,7 @@ import printIcon from '@/assets/svg/print.svg'
 import printLightIcon from '@/assets/svg/light/print_light.svg'
 import shareIcon from '@/assets/svg/share.svg'
 import shareLightIcon from '@/assets/svg/light/share_light.svg'
-import { ECDH } from 'crypto'
+
 
 
 </script>

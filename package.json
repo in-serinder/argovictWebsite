@@ -13,6 +13,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@artalk/plugin-auth": "^0.0.1",
+    "@artalk/plugin-katex": "^0.2.4",
     "@vuepic/vue-datepicker": "^11.0.2",
     "artalk": "^2.9.1",
     "axios": "^1.12.1",

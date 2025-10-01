@@ -1,4 +1,5 @@
 // import { Token, Renderer } from 'markdown-it'
+import Artalk from "artalk"
 
 export interface Post {
   id: number
@@ -84,4 +85,8 @@ export interface detailWindowItem {
   content?: string
   link?: string
   linkcontent?: string
+}
+
+export interface ArtalkConfig{
+   plugins?: Array<(artalk: Artalk) => void>
 }

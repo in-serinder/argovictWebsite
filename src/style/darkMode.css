@@ -235,10 +235,13 @@
 
   .atk-textarea-wrap{
     background-color: #1e1e1e !important; 
+
   }
 
   .atk-textarea{
     background-color: #1e1e1e !important;
+    color: #fefefe !important;
+
   }
 
   .blogDetail_comments.artalk input{
@@ -259,7 +262,11 @@
 }
 
 .atk-text {
-  color: #c7cdd7;
+  color: #c7cdd7 !important;
+}
+
+.atk-editor-plug-preview{
+  color: #fefefe;
 }
 
 }
