@@ -139,12 +139,14 @@ const initArtalk = (() => {
             // @ts-ignore 
             ArtalkAuthPlugin
         ],
+        imgUpload: true,
         avatarURLBuilder: (comment: CommentData) => {
             if (comment.email_encrypted) {
                 return bfg;
             }
             return bfg;
-        }
+        },
+        emoticons: "https://raw.githubusercontent.com/argovict/jsoncdn/refs/heads/main/default.json",
 
     })
 
