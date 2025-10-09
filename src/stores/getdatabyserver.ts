@@ -11,6 +11,7 @@ export const useGetDataByServerStore = defineStore('getdatabyserver', {
     return {
       isMobile: false,
       blogList: [] as BlogItem[],
+      searchResult: [] as BlogItem[],
     }
   },
   actions: {
@@ -51,6 +52,34 @@ export const useGetDataByServerStore = defineStore('getdatabyserver', {
       } catch (err) {
         console.log(err)
         return test
+      }
+    },
+    /**
+     * 主动搜索博客
+     * @param keyword 搜索关键词
+     */
+    async getBlogBySearch(keyword: string) {
+      try {
+        const res = await axios.get(`http://8.130.191.142:6324/blog/search/${keyword}`)
+        console.log(res.data)
+        this.searchResult = res.data
+        const resultData = res.data.results.map(
+          (item: RawBlogItem) =>
+            ({
+              title: item.title,
+              date: item.date,
+              author: item.author,
+              ID: item.ID,
+              description: item.description,
+              image: item.heardImageURL,
+              View: item.View,
+              tags: item.tags ? JSON.parse(item.tags) : [],
+            }) as BlogItem,
+        )
+        this.searchResult = resultData
+        return resultData
+      } catch (err) {
+        console.log(err)
       }
     },
   },
