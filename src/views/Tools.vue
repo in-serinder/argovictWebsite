@@ -15,32 +15,24 @@
 <script setup lang="ts">
 import '@/style/toolsPage.css'
 import ToolOne from '@/components/ToolOne.vue'
-import axios from 'axios'
 import { ref, onMounted } from 'vue'
 import type { ToolItem } from '@/interfance';
+import { useGetContentFromServerStore } from '@/stores/getContentFromServer';
+
+const getContentFromServerStore = useGetContentFromServerStore()
 
 
 
 const ToolList = ref<ToolItem[]>([]);
 
-const getToolList = async () => {
-    try {
-        const response = await axios.get('http://8.130.191.142:6324/master/info/tables/tools');
-        ToolList.value = response.data.map((item: ToolItem) => ({
-            name: item.name,
-            description: item.description,
-            url: item.url,
-            version: item.version,
-            imageurl: item.imageurl,
-        }));
-        console.log('ToolList', ToolList.value);
-    } catch (error) {
-        console.error('获取工具列表失败:', error);
-    }
-}
+
 
 onMounted(() => {
-    getToolList();
+    // getToolList();
+    getContentFromServerStore.getToolList().then((res) => {
+        ToolList.value = res as ToolItem[]
+    })
+
 })
 
 

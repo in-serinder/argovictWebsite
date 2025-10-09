@@ -2,6 +2,10 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import type { RawBlogItem, BlogItem } from '@/interfance'
 
+/**
+ * 主要用于主动搜索
+ */
+
 export const useGetDataByServerStore = defineStore('getdatabyserver', {
   state() {
     return {

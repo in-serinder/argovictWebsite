@@ -33,45 +33,47 @@ import '@/style/blogPage.css'
 import BlogOne from '@/components/Blog/BlogOne.vue'
 import BlogFilter from '@/components/Blog/BlogFilter.vue'
 import NoSearchResult from '@/components/NoSearchResult.vue'
-import type { BlogItem, RawBlogItem } from '@/interfance'
+import type { BlogItem } from '@/interfance'
 import { ref, onMounted, watch } from 'vue'
-import axios from 'axios'
+
 import type { Ref } from 'vue'
 import { useRouter } from 'vue-router'
-
+import { useGetContentFromServerStore } from '@/stores/getContentFromServer'
 
 const router = useRouter()
 const search_flag = ref(false)
-const requestURL: Ref<string> = ref('http://8.130.191.142:6324/master/info/tables/post');
 const blogList: Ref<BlogItem[]> = ref([]);
+
+const getContentFromServerStore = useGetContentFromServerStore()
+
 // const blogID 
 
 
 // 获取博客列表
-const getBlogList = async () => {
-    try {
-        const res = await axios.get(requestURL.value)
-        // console.log(res.data)
-        blogList.value = res.data.map((item: RawBlogItem) => ({
-            title: item.title,
-            date: item.date,
-            author: item.author,
-            ID: item.ID,
-            description: item.description,
-            image: item.heardImageURL,
-            View: item.View,
-            tags: item.tags ? JSON.parse(item.tags) : []
-        } as BlogItem));
+// const getBlogList = async () => {
+//     try {
+//         const res = await axios.get(requestURL.value)
+//         // console.log(res.data)
+//         blogList.value = res.data.map((item: RawBlogItem) => ({
+//             title: item.title,
+//             date: item.date,
+//             author: item.author,
+//             ID: item.ID,
+//             description: item.description,
+//             image: item.heardImageURL,
+//             View: item.View,
+//             tags: item.tags ? JSON.parse(item.tags) : []
+//         } as BlogItem));
 
-        blogList.value = blogList.value.sort((a, b) => {
-            return new Date(b.date).getTime() - new Date(a.date).getTime()
-        })
+//         blogList.value = blogList.value.sort((a, b) => {
+//             return new Date(b.date).getTime() - new Date(a.date).getTime()
+//         })
 
-        // console.log(blogList.value)
-    } catch (err) {
-        console.log(err)
-    }
-}
+//         // console.log(blogList.value)
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
 
 
 
@@ -104,7 +106,9 @@ const searchBlog = (Goalblog: BlogItem[]) => {
 }
 
 onMounted(() => {
-    getBlogList()
+    getContentFromServerStore.getBlogList().then((res) => {
+        blogList.value = res as BlogItem[]
+    })
 })
 
 // watch(searchBlog, (newVal, oldVal) => {

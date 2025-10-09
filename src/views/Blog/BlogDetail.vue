@@ -87,14 +87,14 @@ import { useMiscStore } from '@/stores/misc'
 import { useRoute } from 'vue-router'
 // import { useViewCountStore } from '@/stores/viewCount'
 import { useDarkModeStore } from '@/stores/darkmode'
-import { useGetContetFromServerStore } from '@/stores/getContetFromServer'
+import { useGetContentFromServerStore } from '@/stores/getContentFromServer'
 import { useBlogCommentStore } from '@/stores/blogComment'
 
 
 // const viewCountStore = useViewCountStore()
 const miscStore = useMiscStore()
 const darkModeStore = useDarkModeStore()
-const getContetFromServerStore = useGetContetFromServerStore()
+const getContetFromServerStore = useGetContentFromServerStore()
 const blogCommentStore = useBlogCommentStore()
 
 

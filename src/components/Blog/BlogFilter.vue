@@ -19,7 +19,7 @@
         <div class="dateFilter">
             <div class="dateFilter_title"> <img src="@/assets/svg/date.svg" alt="date">
                 <span>{{ $t('message.date') }} - ({{ datePick.getFullYear() }}-{{ datePick.getMonth() + 1
-                }}-{{ datePick.getDate() }})</span>
+                    }}-{{ datePick.getDate() }})</span>
             </div>
             <div class="dateFilter_calendar">
                 <Calendar :receivedDate="receivedDate" />
@@ -55,10 +55,11 @@ import Calendar from '@/components/Calendar.vue'
 import BlogOnTags from '@/components/Blog/BlogOnTags.vue'
 import { ref, watch, onMounted, defineProps } from 'vue'
 import type { TagItem, SearchResult } from '@/interfance';
-import axios from 'axios'
 import { useGetDataByServerStore } from '@/stores/getdatabyserver'
 import { useDarkModeStore } from '@/stores/darkmode'
+import { useGetContentFromServerStore } from '@/stores/getContentFromServer'
 
+const getContentFromServerStore = useGetContentFromServerStore()
 const getdatabyserver = useGetDataByServerStore()
 const darkMode = useDarkModeStore()
 
@@ -79,15 +80,7 @@ const receivedDate = ((date: Date) => {
 })
 
 
-const getTagList = async () => {
-    try {
-        const res = await axios.get('http://8.130.191.142:6324/master/info/tables/tags');
-        tagList.value = res.data as TagItem[];
-        // console.log(tagList.value)
-    } catch (err) {
-        console.log(err)
-    }
-}
+
 
 
 // 搜索结果 手动搜索和日期搜索复用
@@ -97,7 +90,9 @@ const getSerchResult = (SearchResult: SearchResult) => {
 
 
 onMounted(() => {
-    getTagList();
+    getContentFromServerStore.getBlogTagList().then((res) => {
+        tagList.value = res as TagItem[]
+    })
 })
 
 
