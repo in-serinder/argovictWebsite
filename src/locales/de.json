@@ -57,7 +57,8 @@
     "preview": "Vorschau",
     "preview_placeholder": "Kommentarvorschau",
     "refer_quotation": "Auf das Angebot verweisen",
-    "billing_table": "Angebotstabelle"
+    "billing_table": "Angebotstabelle",
+    "blog_not_found": "Blog Nicht Gefunden"
   },
   "tag": {
     "english": "English",

@@ -30,8 +30,8 @@
 
 <script setup lang="ts">
 import '@/style/blogPage.css'
-import BlogOne from '@/components/BlogOne.vue'
-import BlogFilter from '@/components/BlogFilter.vue'
+import BlogOne from '@/components/Blog/BlogOne.vue'
+import BlogFilter from '@/components/Blog/BlogFilter.vue'
 import NoSearchResult from '@/components/NoSearchResult.vue'
 import type { BlogItem, RawBlogItem } from '@/interfance'
 import { ref, onMounted, watch } from 'vue'

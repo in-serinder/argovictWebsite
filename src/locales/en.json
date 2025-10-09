@@ -72,7 +72,8 @@
     "according_to": "according to",
     "result": "Result",
     "have": "have",
-    "no_search_result": "No search results found."
+    "no_search_result": "No search results found.",
+    "blog_not_found": "Blog Not Found"
   },
   "tag": {
     "english": "English",

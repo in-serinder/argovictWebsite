@@ -23,9 +23,11 @@
             </div>
             <div class="divider_x"></div>
             <!-- 文章内容 -->
-            <div class="blogDetail_content" id="blogcontent">
+            <div class="blogDetail_content" id="blogcontent" v-if="getContetFromServerStore.asPostExist">
                 <BlogMarkdown id="blogMarkdown" />
             </div>
+            <!-- 文章不存在 -->
+            <BlogNotFound v-else />
             <!-- 标签 额外功能-->
             <div class="blogDetail_tags">
                 <div class="blogDetail-tags-contrainer">
@@ -67,16 +69,14 @@ import 'artalk/ArtalkLite.css'
 import '@/style/Blog/blogCommit.css'
 
 import 'katex/dist/katex.min.css'
-import BlogMarkdown from '@/components/BlogMarkdown.vue'
-import BlogMoveAss from '@/components/BlogMoveAss.vue'
-import BlogOnTags from '@/components/BlogOnTags.vue'
+import BlogMarkdown from '@/components/Blog/BlogMarkdown.vue'
+import BlogMoveAss from '@/components/Blog/BlogMoveAss.vue'
+import BlogOnTags from '@/components/Blog/BlogOnTags.vue'
+import BlogNotFound from '@/components/Blog/BlogNotFound.vue'
 // import PageBuilding from '@/components/PageBuilding.vue'
 import { ref, onMounted, computed } from 'vue'
 
-import { ArtalkKatexPlugin } from '@artalk/plugin-katex'
-import { ArtalkAuthPlugin } from '@artalk/plugin-auth'
-import axios from 'axios'
-import Artalk, { type CommentData } from 'artalk'
+
 
 import type { BlogItem } from '@/interfance'
 import type { Ref } from 'vue'
@@ -85,13 +85,19 @@ import type { Ref } from 'vue'
 
 import { useMiscStore } from '@/stores/misc'
 import { useRoute } from 'vue-router'
-import { useViewCountStore } from '@/stores/viewCount'
+// import { useViewCountStore } from '@/stores/viewCount'
 import { useDarkModeStore } from '@/stores/darkmode'
+import { useGetContetFromServerStore } from '@/stores/getContetFromServer'
+import { useBlogCommentStore } from '@/stores/blogComment'
 
 
-const viewCountStore = useViewCountStore()
+// const viewCountStore = useViewCountStore()
 const miscStore = useMiscStore()
 const darkModeStore = useDarkModeStore()
+const getContetFromServerStore = useGetContetFromServerStore()
+const blogCommentStore = useBlogCommentStore()
+
+
 
 // 单独转换tag
 const tags: Ref<string[]> = computed(() => {
@@ -106,14 +112,17 @@ const tags: Ref<string[]> = computed(() => {
 
 
 const blogAttribut: Ref<BlogItem | null> = ref(null);
-const blogID: Ref<string> = ref('')
+// const blogID: Ref<string> = ref('')
 const route = useRoute()
+const blogExist = ref(true)
 
-declare module 'artalk' {
-    export interface ArtalkConfig {
-        plugins?: Array<(artalk: Artalk) => void>
-    }
-}
+
+
+// declare module 'artalk' {
+//     export interface ArtalkConfig {
+//         plugins?: Array<(artalk: Artalk) => void>
+//     }
+// }
 
 // declare module 'artalk' {
 //     interface ArtalkConfig extends OriginalArtalkConfig {
@@ -121,70 +130,76 @@ declare module 'artalk' {
 //     }
 
 
-const initArtalk = (() => {
+// const initArtalk = (() => {
 
 
-    Artalk.init({
-        el: document.getElementById('commit') as HTMLElement,
-        // pageKey: `/blog/detail/${blogID.value}`,
-        pageKey: window.location.pathname,
-        pageTitle: blogAttribut.value?.title,
-        // server: '/api',  //使用了vite代理 开发环境
-        server: 'http://8.130.191.142', //生产环境
-        site: 'blog',
-        useBackendConf: true,
-        plugins: [
-            // @ts-ignore 
-            ArtalkKatexPlugin,
-            // @ts-ignore 
-            ArtalkAuthPlugin
-        ],
-        imgUpload: true,
-        avatarURLBuilder: (comment: CommentData) => {
-            if (comment.email_encrypted) {
-                return bfg;
-            }
-            return bfg;
-        },
-        emoticons: "https://raw.githubusercontent.com/argovict/jsoncdn/refs/heads/main/default.json",
+//     Artalk.init({
+//         el: document.getElementById('commit') as HTMLElement,
+//         // pageKey: `/blog/detail/${blogID.value}`,
+//         pageKey: window.location.pathname,
+//         pageTitle: blogAttribut.value?.title,
+//         // server: '/api',  //使用了vite代理 开发环境
+//         server: 'http://8.130.191.142', //生产环境
+//         site: 'blog',
+//         useBackendConf: true,
+//         plugins: [
+//             // @ts-ignore 
+//             ArtalkKatexPlugin,
+//             // @ts-ignore 
+//             ArtalkAuthPlugin
+//         ],
+//         imgUpload: true,
+//         avatarURLBuilder: (comment: CommentData) => {
+//             if (comment.email_encrypted) {
+//                 return bfg;
+//             }
+//             return bfg;
+//         },
+//         emoticons: "https://raw.githubusercontent.com/argovict/jsoncdn/refs/heads/main/default.json",
 
-    })
+//     })
 
-    console.log("pa", window.location.pathname)
-
-
-
-});
+//     console.log("pa", window.location.pathname)
 
 
 
+// });
 
-const getBlogDetail = async () => {
-    try {
-        const res = await axios.get(`http://8.130.191.142:6324/blog/info/${route.params.id}`)
-        // console.log(res.data)
-        // console.log("huoq", res)
-        blogID.value = res.data.ID
-        blogAttribut.value = res.data as BlogItem
-        viewCountStore.addViewCount(blogID.value)
-        // console.log('blogAttribut', blogAttribut.value)
-        // console.log('tags', tags.value)
 
-    } catch (err) {
-        console.log(err)
-    }
-}
+
+
+// const getBlogDetail = async () => {
+//     try {
+//         const res = await axios.get(`http://8.130.191.142:6324/blog/info/${route.params.id}`)
+//         // console.log(res.data)
+//         // console.log("huoq", res)
+//         blogID.value = res.data.ID
+//         blogAttribut.value = res.data as BlogItem
+//         viewCountStore.addViewCount(blogID.value)
+//         // console.log('blogAttribut', blogAttribut.value)
+//         // console.log('tags', tags.value)
+
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
 
 
 
 
 
 onMounted(() => {
-    getBlogDetail()
+    // getBlogDetail()
+    getContetFromServerStore.getBlogDetail(route.params.id as string).then((res) => {
+
+        blogAttribut.value = res as BlogItem
+        blogExist.value = true
+    })
 
 
     setTimeout(() => {
-        initArtalk();
+        // initArtalk();
+        blogCommentStore.initArtalk(blogAttribut.value?.ID as string)
     }, 1500)
 
 
@@ -202,7 +217,7 @@ import printIcon from '@/assets/svg/print.svg'
 import printLightIcon from '@/assets/svg/light/print_light.svg'
 import shareIcon from '@/assets/svg/share.svg'
 import shareLightIcon from '@/assets/svg/light/share_light.svg'
-import bfg from '@/assets/picture/default_avatar_alpha.jpg.png'
+
 
 
 

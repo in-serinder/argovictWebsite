@@ -19,7 +19,7 @@
         <div class="dateFilter">
             <div class="dateFilter_title"> <img src="@/assets/svg/date.svg" alt="date">
                 <span>{{ $t('message.date') }} - ({{ datePick.getFullYear() }}-{{ datePick.getMonth() + 1
-                    }}-{{ datePick.getDate() }})</span>
+                }}-{{ datePick.getDate() }})</span>
             </div>
             <div class="dateFilter_calendar">
                 <Calendar :receivedDate="receivedDate" />
@@ -52,7 +52,7 @@
 import '@/style/Blog/blogFilter.css'
 import Search from '@/components/Search.vue'
 import Calendar from '@/components/Calendar.vue'
-import BlogOnTags from '@/components/BlogOnTags.vue'
+import BlogOnTags from '@/components/Blog/BlogOnTags.vue'
 import { ref, watch, onMounted, defineProps } from 'vue'
 import type { TagItem, SearchResult } from '@/interfance';
 import axios from 'axios'

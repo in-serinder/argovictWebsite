@@ -1,5 +1,9 @@
 import { defineStore } from 'pinia'
 
+/**
+ * 存放小控件Store
+ */
+
 export const useMiscStore = defineStore('misc', {
   state() {
     return {

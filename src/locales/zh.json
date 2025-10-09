@@ -72,7 +72,8 @@
     "according_to": "根据",
     "result": "结果",
     "have": "有",
-    "no_search_result": "未找到搜索结果。"
+    "no_search_result": "未找到搜索结果。",
+    "blog_not_found": "博客未找到"
   },
   "tag": {
     "english": "English",

@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import '@/style/Blog/blogOne.css'
-import BlogOnTags from '@/components/BlogOnTags.vue'
+import BlogOnTags from '@/components/Blog/BlogOnTags.vue'
 import type { BlogItem } from '@/interfance'
 import { ref, defineProps, computed } from 'vue'
 // import { useTagStore } from '@/stores/tag'
