@@ -1,62 +1,64 @@
 <template>
     <div class="blogDetail" id="blogContainer">
-        <div class="blogDetail-content-container">
-            <!-- 标题 -->
-            <div class="blogDetail_title">
-                <h1>{{ blogAttribut?.title }}</h1>
-            </div>
-            <!-- 文章信息 -->
-            <div class="blogDetail_info">
-                <ul>
-                    <!-- 作者 -->
-                    <li><img src="@/assets/svg/user.svg" alt="user" v-if="blogAttribut?.author">Author: {{
-                        blogAttribut?.author }}</li>
-                    <!-- 发布时间 -->
-                    <li><img src="@/assets/svg/time.svg" alt="user"> {{ blogAttribut?.date }}</li>
-                    <!-- 字数 -->
-                    <li><img src="@/assets/svg/word.svg" alt="user">Words: {{ blogAttribut?.wordCount }}</li>
-                    <!-- 阅读量 -->
-                    <li><img src="@/assets/svg/view.svg" alt="user">Views: {{ blogAttribut?.View }}</li>
-                    <!-- 文章ID -->
-                    <li><img src="@/assets/svg/id.svg" alt="user">:{{ blogAttribut?.ID }}</li>
-                </ul>
-            </div>
-            <div class="divider_x"></div>
-            <!-- 文章内容 -->
-            <div class="blogDetail_content" id="blogcontent" v-if="getContetFromServerStore.asPostExist">
-                <BlogMarkdown id="blogMarkdown" />
-            </div>
-            <!-- 文章不存在 -->
-            <BlogNotFound v-else />
-            <!-- 标签 额外功能-->
-            <div class="blogDetail_tags">
-                <div class="blogDetail-tags-contrainer">
-                    <div v-for="tag in tags" :key="tag">
-                        <BlogOnTags :tag="tag" />
+        <span class="blog-padding-container">
+            <div class="blogDetail-content-container">
+                <!-- 标题 -->
+                <div class="blogDetail_title">
+                    <h1>{{ blogAttribut?.title }}</h1>
+                </div>
+                <!-- 文章信息 -->
+                <div class="blogDetail_info">
+                    <ul>
+                        <!-- 作者 -->
+                        <li>{{ $t('message.author') }}: {{
+                            blogAttribut?.author }}</li>
+                        <!-- 发布时间 -->
+                        <li> {{ blogAttribut?.date }}</li>
+                        <!-- 字数 -->
+                        <li>{{ $t('message.word_count') }}: {{ blogAttribut?.wordCount }}</li>
+                        <!-- 阅读量 -->
+                        <li>{{ $t('message.views') }}: {{ blogAttribut?.View }}</li>
+                        <!-- 文章ID -->
+                        <!-- <li><img src="@/assets/svg/id.svg" alt="user">:{{ blogAttribut?.ID }}</li> -->
+                    </ul>
+                </div>
+                <!-- <div class="divider_x"></div> -->
+                <!-- 文章内容 -->
+                <div class="blogDetail_content" id="blogcontent" v-if="getContetFromServerStore.asPostExist">
+                    <BlogMarkdown id="blogMarkdown" />
+                </div>
+                <!-- 文章不存在 -->
+                <BlogNotFound v-else />
+                <!-- 标签 额外功能-->
+                <div class="blogDetail_tags">
+                    <div class="blogDetail-tags-contrainer">
+                        <div v-for="tag in tags" :key="tag">
+                            <BlogOnTags :tag="tag" />
+                        </div>
+                    </div>
+                    <div class="blogDetail-footer-f">
+                        <img :src="darkModeStore.isDarkMode ? printLightIcon : printIcon" alt=""
+                            @click="miscStore.printWindow('blogMarkdown')">
+                        <span class="shareIcon" @click="miscStore.shareWebPage('shareIcon')"><img
+                                :src="darkModeStore.isDarkMode ? shareLightIcon : shareIcon" alt=""></span>
+
                     </div>
                 </div>
-                <div class="blogDetail-footer-f">
-                    <img :src="darkModeStore.isDarkMode ? printLightIcon : printIcon" alt=""
-                        @click="miscStore.printWindow('blogMarkdown')">
-                    <span class="shareIcon" @click="miscStore.shareWebPage('shareIcon')"><img
-                            :src="darkModeStore.isDarkMode ? shareLightIcon : shareIcon" alt=""></span>
+                <!-- <div class="divider_x"></div> -->
+                <!-- 评论 -->
+                <div class="blogDetail_comments" id="commit">
 
-                </div>
-            </div>
-            <!-- <div class="divider_x"></div> -->
-            <!-- 评论 -->
-            <div class="blogDetail_comments" id="commit">
-
-                <!-- <h4>{{ $t('message.blog_comments') }}</h4>
+                    <!-- <h4>{{ $t('message.blog_comments') }}</h4>
                 <div class="commit_continer">
                     <PageBuilding />
                 </div> -->
 
 
+                </div>
+                <!-- 占位 -->
+                <div class="placeholder"> </div>
             </div>
-            <!-- 占位 -->
-            <div class="placeholder"> </div>
-        </div>
+        </span>
         <!-- 文章移动辅助 -->
         <BlogMoveAss />
     </div>

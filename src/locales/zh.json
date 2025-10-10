@@ -73,7 +73,11 @@
     "result": "结果",
     "have": "有",
     "no_search_result": "未找到搜索结果。",
-    "blog_not_found": "来到了一片荒原..."
+    "blog_not_found": "来到了一片荒原...",
+    "author": "作者",
+    "description": "描述",
+    "word_count": "字数",
+    "views": "阅读量"
   },
   "tag": {
     "english": "English",

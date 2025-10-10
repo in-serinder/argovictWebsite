@@ -73,7 +73,11 @@
     "result": "Result",
     "have": "have",
     "no_search_result": "No search results found.",
-    "blog_not_found": "They arrived at a wilderness .."
+    "blog_not_found": "They arrived at a wilderness ..",
+    "author": "Author",
+    "description": "Description",
+    "word_count": "Word Count",
+    "views": "Views"
   },
   "tag": {
     "english": "English",
