@@ -191,6 +191,7 @@ pre:has(code[class*='language-'])::before {
   font-size: 12px;
   font-weight: 600;
   color: #fff;
+  box-shadow: 0px 0px 10px #292929;
   text-transform: uppercase;
 }
 

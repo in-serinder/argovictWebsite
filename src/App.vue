@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import RootView from './views/Root.vue';
+import { useMiscStore } from '@/stores/misc'
+
 
 // import { onMounted } from 'vue';
 // import { createI18n } from 'vue-i18n';
@@ -11,6 +13,8 @@ import RootView from './views/Root.vue';
 
 // const LocalesList = ['en', 'zh', 'du'] as const;
 // type LocalesListType = (typeof LocalesList)[number];
+const { printWordArt } = useMiscStore()
+printWordArt()
 
 
 
