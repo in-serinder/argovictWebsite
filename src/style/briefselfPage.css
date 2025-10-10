@@ -6,6 +6,7 @@
   /* transform: translateY(100%); */
   width: 100%;
   height: 100%;
+  overflow-y:;
   /* background-color: #fff; */
   /* animation: slideIn 0.9s ease-in-out forwards; */
   /* background-color: aqua; */
@@ -171,11 +172,11 @@
 /* 底部网站信息 */
 
 .brief_footer {
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  bottom: 40px;
+  bottom: 20px;
 }

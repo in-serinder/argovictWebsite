@@ -86,6 +86,11 @@ const assetList = ref<asset[]>([
         link: 'https://www.pixiv.net/artworks/111474344',
         description: 'No Search Result - Void Linux-chan',
     },
+    {
+        tagsIcon: '',
+        link: 'https://www.pixiv.net/artworks/130446730',
+        description: 'Post Not Found - 🐱❓ 🌵❓',
+    },
 ]);
 
 
