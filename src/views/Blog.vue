@@ -33,7 +33,7 @@ import '@/style/blogPage.css'
 import BlogOne from '@/components/Blog/BlogOne.vue'
 import BlogFilter from '@/components/Blog/BlogFilter.vue'
 import NoSearchResult from '@/components/NoSearchResult.vue'
-import type { BlogItem } from '@/interfance'
+import type { BlogItem } from '@/interface'
 import { ref, onMounted, watch } from 'vue'
 
 import type { Ref } from 'vue'

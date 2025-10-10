@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { detailWindowItem } from '@/interfance'
+import type { detailWindowItem } from '@/interface'
 
 // 图片资源
 import matrixIcon from '@/assets/svg/matrix.svg'

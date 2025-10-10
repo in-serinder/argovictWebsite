@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-import type { RawBlogItem, BlogItem, SearchResult } from '@/interfance'
+import type { RawBlogItem, BlogItem, SearchResult } from '@/interface'
 
 /**
  * 主要用于主动搜索

@@ -56,7 +56,7 @@
 import '@/style/assestusePage.css'
 import { useDarkModeStore } from '@/stores/darkmode';
 import { ref } from 'vue';
-import type { asset } from '@/interfance';
+import type { asset } from '@/interface';
 
 const darkModeStore = useDarkModeStore();
 

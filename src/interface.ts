@@ -1,5 +1,5 @@
 // import { Token, Renderer } from 'markdown-it'
-import Artalk from "artalk"
+import Artalk from 'artalk'
 
 export interface Post {
   id: number
@@ -87,6 +87,6 @@ export interface detailWindowItem {
   linkcontent?: string
 }
 
-export interface ArtalkConfig{
-   plugins?: Array<(artalk: Artalk) => void>
+export interface ArtalkConfig {
+  plugins?: Array<(artalk: Artalk) => void>
 }

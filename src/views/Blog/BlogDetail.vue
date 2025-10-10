@@ -78,7 +78,7 @@ import { ref, onMounted, computed } from 'vue'
 
 
 
-import type { BlogItem } from '@/interfance'
+import type { BlogItem } from '@/interface'
 import type { Ref } from 'vue'
 
 

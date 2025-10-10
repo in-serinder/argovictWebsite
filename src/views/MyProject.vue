@@ -13,7 +13,7 @@
 import '@/style/projectPage.css'
 import ProjectOne from '@/components/ProjectOne.vue';
 import { ref, onMounted } from 'vue'
-import type { ProjectItem } from '@/interfance';
+import type { ProjectItem } from '@/interface';
 import { useGetContentFromServerStore } from '@/stores/getContentFromServer'
 
 const getContentFromServerStore = useGetContentFromServerStore()

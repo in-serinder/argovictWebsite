@@ -16,7 +16,7 @@
 import '@/style/toolsPage.css'
 import ToolOne from '@/components/ToolOne.vue'
 import { ref, onMounted } from 'vue'
-import type { ToolItem } from '@/interfance';
+import type { ToolItem } from '@/interface';
 import { useGetContentFromServerStore } from '@/stores/getContentFromServer';
 
 const getContentFromServerStore = useGetContentFromServerStore()

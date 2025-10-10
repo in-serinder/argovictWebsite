@@ -33,7 +33,7 @@
 <script setup lang="ts">
 import '@/style/MyProject/ProjectOne.css'
 import { ref, defineProps, onMounted, computed } from 'vue'
-import type { ProjectItem } from '@/interfance';
+import type { ProjectItem } from '@/interface';
 
 const { project } = defineProps<{
     project: ProjectItem;

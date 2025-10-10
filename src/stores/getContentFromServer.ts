@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-import type { BlogItem, RawBlogItem, TagItem, ProjectItem, ToolItem } from '@/interfance'
+import type { BlogItem, RawBlogItem, TagItem, ProjectItem, ToolItem } from '@/interface'
 import { useViewCountStore } from './viewCount'
 import axios from 'axios'
 

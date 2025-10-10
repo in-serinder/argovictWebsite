@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import '@/style/Tools/toolOne.css'
 import { ref } from 'vue'
-import type { ToolItem } from '@/interfance';
+import type { ToolItem } from '@/interface';
 
 const { tool } = defineProps<{
     tool: ToolItem;
