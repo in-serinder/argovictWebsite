@@ -18,7 +18,7 @@ export const useDarkModeStore = defineStore('darkmode', {
         document.body.classList.remove('dark-mode')
         localStorage.setItem('isDark', 'false')
       }
-      console.log(this.isDarkMode)
+      // console.log(this.isDarkMode)
     },
     switchMode() {
       //   this.isDarkMode = localStorage.getItem('isDark') ? true : false

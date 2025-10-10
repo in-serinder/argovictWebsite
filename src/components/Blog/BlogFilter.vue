@@ -19,7 +19,7 @@
         <div class="dateFilter">
             <div class="dateFilter_title"> <img src="@/assets/svg/date.svg" alt="date">
                 <span>{{ $t('message.date') }} - ({{ datePick.getFullYear() }}-{{ datePick.getMonth() + 1
-                    }}-{{ datePick.getDate() }})</span>
+                }}-{{ datePick.getDate() }})</span>
             </div>
             <div class="dateFilter_calendar">
                 <Calendar :receivedDate="receivedDate" />
@@ -86,6 +86,9 @@ const receivedDate = ((date: Date) => {
 // 搜索结果 手动搜索和日期搜索复用
 const getSerchResult = (SearchResult: SearchResult) => {
     searchResult.value = SearchResult;
+    // console.log(searchResult.value)
+    // 数据向父控件传递，收到后修改展示
+    searchBlog(searchResult.value.results)
 }
 
 
@@ -102,13 +105,18 @@ watch(datePick, (newVal, oldVal) => {
     console.log(`${newVal.getFullYear()}-${datePick.value.getMonth() + 1 > 9 ? datePick.value.getMonth() + 1 : ('0' + (newVal.getMonth() + 1))}-${newVal.getDate() > 9 ? newVal.getDate() : '0' + newVal.getDate()}`)
     const currentDate: string = `${newVal.getFullYear()}-${datePick.value.getMonth() + 1 > 9 ? datePick.value.getMonth() + 1 : ('0' + (newVal.getMonth() + 1))}-${newVal.getDate() > 9 ? newVal.getDate() : '0' + newVal.getDate()}`
     // console.log(getdatabyserver.getDataByDate(currentDate))
-    searchBlog(getdatabyserver.getDataByDate('2025-08-04'))
+    // searchBlog(getdatabyserver.getDataByDate('2025-08-04'))
+
+    // 直接共用搜索
+    getdatabyserver.getDataByDate(currentDate).then((res) => {
+        searchBlog(res.results)
+    })
 })
 
-watch(searchResult, (newVal, oldVal) => {
-    console.log(newVal, oldVal)
+// watch(searchResult, (newVal, oldVal) => {
+//     console.log(newVal, oldVal)
 
-})
+// })
 
 // 导入图片
 import tagsIcon from '@/assets/svg/tags.svg'

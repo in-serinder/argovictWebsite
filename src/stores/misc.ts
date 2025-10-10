@@ -37,7 +37,7 @@ export const useMiscStore = defineStore('misc', {
     async shareWebPage(className: string) {
       try {
         const URL = window.location.href
-        console.log(className)
+        // console.log(className)
         const classObj = document.getElementsByClassName(className)
         await navigator.clipboard.writeText(URL)
         classObj[0].classList.add('shared')

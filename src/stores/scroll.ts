@@ -45,8 +45,8 @@ export const useScrollStore = defineStore('scroll', {
 
       // console.log(targetID);
       this.buildTargetID(hash)
-      console.log('hash', hash)
-      console.log('hashtoID', this.targetID)
+      // console.log('hash', hash)
+      // console.log('hashtoID', this.targetID)
 
       // 目标id为描点终点，
       const targetElement = document.getElementById(this.targetID)

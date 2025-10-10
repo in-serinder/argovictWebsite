@@ -83,7 +83,7 @@ const getContentFromServerStore = useGetContentFromServerStore()
 // 跳转详情页
 
 const toPostDetail = (blog: BlogItem) => {
-    console.log(blog)
+    // console.log(blog)
     router.push({
         name: 'blogDetail',
         params: {
@@ -102,7 +102,7 @@ const searchBlog = (Goalblog: BlogItem[]) => {
     } else {
         search_flag.value = false;
     }
-    console.log(Goalblog)
+    // console.log(Goalblog)
 }
 
 onMounted(() => {
@@ -111,12 +111,6 @@ onMounted(() => {
     })
 })
 
-// watch(searchBlog, (newVal, oldVal) => {
-//     console.log('searchBlog', newVal, oldVal);
-// })
-watch(blogList, (newVal, oldVal) => {
-    console.log('searchBlog', newVal, oldVal);
-})
 
 
 </script>

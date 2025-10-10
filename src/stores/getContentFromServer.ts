@@ -33,7 +33,7 @@ export const useGetContentFromServerStore = defineStore('getContentFromServer', 
         // console.log(this.blogAttribut)
         return this.blogAttribut
       } catch (err) {
-        console.log(err)
+        console.error('获取博客详情失败:', err)
         this.asPostExist = false
       }
     },
@@ -68,7 +68,7 @@ export const useGetContentFromServerStore = defineStore('getContentFromServer', 
         // console.log(this.blogList)
         return this.blogList
       } catch (err) {
-        console.log(err)
+        console.error('获取博客列表失败:', err)
       }
     },
 
@@ -83,7 +83,7 @@ export const useGetContentFromServerStore = defineStore('getContentFromServer', 
         // console.log(tagList.value)
         return this.tagList
       } catch (err) {
-        console.log(err)
+        console.error('获取标签列表失败:', err)
       }
     },
 
