@@ -45,8 +45,8 @@ export const useScrollStore = defineStore('scroll', {
 
       // console.log(targetID);
       this.buildTargetID(hash)
-      // console.log('hash', hash)
-      // console.log('hashtoID', this.targetID)
+      console.log('hash', hash)
+      console.log('hashtoID', this.targetID)
 
       // 目标id为描点终点，
       const targetElement = document.getElementById(this.targetID)
@@ -82,6 +82,7 @@ export const useScrollStore = defineStore('scroll', {
         })
         .join('-')
         .replace(/(?<=\d)-(?=\s*$)/, '')
+        .replace(/-{2,}/g, '-')
       // .replace(englishRegex, (match, p1) => {
       //   return match.charAt(0) + p1.toUpperCase()
       // })
