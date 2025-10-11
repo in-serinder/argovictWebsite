@@ -17,7 +17,7 @@
 
 ### You need to manually configure the JSON backend. The interface is defined in the configuration file `interface.ts`
 
-```
+```typescript
 export interface Post {
   id: number
   title: string
@@ -103,9 +103,4 @@ export interface detailWindowItem {
   link?: string
   linkcontent?: string
 }
-
-export interface ArtalkConfig {
-  plugins?: Array<(artalk: Artalk) => void>
-}
-
 ```
