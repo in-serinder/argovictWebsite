@@ -60,5 +60,17 @@ export const useMiscStore = defineStore('misc', {
       `
       console.log(asciiChar)
     },
+    disableAutoPlay() {
+      const videos = document.querySelectorAll('video')
+      videos.forEach((video) => {
+        video.autoplay = false
+        video.removeAttribute('autoplay')
+
+        // 确保视频加载完成后再暂停
+        if (!video.paused) {
+          video.pause()
+        }
+      })
+    },
   },
 })

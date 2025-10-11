@@ -145,3 +145,8 @@ ol {
 .blogMarkdown em:hover::after {
   width: 0;
 }
+
+.blogMarkdown_content iframe {
+  width: 80%;
+  height: 300px;
+}

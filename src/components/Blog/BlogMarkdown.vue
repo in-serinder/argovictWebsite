@@ -12,12 +12,12 @@ import { useRoute } from 'vue-router';
 
 import { useScrollStore } from '@/stores/scroll';
 import { userMarkDownFucker } from '@/stores/markdown-it_fucker';
-
+import { useMiscStore } from '@/stores/misc';
 
 
 const scrollStore = useScrollStore();
 const mdFucker = userMarkDownFucker();
-
+const miscStore = useMiscStore();
 
 
 
@@ -81,7 +81,7 @@ watch(
 
             nextTick(() => {
                 console.log('加载md');
-
+                miscStore.disableAutoPlay()
             })
         });
     },
