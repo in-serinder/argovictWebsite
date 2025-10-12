@@ -46,9 +46,16 @@
           <li>
             <div class="divider"></div>
           </li>
-          <li @click="darkModeStore.switchMode()"><img :src="darkModeStore.isDarkMode ? darkIconLight : darkIcon"
-              alt="">
+          <li>
+            <a href="/rss/rss.xml" target="_blank"><img :src="darkModeStore.isDarkMode ? rssLight : rss" alt=""
+                style="width: 26px;margin-top: 3px;margin-right: 0"></a>
           </li>
+          <li @click="darkModeStore.switchMode()" style="margin-left: 0"><img
+              :src="darkModeStore.isDarkMode ? darkIconLight : darkIcon" alt="">
+          </li>
+
+
+
 
         </ul>
       </div>
@@ -97,6 +104,9 @@ import toolsIconLight from '@/assets/svg/light/tools_light.svg'
 import commissionIcon from '@/assets/svg/workbench.svg'
 import commissionIconLight from '@/assets/svg/light/workbench_light.svg'
 
+
+import rss from '@/assets/svg/rss.svg'
+import rssLight from '@/assets/svg/light/rss_light.svg'
 
 import darkIcon from '@/assets/svg/light.svg'
 import darkIconLight from '@/assets/svg/light/dark.svg'
