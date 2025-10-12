@@ -47,7 +47,7 @@
             <div class="divider"></div>
           </li>
           <li>
-            <a href="/rss/rss.xml" target="_blank"><img :src="darkModeStore.isDarkMode ? rssLight : rss" alt=""
+            <a href="/blog/rss/rss.xml" target="_blank"><img :src="darkModeStore.isDarkMode ? rssLight : rss" alt=""
                 style="width: 26px;margin-top: 3px;margin-right: 0"></a>
           </li>
           <li @click="darkModeStore.switchMode()" style="margin-left: 0"><img
