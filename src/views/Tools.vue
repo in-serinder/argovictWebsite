@@ -21,7 +21,7 @@ import { useGetContentFromServerStore } from '@/stores/getContentFromServer';
 
 const getContentFromServerStore = useGetContentFromServerStore()
 
-
+document.title = 'Argovict - Tools'
 
 const ToolList = ref<ToolItem[]>([]);
 

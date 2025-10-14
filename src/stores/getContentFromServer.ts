@@ -3,7 +3,6 @@ import { defineStore } from 'pinia'
 import type { BlogItem, RawBlogItem, TagItem, ProjectItem, ToolItem } from '@/interface'
 import { useViewCountStore } from './viewCount'
 import axios from 'axios'
-import { title } from 'process'
 
 // 集中获取服务端api内容
 export const useGetContentFromServerStore = defineStore('getContentFromServer', {

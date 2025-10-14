@@ -20,6 +20,8 @@ const getContentFromServerStore = useGetContentFromServerStore()
 
 const projectList = ref<ProjectItem[]>([]);
 
+document.title = 'Argovict - My Project'
+
 
 
 onMounted(() => {

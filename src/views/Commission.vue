@@ -30,4 +30,6 @@
 import '@/style/commissionPage.css'
 import CommissionBoard from '@/components/CommitssionBoard.vue'
 import CommissionTypeOne from '@/components/CommissionTypeOne.vue'
+
+document.title = 'Argovict - Commission'
 </script>

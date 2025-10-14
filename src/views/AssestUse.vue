@@ -60,6 +60,8 @@ import type { asset } from '@/interface';
 
 const darkModeStore = useDarkModeStore();
 
+document.title = 'Argovict - Asset Use'
+
 const assetList = ref<asset[]>([
     {
         tagsIcon: '',

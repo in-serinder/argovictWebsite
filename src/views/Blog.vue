@@ -45,8 +45,9 @@ const search_flag = ref(false)
 const blogList: Ref<BlogItem[]> = ref([]);
 
 const getContentFromServerStore = useGetContentFromServerStore()
+document.title = 'Argovict - Blog'
 
-// const blogID 
+// const blogID = ref('')
 
 
 // 获取博客列表
