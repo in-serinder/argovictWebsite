@@ -83,7 +83,7 @@ hr {
 /* 侧边栏 */
 
 html {
-  scrollbar-color: #ed8d0f #fefefe;
+  scrollbar-color: #ed8d0f transparent;
 
   scrollbar-width: thin;
   scroll-behavior: smooth;

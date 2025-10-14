@@ -65,7 +65,7 @@ import { onBeforeUnmount } from 'vue';
 import { useDarkModeStore } from '@/stores/darkmode';
 import { useBriefSelfStore } from '@/stores/briefSelf';
 
-// document.title = 'Argovict - Brief Self'
+document.title = 'Argovict - Welcome'
 
 const darkModeStore = useDarkModeStore()
 const briefSelfStore = useBriefSelfStore()
