@@ -12,12 +12,15 @@
             </div>
             <div class="BlogOfOne" v-for="item in blogList" :key="item.date">
                 <BlogOne :blog="item" @click="toPostDetail(item)" />
+
             </div>
+
+
 
             <!-- <div class="BlogOfOne" v-for="item in blogList" :key="item.date">
                 <BlogOne :blog="item" @click="toPostDetail(item)" />
             </div> -->
-
+            <div class="blog-holder "></div>
         </div>
         <!-- 博客筛选栏 -->
         <div class="blogFilter">
