@@ -4,7 +4,11 @@
       <div style="height: 140px;"></div>
       <!-- 头像 -->
       <div class="brief_avatar">
-        <img src="@/assets/picture/avatar.png" alt="">
+
+        <!-- Nuxt -->
+        <!-- <img v-lazy="avatar" alt="Avatar" width="140" height="140" /> -->
+
+        <img :src="avatar" alt="Avatar" width="140" height="140" />
       </div>
       <!-- 个人介绍 -->
       <div class="brief_introduce">
@@ -61,14 +65,18 @@
 
 <script setup lang="ts">
 import '@/style/briefselfPage.css'
-import { onBeforeUnmount } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 import { useDarkModeStore } from '@/stores/darkmode';
 import { useBriefSelfStore } from '@/stores/briefSelf';
+import { useLoadingStore } from '@/stores/loading'
+// import VueLazyload from 'vue-lazyload';
+
 
 document.title = 'Argovict - Welcome'
 
 const darkModeStore = useDarkModeStore()
 const briefSelfStore = useBriefSelfStore()
+const loadingStore = useLoadingStore()
 
 function handleClick(type: string) {
   switch (type) {
@@ -98,11 +106,17 @@ function handleClick(type: string) {
 }
 
 
-onBeforeUnmount(() => {
-  // styleStore.whenPageChange('BriefSelf')
-})
+
+
+
+
+
+
 
 // 导入图片
+import avatar from '@/assets/picture/avatar.png'
+
+
 import githubIcon from '@/assets/svg/github.svg'
 import githubIconLight from '@/assets/svg/light/github_light.svg'
 import matrixIcon from '@/assets/svg/matrix.svg'
@@ -115,5 +129,6 @@ import twitterIcon from '@/assets/svg/twiter.svg'
 import twitterIconLight from '@/assets/svg/light/twiter_ligth.svg'
 import emailIcon from '@/assets/svg/email.svg'
 import emailIconLight from '@/assets/svg/light/email_light.svg'
+
 
 </script>

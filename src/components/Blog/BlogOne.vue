@@ -21,6 +21,7 @@
         <!-- 头图 -->
         <div class="blogOne_header">
             <img :src="blog.image ? blog.image : '@/assets/picture/Tired.jpg'" alt="">
+            <!-- <img v-lazy="blog.image ? blog.image : '@/assets/picture/Tired.jpg'" alt=""> -->
         </div>
     </div>
 

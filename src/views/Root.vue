@@ -65,6 +65,8 @@
       <router-view></router-view>
     </div>
   </span>
+
+
 </template>
 
 
@@ -72,6 +74,7 @@
 import '@/style/rootPage.css'
 import '@/style/widget.css'
 import DetailWindow from '@/components/DetailWindow.vue'
+
 import { useDarkModeStore } from '@/stores/darkmode'
 import { onMounted, ref } from 'vue'
 

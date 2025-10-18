@@ -4,6 +4,7 @@ import { createPinia } from 'pinia'
 import i18n from '@/stores/i8n'
 import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
+import VueLazyload from 'vue-lazyload'
 
 import App from './App.vue'
 import router from './router'
@@ -36,5 +37,6 @@ app.component('VueDatePicker', VueDatePicker)
 app.use(createPinia())
 app.use(router)
 app.use(i18n)
+app.use(VueLazyload)
 
 app.mount('#app')

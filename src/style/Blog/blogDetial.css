@@ -31,9 +31,11 @@
   flex-direction: column;
   justify-content: center;
   background-color: #fff;
-  width: 85vw;
+  width: 80vw;
   align-items: center;
   border-radius: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 80px;
 }
 
 .blogDetail_title {

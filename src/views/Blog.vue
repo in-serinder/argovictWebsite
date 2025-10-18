@@ -42,19 +42,28 @@ import BlogOne from '@/components/Blog/BlogOne.vue'
 import BlogFilter from '@/components/Blog/BlogFilter.vue'
 import NoSearchResult from '@/components/NoSearchResult.vue'
 import type { BlogItem } from '@/interface'
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, onUnmounted } from 'vue'
+import { useLoadingStore } from '@/stores/loading'
 
 import type { Ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useGetContentFromServerStore } from '@/stores/getContentFromServer'
+import { nextTick } from 'process'
 
 const router = useRouter()
 const search_flag = ref(false)
 const blogList: Ref<BlogItem[]> = ref([]);
 
 const getContentFromServerStore = useGetContentFromServerStore()
+const loadingStore = useLoadingStore()
+
 document.title = 'Argovict - Blog'
 
+
+// 初始化加载状态
+// loadingStore.reset()
+// loadingStore.initTotalImage()
+// loadingStore.loadingListen()
 // const blogID = ref('')
 
 
@@ -117,9 +126,35 @@ const searchBlog = (Goalblog: BlogItem[]) => {
 onMounted(() => {
     getContentFromServerStore.getBlogList().then((res) => {
         blogList.value = res as BlogItem[]
+
+        nextTick(() => {
+            const blogContainer = document.querySelector('.blogPage') as HTMLElement
+            loadingStore.initTotalImage(blogContainer)
+            console.log(loadingStore.totalImage)
+
+        })
     })
+
+
 })
 
+// onUnmounted(() => {
+//     loadingStore.reset()
+// })
+
+watch(() => loadingStore.loaded, (newVal) => {
+    if (newVal) {
+
+        console.log('图片加载', loadingStore.loaded)
+    }
+})
+
+watch(() => loadingStore.allLoaded, (newVal) => {
+    if (newVal) {
+
+        console.log('所有图片加载完成 - blog ', loadingStore.totalImage)
+    }
+})
 
 
 </script>
