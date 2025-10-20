@@ -15,11 +15,16 @@
 
 <script setup lang="ts">
 import '@/style/Componets/search.css'
-import { ref, defineProps } from 'vue'
+import { ref, defineProps, onMounted } from 'vue'
 import { useGetDataByServerStore } from '@/stores/getdatabyserver'
+import { useGetContentFromServerStore } from '@/stores/getContentFromServer'
+import router from '@/router'
+import { useRoute } from 'vue-router'
 
 
 const getdatabyserverStore = useGetDataByServerStore()
+const getContentFromServerStore = useGetContentFromServerStore()
+const route = useRoute()
 
 
 const searchContent = ref('');
@@ -48,6 +53,13 @@ const searchAssociate = (() => {
             // 搜索组件本地用传到上层显示搜索结果
             getSearchResult(res)
         })
+        // 跳转搜索结果页
+        router.push({
+            name: 'blog',
+            query: {
+                search: searchContent.value
+            }
+        })
 
 
     } else {
@@ -62,6 +74,18 @@ const searchAssociate = (() => {
     }
 });
 
+onMounted(() => {
+
+    if (route.query.search) {
+        // 标记为搜索入口
+        getContentFromServerStore.asSearchEntrance = true
+        searchContent.value = route.query.search as string
+        // 调用搜索关联
+        searchAssociate()
+    } else {
+        getContentFromServerStore.asSearchEntrance = false
+    }
+})
 
 // watch(searchContent, (newVal, oldVal) => {
 //     console.log('searchContent', newVal, oldVal);

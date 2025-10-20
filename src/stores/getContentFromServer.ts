@@ -10,6 +10,7 @@ export const useGetContentFromServerStore = defineStore('getContentFromServer', 
     blogList: [] as BlogItem[],
     blogAttribut: null as BlogItem | null,
     asPostExist: false,
+    asSearchEntrance: false,
     tagList: [] as TagItem[],
     projectList: [] as ProjectItem[],
     toolList: [] as ToolItem[],
@@ -31,7 +32,7 @@ export const useGetContentFromServerStore = defineStore('getContentFromServer', 
         viewCountStore.addViewCount(this.blogAttribut.ID)
         this.asPostExist = true
         // console.log(this.blogAttribut)
-        document.title = this.blogAttribut.title
+        document.title = `${this.blogAttribut.author} | ${this.blogAttribut.title}`
         return this.blogAttribut
       } catch (err) {
         console.error('获取博客详情失败:', err)
@@ -45,6 +46,9 @@ export const useGetContentFromServerStore = defineStore('getContentFromServer', 
     */
 
     async getBlogList() {
+      if (this.asSearchEntrance) {
+        return this.blogList
+      }
       try {
         const res = await axios.get('http://8.130.191.142:6324/master/info/tables/post')
         // console.log(res.data)

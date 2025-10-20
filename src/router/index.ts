@@ -37,6 +37,7 @@ const router = createRouter({
       name: 'blog',
       component: Blog, //使用预加载策略
     },
+
     {
       path: '/blog/detail/:id',
       name: 'blogDetail',
