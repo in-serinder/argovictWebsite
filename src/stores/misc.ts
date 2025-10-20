@@ -8,6 +8,7 @@ export const useMiscStore = defineStore('misc', {
   state() {
     return {
       isMobile: false,
+      blogListLoaded: false,
     }
   },
 
@@ -71,6 +72,17 @@ export const useMiscStore = defineStore('misc', {
           video.pause()
         }
       })
+    },
+    /**
+     * 博客列表载入动画
+     */
+    blogListLoadAnimation() {
+      if (this.blogListLoaded) {
+        return
+      }
+      document.body.classList.add('blogload-animation')
+      this.blogListLoaded = true
+      // console.log('sdsd')
     },
   },
 })

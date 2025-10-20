@@ -1,0 +1,23 @@
+.blogload-animation {
+  /* 博客列表载入动画 */
+
+  .blogBar {
+    /* margin-top: 0px !important; */
+    margin-top: 0px;
+    visibility: visible !important;
+  }
+
+  .BlogOfOne {
+    margin-bottom: 10px !important;
+  }
+
+  /* 侧边栏调整 */
+  .blogPage {
+    overflow-y: auto;
+  }
+
+  /* 加载中 */
+  .blog-loading {
+    display: none;
+  }
+}

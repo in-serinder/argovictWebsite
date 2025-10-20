@@ -1,7 +1,10 @@
 <template>
     <div class="blogPage">
 
-
+        <div class="blog-loading">
+            <img src="@/assets/media/oiia.gif"></img>
+            <h2>{{ $t('message.loading') }}...</h2>
+        </div>
 
         <!-- 博客栏 -->
         <div class="blogBar">
@@ -43,9 +46,9 @@ import BlogFilter from '@/components/Blog/BlogFilter.vue'
 import NoSearchResult from '@/components/NoSearchResult.vue'
 import type { BlogItem } from '@/interface'
 import { ref, onMounted, watch, onUnmounted } from 'vue'
-import { useLoadingStore } from '@/stores/loading'
-
 import type { Ref } from 'vue'
+import { useLoadingStore } from '@/stores/loading'
+import { useMiscStore } from '@/stores/misc'
 import { useRouter } from 'vue-router'
 import { useGetContentFromServerStore } from '@/stores/getContentFromServer'
 import { nextTick } from 'process'
@@ -56,6 +59,7 @@ const blogList: Ref<BlogItem[]> = ref([]);
 
 const getContentFromServerStore = useGetContentFromServerStore()
 const loadingStore = useLoadingStore()
+const miscStore = useMiscStore()
 
 document.title = 'Argovict - Blog'
 
@@ -132,11 +136,15 @@ onMounted(() => {
             loadingStore.initTotalImage(blogContainer)
             console.log(loadingStore.totalImage)
 
+
+
         })
     })
 
 
 })
+
+
 
 // onUnmounted(() => {
 //     loadingStore.reset()
@@ -151,8 +159,10 @@ watch(() => loadingStore.loaded, (newVal) => {
 
 watch(() => loadingStore.allLoaded, (newVal) => {
     if (newVal) {
-
-        console.log('所有图片加载完成 - blog ', loadingStore.totalImage)
+        // 动画加载内容
+        setTimeout(() => {
+            miscStore.blogListLoadAnimation()
+        }, 500)
     }
 })
 

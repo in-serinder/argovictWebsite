@@ -55,7 +55,9 @@
     <div class="brief_footer">
       <p>© 2025 ArgoVICT. All rights reserved.</p>
       <!-- <p>Powered by Vue 3</p> -->
-      <p><a href="/asset">{{ $t('message.asset_use') }}</a></p>
+      <p><a href="/asset">{{ $t('message.asset_use') }}</a> | <a href="https://github.com/in-serinder/argovictWebsite"
+          target="_blank">{{ $t('message.source_code') }}</a>
+      </p>
 
 
     </div>
@@ -65,6 +67,7 @@
 
 <script setup lang="ts">
 import '@/style/briefselfPage.css'
+import Blog from './Blog.vue';
 import { onMounted, onUnmounted } from 'vue';
 import { useDarkModeStore } from '@/stores/darkmode';
 import { useBriefSelfStore } from '@/stores/briefSelf';
@@ -109,7 +112,9 @@ function handleClick(type: string) {
 
 
 
-
+onMounted(() => {
+  // Blog.preload()
+})
 
 
 

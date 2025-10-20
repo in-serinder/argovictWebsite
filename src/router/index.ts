@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 // import HomeView from '../views/Root.vue'
-import RootView from '../views/Root.vue'
+// import RootView from '../views/Root.vue'
 import BriefSelf from '@/views/BriefSelf.vue'
 import Project from '@/views/MyProject.vue'
 import Tools from '@/views/Tools.vue'
@@ -8,6 +8,8 @@ import Blog from '@/views/Blog.vue'
 import Commission from '@/views/Commission.vue'
 import Page404 from '@/views/404.vue'
 import AssestUse from '@/views/AssestUse.vue'
+
+// import Blog = () => import('@/views/Blog.vue')
 
 // child route
 import BlogDetail from '@/views/Blog/BlogDetail.vue'
@@ -33,7 +35,7 @@ const router = createRouter({
     {
       path: '/blog',
       name: 'blog',
-      component: Blog,
+      component: Blog, //使用预加载策略
     },
     {
       path: '/blog/detail/:id',

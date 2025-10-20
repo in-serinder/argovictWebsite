@@ -37,15 +37,18 @@ export const useLoadingStore = defineStore('loading', {
       })
     },
     imageLoadCount() {
-      if (this.loaded >= this.totalImage) {
-        this.loaded = this.totalImage
-        return
-      }
-
-      this.loaded++
-      if (this.loaded === this.totalImage) {
-        this.allLoaded = true
-      }
+      // 等待浏览器完成渲染后再计数
+      requestAnimationFrame(() => {
+        if (this.loaded >= this.totalImage) {
+          this.loaded = this.totalImage
+          return
+        }
+        this.loaded++
+        if (this.loaded === this.totalImage) {
+          this.allLoaded = true
+          console.log('所有图片加载并渲染完成')
+        }
+      })
     },
   },
 })
