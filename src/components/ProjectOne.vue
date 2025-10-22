@@ -12,7 +12,9 @@
                 <!-- <li>Platform</li> -->
                 <li>
                     <span v-for="item in parsePlatform" :key="item">
+                        <img :src="styleStore.getPlatformIcon(item)" alt="">
                         {{ item }}
+
                         <!-- <img src='@/assets/svg/github.svg' alt=""> -->
                     </span>
                 </li>
@@ -34,6 +36,9 @@
 import '@/style/MyProject/ProjectOne.css'
 import { ref, defineProps, onMounted, computed } from 'vue'
 import type { ProjectItem } from '@/interface';
+import { useStyleStore } from '@/stores/style'
+
+const styleStore = useStyleStore()
 
 const { project } = defineProps<{
     project: ProjectItem;

@@ -8,6 +8,7 @@
         <!-- Nuxt -->
         <!-- <img v-lazy="avatar" alt="Avatar" width="140" height="140" /> -->
 
+        <link rel="preload" :href="avatar" as="image" type="image/jpeg">
         <img :src="avatar" alt="Avatar" width="140" height="140" />
       </div>
       <!-- 个人介绍 -->

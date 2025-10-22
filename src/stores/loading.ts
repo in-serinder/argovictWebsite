@@ -32,6 +32,7 @@ export const useLoadingStore = defineStore('loading', {
         img.addEventListener('load', this.imageLoadCount.bind(this))
 
         if (img.complete) {
+          // console.log(img.src)
           this.imageLoadCount()
         }
       })
