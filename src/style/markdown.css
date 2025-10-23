@@ -84,6 +84,9 @@ pre {
   line-height: 22px;
   color: #d1d7e0;
   z-index: 10;
+  overflow-x: auto;
+  scrollbar-color: #ccc transparent;
+  scrollbar-width: thin;
 }
 
 pre span {
@@ -94,10 +97,14 @@ pre span {
 pre::before {
   position: absolute;
   content: 'bash';
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   top: 0;
   left: 0;
   padding: 2px;
-  background-color: #d96760;
+  background-color: #60d964;
+  color: #000000;
+  font-weight: bold;
   width: 100%;
 }
 
@@ -130,6 +137,12 @@ pre:hover::after {
 }
 
 /* 代码样式 */
+
+.hljs {
+  background: transparent;
+  color: #d1d7e0;
+  font-weight: normal;
+}
 
 .hljs-keyword {
   color: #d96760;
@@ -172,7 +185,38 @@ pre:hover::after {
 }
 
 .hljs-comment {
+  margin-left: 5px;
   color: #9198a1;
+}
+
+.hljs-title.class_ {
+  color: #ff9b79;
+}
+
+.hljs-function {
+  color: #d089a0;
+}
+
+.hljs-attribute {
+  color: #009c27;
+  font-weight: 500;
+}
+
+.hljs-symbol {
+  color: #009c27;
+  font-weight: 500;
+}
+
+.hljs-regexp {
+  color: #d17736;
+}
+
+.hljs-operator {
+  color: #d96760;
+}
+
+.hljs-type {
+  color: #549af6;
 }
 
 .language-xml .hljs-string {
@@ -286,6 +330,8 @@ pre:has(code.language-sql)::before {
 pre:has(code.language-cpp)::before {
   content: 'C++';
   background-color: #00599c; /* C++主题色 */
+
+  /* color: #00599c !important; */
 }
 
 pre:has(code.language-c)::before {
