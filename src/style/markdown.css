@@ -50,8 +50,10 @@
 /* 代码块 */
 
 .inline-code {
-  padding: 5px;
-  font-size: 15px;
+  padding: 3px;
+  font-size: 0.65em;
+  margin-left: 3px;
+  margin-right: 3px;
   font-weight: 500;
   border-radius: 5px;
   background-color: #f9f2f4;

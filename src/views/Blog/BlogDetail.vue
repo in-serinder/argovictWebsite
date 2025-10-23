@@ -1,5 +1,7 @@
 <template>
     <div class="blogDetail" id="blogContainer">
+        <!-- 图片查看器 -->
+        <ImageDetail @click="miscStore.hideImageDetail" v-show="miscStore.isImageDetailShow" />
         <span class="blog-padding-container">
             <div class="blogDetail-content-container">
                 <!-- 标题 -->
@@ -65,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import '@/style/Blog/blogDetial.css'
+import '@/style/Blog/blogDetail.css'
 import 'artalk/Artalk.css'
 import 'artalk/ArtalkLite.css'
 import '@/style/Blog/blogCommit.css'
@@ -75,8 +77,9 @@ import BlogMarkdown from '@/components/Blog/BlogMarkdown.vue'
 import BlogMoveAss from '@/components/Blog/BlogMoveAss.vue'
 import BlogOnTags from '@/components/Blog/BlogOnTags.vue'
 import BlogNotFound from '@/components/Blog/BlogNotFound.vue'
+import ImageDetail from '@/components/ImageDetail.vue'
 // import PageBuilding from '@/components/PageBuilding.vue'
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 
 
 
@@ -117,6 +120,13 @@ const blogAttribut: Ref<BlogItem | null> = ref(null);
 // const blogID: Ref<string> = ref('')
 const route = useRoute()
 const blogExist = ref(true)
+
+
+
+
+
+
+
 
 
 
@@ -196,7 +206,18 @@ onMounted(() => {
 
         blogAttribut.value = res as BlogItem
         blogExist.value = true
+
+        nextTick(() => {
+            setTimeout(() => {
+                // 图片查看器
+                // ImageDetail
+
+                miscStore.addImageDetailClickHandler(document.getElementById('blogContainer') as HTMLElement)
+            }, 1000)
+        })
     })
+
+
 
 
     setTimeout(() => {
@@ -213,12 +234,22 @@ onMounted(() => {
 
 })
 
+watch(() => miscStore.isImageDetailShow, (newVal) => {
+    if (newVal) {
+        document.body.style.overflow = 'hidden'
+    } else {
+        document.body.style.overflow = 'auto'
+    }
+})
+
+
 
 // 图片引入
 import printIcon from '@/assets/svg/print.svg'
 import printLightIcon from '@/assets/svg/light/print_light.svg'
 import shareIcon from '@/assets/svg/share.svg'
 import shareLightIcon from '@/assets/svg/light/share_light.svg'
+import { nextTick } from 'process'
 
 
 

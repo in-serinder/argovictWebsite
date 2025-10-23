@@ -9,6 +9,8 @@ export const useMiscStore = defineStore('misc', {
     return {
       isMobile: false,
       blogListLoaded: false,
+      isImageDetailShow: false,
+      imageDetailUrl: '',
     }
   },
 
@@ -83,6 +85,25 @@ export const useMiscStore = defineStore('misc', {
       document.body.classList.add('blogload-animation')
       this.blogListLoaded = true
       // console.log('sdsd')
+    },
+    /**
+     * 图片详情显示添加click处理
+     */
+    addImageDetailClickHandler(target: HTMLElement) {
+      const imageList = Array.from(target.querySelectorAll('img')) as HTMLImageElement[]
+      imageList.forEach((img) => {
+        img.addEventListener('click', () => {
+          this.showImageDetail(img.src)
+        })
+      })
+    },
+    showImageDetail(url: string) {
+      this.isImageDetailShow = true
+      this.imageDetailUrl = url
+      console.log(url)
+    },
+    hideImageDetail() {
+      this.isImageDetailShow = false
     },
   },
 })
