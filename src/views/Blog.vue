@@ -2,14 +2,14 @@
     <div class="blogPage">
 
         <div class="blog-loading">
-            <img src="@/assets/media/oiia.gif"></img>
+            <img src="@/assets/media/oiia.gif">
             <h2>{{ $t('message.loading') }}...</h2>
         </div>
 
         <!-- 博客栏 -->
         <div class="blogBar">
             <!-- 无搜索结果占位 -->
-            <div v-if="search_flag">
+            <div v-if="noSearch_flag">
                 <!-- <p>{{ $t('message.no_search_result') }}</p> -->
                 <NoSearchResult />
             </div>
@@ -45,18 +45,21 @@ import BlogOne from '@/components/Blog/BlogOne.vue'
 import BlogFilter from '@/components/Blog/BlogFilter.vue'
 import NoSearchResult from '@/components/NoSearchResult.vue'
 import type { BlogItem } from '@/interface'
-import { ref, onMounted, watch, onUnmounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import type { Ref } from 'vue'
 import { useLoadingStore } from '@/stores/loading'
 import { useMiscStore } from '@/stores/misc'
 import { useRouter } from 'vue-router'
 import { useGetContentFromServerStore } from '@/stores/getContentFromServer'
+import { useGetDataByServerStore } from '@/stores/getdatabyserver'
 import { nextTick } from 'process'
 
+
 const router = useRouter()
-const search_flag = ref(false)
+const noSearch_flag = ref(false)
 const blogList: Ref<BlogItem[]> = ref([]);
 
+const getDataByServerStore = useGetDataByServerStore()
 const getContentFromServerStore = useGetContentFromServerStore()
 const loadingStore = useLoadingStore()
 const miscStore = useMiscStore()
@@ -120,9 +123,10 @@ const searchBlog = (Goalblog: BlogItem[]) => {
     blogList.value = Goalblog;
 
     if (Goalblog.length === 0) {
-        search_flag.value = true;
+        // 无搜索结果占位
+        noSearch_flag.value = true;
     } else {
-        search_flag.value = false;
+        noSearch_flag.value = false;
     }
     // console.log(Goalblog)
 }
@@ -166,5 +170,22 @@ watch(() => loadingStore.allLoaded, (newVal) => {
     }
 })
 
+// 通过标签搜索的另一种实现,另一种于getDataByServerStore数据同步，但可能出现冲突
+watch(() => getDataByServerStore.blogList, (newVal) => {
+
+    // 优先处理搜索结果
+    if (getDataByServerStore.searchResult.total === 0) {
+        noSearch_flag.value = true
+        blogList.value = []
+        return
+    }
+
+
+    if (newVal) {
+        blogList.value = newVal
+        // console.log('通过标签搜索的另一种实现', newVal)
+        noSearch_flag.value = false
+    }
+})
 
 </script>
