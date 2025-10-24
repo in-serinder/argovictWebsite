@@ -1,0 +1,10 @@
+import { defineStore } from 'pinia'
+
+import digital0 from '@/assets/media/moe_count_girl/0.gif'
+import digital1 from '@/assets/media/moe_count_girl/1.gif'
+import digital2 from '@/assets/media/moe_count_girl/2.gif'
+import digital3 from '@/assets/media/moe_count_girl/3.gif'
+import digital4 from '@/assets/media/moe_count_girl/4.gif'
+import digital5 from '@/assets/media/moe_count_girl/5.gif'
+import digital6 from '@/assets/media/moe_count_girl/6.gif'
+import digital7 from '@/assets/media/moe_count_girl/7.gif'

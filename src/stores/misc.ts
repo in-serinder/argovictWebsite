@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { nextTick } from 'process'
 
 /**
  * 存放小控件Store
@@ -11,6 +12,7 @@ export const useMiscStore = defineStore('misc', {
       blogListLoaded: false,
       isImageDetailShow: false,
       imageDetailUrl: '',
+      imageDetailTarget: null as HTMLElement | null,
     }
   },
 
@@ -87,7 +89,7 @@ export const useMiscStore = defineStore('misc', {
       // console.log('sdsd')
     },
     /**
-     * 图片详情显示添加click处理
+     * 图片详情 显示添加click处理
      */
     addImageDetailClickHandler(target: HTMLElement) {
       const imageList = Array.from(target.querySelectorAll('img')) as HTMLImageElement[]
@@ -96,6 +98,7 @@ export const useMiscStore = defineStore('misc', {
           this.showImageDetail(img.src)
         })
       })
+      this.setupImageDetailScrollZoom()
     },
     showImageDetail(url: string) {
       this.isImageDetailShow = true
@@ -104,6 +107,38 @@ export const useMiscStore = defineStore('misc', {
     },
     hideImageDetail() {
       this.isImageDetailShow = false
+      // 修复body滚动问题
+      // document.body.classList.remove('image-detail-fix')
+      // console.log('隐藏图片详情')
+    },
+    // 鼠标缩放
+    setupImageDetailScrollZoom() {
+      let scale = 1.05
+      const imageElement = document.querySelector('.image-detail img') as HTMLImageElement
+      const imageDetailContainer = document.querySelector('.image-detail') as HTMLElement
+      imageElement.addEventListener('wheel', (e) => {
+        // e.preventDefault()
+        const delta = e.deltaY
+
+        // const scale = delta > 0 ? 0.9 : 1.1
+        if (delta > 0) {
+          scale -= scale > 0.85 ? 0.21 : 0
+        } else {
+          scale += scale < 1.5 ? 0.21 : 0
+        }
+
+        if (scale > 1.05) {
+          imageDetailContainer.style.overflow = 'auto'
+          // 复原缩放
+          // imageElement.style.width = `calc(90% *${scale})`
+          // imageElement.style.height = `calc(90% *${scale})`
+        } else {
+          imageDetailContainer.style.overflow = 'hidden'
+        }
+
+        imageElement.style.transform = `scale(${scale})`
+        console.log(scale)
+      })
     },
   },
 })

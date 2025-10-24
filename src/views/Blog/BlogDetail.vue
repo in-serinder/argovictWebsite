@@ -2,6 +2,8 @@
     <div class="blogDetail" id="blogContainer">
         <!-- 图片查看器 -->
         <ImageDetail @click="miscStore.hideImageDetail" v-show="miscStore.isImageDetailShow" />
+        <!-- 文章移动辅助 -->
+        <BlogMoveAss />
         <span class="blog-padding-container">
             <div class="blogDetail-content-container">
                 <!-- 标题 -->
@@ -61,9 +63,9 @@
                 <!-- <div class="placeholder"> </div> -->
             </div>
         </span>
-        <!-- 文章移动辅助 -->
-        <BlogMoveAss />
+
     </div>
+
 </template>
 
 <script setup lang="ts">
@@ -212,7 +214,7 @@ onMounted(() => {
                 // 图片查看器
                 // ImageDetail
 
-                miscStore.addImageDetailClickHandler(document.getElementById('blogContainer') as HTMLElement)
+                miscStore.addImageDetailClickHandler(document.getElementsByClassName('blogDetail-content-container')[0] as HTMLElement)
             }, 1000)
         })
     })
