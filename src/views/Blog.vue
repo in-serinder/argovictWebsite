@@ -23,6 +23,8 @@
             <!-- <div class="BlogOfOne" v-for="item in blogList" :key="item.date">
                 <BlogOne :blog="item" @click="toPostDetail(item)" />
             </div> -->
+            <!-- 萌娘计数器 -->
+            <div class="blog-view-moe-counter" v-show="!noSearch_flag"></div>
             <div class="blog-holder "></div>
         </div>
         <!-- 博客筛选栏 -->
@@ -52,6 +54,7 @@ import { useMiscStore } from '@/stores/misc'
 import { useRouter } from 'vue-router'
 import { useGetContentFromServerStore } from '@/stores/getContentFromServer'
 import { useGetDataByServerStore } from '@/stores/getdatabyserver'
+import { useMoeCounterGirlStore } from '@/stores/moeCounterGirl'
 import { nextTick } from 'process'
 
 
@@ -61,44 +64,12 @@ const blogList: Ref<BlogItem[]> = ref([]);
 
 const getDataByServerStore = useGetDataByServerStore()
 const getContentFromServerStore = useGetContentFromServerStore()
+const moeCounterGirlStore = useMoeCounterGirlStore()
 const loadingStore = useLoadingStore()
 const miscStore = useMiscStore()
 
+
 document.title = 'Argovict - Blog'
-
-
-// 初始化加载状态
-// loadingStore.reset()
-// loadingStore.initTotalImage()
-// loadingStore.loadingListen()
-// const blogID = ref('')
-
-
-// 获取博客列表
-// const getBlogList = async () => {
-//     try {
-//         const res = await axios.get(requestURL.value)
-//         // console.log(res.data)
-//         blogList.value = res.data.map((item: RawBlogItem) => ({
-//             title: item.title,
-//             date: item.date,
-//             author: item.author,
-//             ID: item.ID,
-//             description: item.description,
-//             image: item.heardImageURL,
-//             View: item.View,
-//             tags: item.tags ? JSON.parse(item.tags) : []
-//         } as BlogItem));
-
-//         blogList.value = blogList.value.sort((a, b) => {
-//             return new Date(b.date).getTime() - new Date(a.date).getTime()
-//         })
-
-//         // console.log(blogList.value)
-//     } catch (err) {
-//         console.log(err)
-//     }
-// }
 
 
 
@@ -140,6 +111,16 @@ onMounted(() => {
             loadingStore.initTotalImage(blogContainer)
             console.log(loadingStore.totalImage)
 
+            // 初始化萌娘计数器
+            // console.log(moeCounterGirlStore.getImageListByDigital(15232))
+            let viewCount = 0;
+            for (let i = 0; i < blogList.value.length; i++) {
+                const element = blogList.value[i];
+                viewCount += element.View;
+            }
+            moeCounterGirlStore.initMoeCounterGirl(document.querySelector('.blog-view-moe-counter') as HTMLElement)
+            moeCounterGirlStore.getImageListByDigital(viewCount)
+            moeCounterGirlStore.createCounterWidget()
 
 
         })

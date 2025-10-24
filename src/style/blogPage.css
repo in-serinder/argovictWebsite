@@ -101,3 +101,11 @@
   width: 150px;
   height: 150px;
 }
+/*  */
+
+.blog-view-moe-counter {
+  margin-top: 15px;
+  /* background-color: red; */
+  width: 100%;
+  height: 110px;
+}

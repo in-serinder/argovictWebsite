@@ -92,3 +92,16 @@ html {
 .placeholder-bottom {
   height: 100px;
 }
+
+/* 数字计数器 */
+
+.moe-counter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.moe-counter img {
+  margin-left: 5px;
+}

@@ -2,6 +2,8 @@
 
 ### My first blog website is built using Vue 3 + TypeScript + Pinia + axios
 
+![](https://count.getloli.com/get/@:ArgovictWebsite)
+
 ### Features
 
 - Concise personal introduction
