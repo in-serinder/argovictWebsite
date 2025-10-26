@@ -1,46 +1,58 @@
 import { defineStore } from 'pinia'
 
-import digital0 from '@/assets/media/moe_count_girl/0.gif'
-import digital1 from '@/assets/media/moe_count_girl/1.gif'
-import digital2 from '@/assets/media/moe_count_girl/2.gif'
-import digital3 from '@/assets/media/moe_count_girl/3.gif'
-import digital4 from '@/assets/media/moe_count_girl/4.gif'
-import digital5 from '@/assets/media/moe_count_girl/5.gif'
-import digital6 from '@/assets/media/moe_count_girl/6.gif'
-import digital7 from '@/assets/media/moe_count_girl/7.gif'
-import digital8 from '@/assets/media/moe_count_girl/8.gif'
-import digital9 from '@/assets/media/moe_count_girl/9.gif'
+import digital0_d from '@/assets/media/moe_count_girl/0.gif'
+import digital1_d from '@/assets/media/moe_count_girl/1.gif'
+import digital2_d from '@/assets/media/moe_count_girl/2.gif'
+import digital3_d from '@/assets/media/moe_count_girl/3.gif'
+import digital4_d from '@/assets/media/moe_count_girl/4.gif'
+import digital5_d from '@/assets/media/moe_count_girl/5.gif'
+import digital6_d from '@/assets/media/moe_count_girl/6.gif'
+import digital7_d from '@/assets/media/moe_count_girl/7.gif'
+import digital8_d from '@/assets/media/moe_count_girl/8.gif'
+import digital9_d from '@/assets/media/moe_count_girl/9.gif'
+
+import digital0 from '@/assets/media/moe_count_girl/MoeLoli/0.gif'
+import digital1 from '@/assets/media/moe_count_girl/MoeLoli/1.gif'
+import digital2 from '@/assets/media/moe_count_girl/MoeLoli/2.gif'
+import digital3 from '@/assets/media/moe_count_girl/MoeLoli/3.gif'
+import digital4 from '@/assets/media/moe_count_girl/MoeLoli/4.gif'
+import digital5 from '@/assets/media/moe_count_girl/MoeLoli/5.gif'
+import digital6 from '@/assets/media/moe_count_girl/MoeLoli/6.gif'
+import digital7 from '@/assets/media/moe_count_girl/MoeLoli/7.gif'
+import digital8 from '@/assets/media/moe_count_girl/MoeLoli/8.gif'
+import digital9 from '@/assets/media/moe_count_girl/MoeLoli/9.gif'
 
 export const useMoeCounterGirlStore = defineStore('moeCounterGirl', {
   state() {
     return {
       imageList: [] as string[],
       targetElement: null as HTMLElement | null,
+      typeDynamic: false,
     }
   },
   actions: {
     getDigitalImage(digital: number) {
       switch (digital) {
         case 0:
-          return digital0
+          return this.typeDynamic ? digital0_d : digital0
         case 1:
-          return digital1
+          return this.typeDynamic ? digital1_d : digital1
         case 2:
-          return digital2
+          return this.typeDynamic ? digital2_d : digital2
         case 3:
-          return digital3
+          return this.typeDynamic ? digital3_d : digital3
         case 4:
-          return digital4
+          return this.typeDynamic ? digital4_d : digital4
         case 5:
-          return digital5
+          return this.typeDynamic ? digital5_d : digital5
         case 6:
-          return digital6
+          return this.typeDynamic ? digital6_d : digital6
         case 7:
-          return digital7
+          return this.typeDynamic ? digital7_d : digital7
         case 8:
-          return digital8
+          return this.typeDynamic ? digital8_d : digital8
         case 9:
-          return digital9
+          return this.typeDynamic ? digital9_d : digital9
         default:
           return digital0
       }
@@ -74,9 +86,10 @@ export const useMoeCounterGirlStore = defineStore('moeCounterGirl', {
       })
       this.targetElement.classList.add('moe-counter')
     },
-    initMoeCounterGirl(targetElement: HTMLElement) {
+    initMoeCounterGirl(targetElement: HTMLElement, type: 'default' | 'MoeLoli') {
       this.imageList = []
 
+      this.typeDynamic = type === 'default' ? false : true
       this.targetElement = targetElement
     },
   },

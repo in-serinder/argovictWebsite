@@ -104,4 +104,5 @@ html {
 
 .moe-counter img {
   margin-left: 5px;
+  height: inherit;
 }

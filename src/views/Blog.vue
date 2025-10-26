@@ -25,6 +25,7 @@
             </div> -->
             <!-- 萌娘计数器 -->
             <div class="blog-view-moe-counter" v-show="!noSearch_flag"></div>
+            <div class="blog-footer"><em>{{ $t('message.blogs_end_edge') }}</em></div>
             <div class="blog-holder "></div>
         </div>
         <!-- 博客筛选栏 -->
@@ -118,7 +119,7 @@ onMounted(() => {
                 const element = blogList.value[i];
                 viewCount += element.View;
             }
-            moeCounterGirlStore.initMoeCounterGirl(document.querySelector('.blog-view-moe-counter') as HTMLElement)
+            moeCounterGirlStore.initMoeCounterGirl(document.querySelector('.blog-view-moe-counter') as HTMLElement, 'MoeLoli')
             moeCounterGirlStore.getImageListByDigital(viewCount)
             moeCounterGirlStore.createCounterWidget()
 

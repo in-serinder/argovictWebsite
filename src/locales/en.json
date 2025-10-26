@@ -75,6 +75,8 @@
     "have": "have",
     "no_search_result": "No search results found.",
     "blog_not_found": "They arrived at a wilderness ..",
+    "blog_not_found_footer": "If you think this is an error, please contact us.",
+    "blogs_end_edge": "You have reached the end of the world....",
     "author": "Author",
     "description": "Description",
     "word_count": "Word Count",

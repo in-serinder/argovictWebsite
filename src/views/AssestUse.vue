@@ -8,7 +8,7 @@
             <div class="divider_x"></div>
             <ul>
                 <!-- 图片 -->
-                <li v-for="asset in assetList" :key="asset.link">
+                <li v-for="asset in pictureAssetList" :key="asset.link">
                     <a :href="asset.link" target="_blank">{{ asset.description }}</a>
                     <!-- <a href="https://www.pixiv.net/artworks/124907858" target="_blank">404 Page - 404四人组</a>
                     <a href="https://www.pixiv.net/artworks/91174244" target="_blank">PlaceHolder Page - 8pin-DIP
@@ -43,7 +43,9 @@
             <div class="divider_x"></div>
             <ul>
                 <!-- 其他 -->
-                <li>None</li>
+                <li v-for="asset in otherAssetList" :key="asset.link">
+                    <a :href="asset.link" target="_blank">{{ asset.description }}</a>
+                </li>
             </ul>
             <!-- asset end-->
 
@@ -62,7 +64,7 @@ const darkModeStore = useDarkModeStore();
 
 document.title = 'Argovict - Asset Use'
 
-const assetList = ref<asset[]>([
+const pictureAssetList = ref<asset[]>([
     {
         tagsIcon: '',
         link: 'https://www.pixiv.net/artworks/124907858',
@@ -94,6 +96,16 @@ const assetList = ref<asset[]>([
         description: 'Post Not Found - 🐱❓ 🌵❓',
     },
 ]);
+
+const otherAssetList = ref<asset[]>([
+    {
+        tagsIcon: '',
+        link: 'https://github.com/journey-ad/Moe-Counter',
+        description: 'Moe Counter - 一个简单的萌萌计数器',
+    },
+]);
+
+
 
 
 

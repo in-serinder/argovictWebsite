@@ -101,11 +101,23 @@
   width: 150px;
   height: 150px;
 }
+
+.blog-footer {
+  width: 100%;
+  /* height: px; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  font-weight: 700;
+}
+
 /*  */
 
 .blog-view-moe-counter {
-  margin-top: 15px;
+  margin-top: 45px;
   /* background-color: red; */
   width: 100%;
-  height: 110px;
+  height: 80px;
 }
