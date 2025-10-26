@@ -11,7 +11,7 @@
   /* background-color: #000; */
   background-color: #f5f5f5;
   padding: 10px;
-  overflow-y: hidden;
+  overflow-y: auto;
   /* z-index: 1000; */
   scrollbar-width: thin;
 
@@ -24,7 +24,6 @@
   justify-content: flex-start;
   align-items: center;
   padding: 10px;
-
   height: 100%;
   width: calc(100% - 260px);
   /* background-color: #fff; */

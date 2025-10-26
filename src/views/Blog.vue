@@ -17,6 +17,11 @@
                 <BlogOne :blog="item" @click="toPostDetail(item)" />
 
             </div>
+            <!-- 
+            <div class="BlogOfOne" v-for="item in blogList" :key="item.date">
+                <BlogOne :blog="item" @click="toPostDetail(item)" />
+
+            </div> -->
 
 
 
