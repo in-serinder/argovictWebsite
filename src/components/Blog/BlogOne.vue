@@ -9,7 +9,7 @@
             </div>
             <!-- 博客内容 -->
             <div class="blogOne_content_abstract">
-                {{ blog.description }}
+                {{ miscStore.adjustBlogTitleLength(blog.description, 256) }}
             </div>
             <!-- 发布时间 -->
             <div class="blogOne_content_time"><img src="@/assets/svg/time.svg" alt="">{{ blog.date }}</div>
@@ -32,12 +32,13 @@
 import '@/style/Blog/blogOne.css'
 import BlogOnTags from '@/components/Blog/BlogOnTags.vue'
 import type { BlogItem } from '@/interface'
-import { ref, defineProps, computed } from 'vue'
+import { defineProps } from 'vue'
+import { useMiscStore } from '@/stores/misc'
 // import { useTagStore } from '@/stores/tag'
 
 
 // const tagStore = useTagStore()
-
+const miscStore = useMiscStore()
 const { blog } = defineProps<{
     blog: BlogItem
 }>()

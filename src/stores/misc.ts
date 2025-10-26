@@ -140,5 +140,14 @@ export const useMiscStore = defineStore('misc', {
         console.log(scale)
       })
     },
+    /**
+     * 标题修改长度
+     */
+    adjustBlogTitleLength(title: string, maxLength: number): string {
+      if (title.length <= maxLength) {
+        return title
+      }
+      return title.substring(0, maxLength) + '...'
+    },
   },
 })
