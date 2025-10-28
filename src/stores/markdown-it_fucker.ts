@@ -3,10 +3,32 @@ import MarkdownIt from 'markdown-it'
 import mdHighlight from 'markdown-it-highlightjs'
 import anchor from 'markdown-it-anchor'
 import hljs from 'highlight.js'
-import { computed } from 'vue'
+// import { computed } from 'vue'
+// 公式渲染
+// @ts-ignore:
+import texmath from 'markdown-it-texmath'
+import katex from 'katex'
+
+// import type MarkdownIt from 'markdown-it';
+// import type * as Katex from 'katex'
+// 引入katex的css
+import 'katex/dist/katex.min.css'
 
 const chineseRegex = /[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef]/g
-const englishRegex = /-([a-z])/g
+// const englishRegex = /-([a-z])/g
+
+// declare module 'markdown-it-texmath' {
+//   interface TexmathOptions {
+//     // 精确指定 engine 为 katex 模块的类型（不再用 any）
+//     engine?: typeof Katex
+//     delimiters?: 'dollars' | 'brackets' | 'gitlab' | 'julia' | 'auto'
+//     // 用 "unknown" 替代 "any"（unknown 更安全，需显式类型断言才可用）
+//     [key: string]: unknown
+//   }
+
+//   const plugin: (md: MarkdownIt, options?: TexmathOptions) => void
+//   export default plugin
+// }
 
 export const userMarkDownFucker = defineStore('mdFucker', {
   state() {
@@ -34,6 +56,10 @@ export const userMarkDownFucker = defineStore('mdFucker', {
             // console.log(str);
             return str
           },
+        })
+        .use(texmath, {
+          engine: katex,
+          delimiters: 'dollars',
         }),
     }
   },

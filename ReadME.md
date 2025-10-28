@@ -20,23 +20,6 @@
 ### You need to manually configure the JSON backend. The interface is defined in the configuration file `interface.ts`
 
 ```typescript
-export interface Post {
-  id: number
-  title: string
-  content: string
-  date: string
-  tags: string[]
-}
-
-export interface Project {
-  id: number
-  title: string
-  content: string
-  projectLink: string
-  platform: string[]
-  projectName: string
-}
-
 export interface RawBlogItem {
   title: string
   date: string
