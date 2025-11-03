@@ -14,6 +14,9 @@ import AssestUse from '@/views/AssestUse.vue'
 // child route
 import BlogDetail from '@/views/Blog/BlogDetail.vue'
 
+import Requirements from '@/views/Commission/Requirements.vue'
+import Preview from '@/views/Commission/Preview.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -37,7 +40,7 @@ const router = createRouter({
       name: 'blog',
       component: Blog, //使用预加载策略
     },
-
+    // Blog同级路由
     {
       path: '/blog/detail/:id',
       name: 'blogDetail',
@@ -47,6 +50,17 @@ const router = createRouter({
       path: '/commission',
       name: 'commission',
       component: Commission,
+    },
+    //Commission子路由
+    {
+      path: '/commission/requirements/:type',
+      name: 'commissionRequirements',
+      component: Requirements,
+    },
+    {
+      path: '/commission/example/:type',
+      name: 'commissionExample',
+      component: Preview,
     },
     {
       path: '/:pathMatch(.*)*',
