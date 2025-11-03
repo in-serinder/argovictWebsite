@@ -86,6 +86,7 @@
 .tagFilter_content img {
   margin-right: 3px;
 }
+
 /* 标签存放 */
 
 .tagFilter_content {
@@ -106,15 +107,21 @@
 
   background-size:
     25% 2px,
-    /* 1. 左上右线：长度25%，厚度2px */ 2px 50%,
+    /* 1. 左上右线：长度25%，厚度2px */
+    2px 50%,
     25% 2px,
-    /* 7. 右下左线：长度25%，厚度2px */ 2px 50%; /* 8. 右下上线 */
+    /* 7. 右下左线：长度25%，厚度2px */
+    2px 50%;
+  /* 8. 右下上线 */
   background-repeat: no-repeat;
   background-position:
     top left,
-    /* 1. 左上右线：顶部左侧 */ top left,
+    /* 1. 左上右线：顶部左侧 */
+    top left,
     bottom right,
-    /* 7. 右下左线：底部右侧 */ bottom right; /* 8. 右下上线：底部右侧 */
+    /* 7. 右下左线：底部右侧 */
+    bottom right;
+  /* 8. 右下上线：底部右侧 */
 
   max-height: 400px;
   overflow-y: auto;
@@ -151,4 +158,8 @@
 
 .search-result span {
   margin-left: 20px;
+}
+
+.dp__menu.dp__relative.dp__theme_light {
+  border: none;
 }
