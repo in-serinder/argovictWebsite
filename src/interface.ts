@@ -90,3 +90,18 @@ export interface detailWindowItem {
 export interface ArtalkConfig {
   plugins?: Array<(artalk: Artalk) => void>
 }
+
+// 委托页面类型控件
+export interface CheckBox {
+  item: string
+  description: string
+  subitems: string[]
+  checked: boolean[]
+}
+
+export interface Radio {
+  item: string
+  description: string
+  subitems: string[]
+  checked: number
+}

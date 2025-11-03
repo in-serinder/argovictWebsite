@@ -1,0 +1,64 @@
+.commission-requirements {
+  width: inherit;
+  background-color: #f5f5f5;
+  height: inherit;
+}
+
+/* 全部建立在容器 */
+.commission-requirements-container {
+  width: inherit;
+  height: inherit;
+  /* background-color: aqua; */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: center;
+}
+
+.commission-requirements-list {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+
+}
+
+
+.commission-requirements-bottom {
+  background-color: #fff;
+  position: fixed;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  border-top: 1px solid #ccc;
+}
+
+.commission-requirements-bottom-interaction {
+  margin-right: 20px;
+}
+
+.commission-requirements-bottom-interaction button {
+  margin-left: 10px;
+  height: 40px;
+  border-radius: 0;
+  border: 2px solid #3673fe;
+}
+
+.commission-requirements-bottom-price {
+  font-weight: bold;
+  font-size: 1.4em;
+  color: #ff9700;
+}
+
+/* 测试 */
+.commission-requirements-type-exmaple {
+  width: 100%;
+  height: 100%;
+  /* background-color: #3673fe; */
+}
