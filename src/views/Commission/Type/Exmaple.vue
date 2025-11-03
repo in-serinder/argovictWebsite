@@ -7,6 +7,7 @@
         <CheckBox></CheckBox>
         <Radio></Radio>
         <SingleRadio></SingleRadio>
+        <TypeArea></TypeArea>
         <Remarks></Remarks>
     </div>
 </template>
@@ -16,5 +17,6 @@ import CheckBox from '@/components/Commission/RequirementItem/CheckBox.vue';
 import Radio from '@/components/Commission/RequirementItem/Radio.vue';
 import SingleRadio from '@/components/Commission/RequirementItem/SingleRadio.vue';
 import Remarks from '@/components/Commission/RequirementItem/Remarks.vue';
+import TypeArea from '@/components/Commission/RequirementItem/TypeArea.vue';
 
 </script>
