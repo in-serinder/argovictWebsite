@@ -43,10 +43,15 @@ jobs:
           echo "Release version: ${{ github.event.release.tag_name }}"
           echo "Release name: ${{ github.event.release.name }}"
 
+      - name: pack dist
+        run: |
+          VERSION=${{ github.event.release.tag_name }}
+          zip -r "dist-${VERSION}.zip" dist/
+
       # 发布
-      - name: Publish to npm
-        uses: actions/npm-publish@v1
+      - name: Release
+        uses: softprops/action-gh-release@v2
         with:
-          package-path: './dist'
+          files: 'dist-${{ github.event.release.tag_name }}.zip'
         env:
-          token: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
