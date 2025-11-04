@@ -94,28 +94,44 @@ export interface ArtalkConfig {
 // 委托页面类型控件
 export interface CheckBox {
   item: string
-  description: string
+  description?: string
   subitems: string[]
   checked: boolean[]
 }
 
 export interface Radio {
   item: string
-  description: string
+  description?: string
   subitems: string[]
   checked: number
 }
 
 export interface SingleRadio {
   item: string
-  description: string
-  yes: boolean
+  description?: string
+  selected: string
 }
 
 export interface TypeArea {
   item: string
-  itemType: string
-  description: string
-  number?: number
+  itemType: 'number' | 'content'
+  description?: string
+  number: number
   content?: string
+}
+
+export interface Table {
+  tablename: string
+  tableheader: string[]
+  tablecontent: string[][]
+}
+
+export interface ImageRadio {
+  item: string
+  description?: string
+  subitems: {
+    item: string
+    imageurl: string
+  }[]
+  checked: number
 }

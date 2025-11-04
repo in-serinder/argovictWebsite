@@ -11,6 +11,8 @@
         <Table></Table>
         <ImageRadio></ImageRadio>
         <Remarks></Remarks>
+        <!-- 占位 -->
+        <div style="height: 100px;"> </div>
     </div>
 </template>
 

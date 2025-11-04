@@ -32,6 +32,10 @@
 
 }
 
+.commission-Imageradio-item.checked {
+  border: 1px solid #3673fe;
+}
+
 
 
 .commission-Imageradio-item img {

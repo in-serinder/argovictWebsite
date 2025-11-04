@@ -7,14 +7,15 @@
             <!-- 描述 -->
             <img src="@/assets/svg/unkonw.svg" alt="">
             <!-- 带有按键 -->
-            <div class="commission-type-area-as" v-show="isAs">
-                <div><img src="@/assets/svg/sub.svg" alt=""> <input type="text"><img src="@/assets/svg/add.svg" alt="">
+            <div class="commission-type-area-as" v-show="config.itemType === 'number'">
+                <div><img src="@/assets/svg/sub.svg" alt="" v-on:click="config.number--"> <input type="text"
+                        v-model="config.number"><img src="@/assets/svg/add.svg" alt="" v-on:click="config.number++">
                 </div>
 
             </div>
             <!-- 直接键入 -->
-            <div class="commission-type-area-direct" v-show="!isAs">
-                <input type="text">
+            <div class="commission-type-area-direct" v-show="config.itemType === 'content'">
+                <input type="text" v-model="config.content">
             </div>
         </div>
 
@@ -23,9 +24,16 @@
 
 <script setup lang="ts">
 import '@/style/Commission/Components/commissionTypeArea.css'
+import type { TypeArea } from '@/interface'
 import { ref } from 'vue'
 
-const isAs = ref<boolean>(true)
 
+const config = ref<TypeArea>({
+    item: "TypeArea",
+    itemType: "number",
+    description: "TypeArea Description",
+    number: 0,
+    content: "",
+})
 
 </script>

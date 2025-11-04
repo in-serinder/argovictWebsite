@@ -8,6 +8,7 @@ import Blog from '@/views/Blog.vue'
 import Commission from '@/views/Commission.vue'
 import Page404 from '@/views/404.vue'
 import AssestUse from '@/views/AssestUse.vue'
+import TestArea from '@/views/TestArea.vue'
 
 // import Blog = () => import('@/views/Blog.vue')
 
@@ -71,6 +72,11 @@ const router = createRouter({
       path: '/asset',
       name: 'asset',
       component: AssestUse,
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: TestArea,
     },
   ],
 })
