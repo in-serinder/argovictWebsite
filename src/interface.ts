@@ -105,3 +105,17 @@ export interface Radio {
   subitems: string[]
   checked: number
 }
+
+export interface SingleRadio {
+  item: string
+  description: string
+  yes: boolean
+}
+
+export interface TypeArea {
+  item: string
+  itemType: string
+  description: string
+  number?: number
+  content?: string
+}

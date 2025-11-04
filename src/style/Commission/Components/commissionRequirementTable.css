@@ -1,0 +1,51 @@
+.commission-requirement-table {
+  width: auto;
+  height: auto;
+  background-color: #fff;
+  padding: 15px;
+  /* background-color: #3673fe; */
+}
+
+.commission-requirement-table h3 {
+  margin-bottom: 10px;
+}
+
+
+.commission-requirement-table table {
+  margin-top: 10px;
+  border: 2px solid #e1e1e1;
+  margin: 0;
+  overflow-x: auto;
+
+  border-collapse: collapse;
+}
+
+.commission-requirement-table table thead {
+  background-color: #e5e5e56e;
+  margin: 0;
+}
+
+.commission-requirement-table table thead th {
+  padding: 10px;
+  border: 1px solid #e1e1e1;
+  margin: 0;
+
+}
+
+
+.commission-requirement-table table tbody {
+  margin: 0;
+
+}
+
+.commission-requirement-table table tbody tr {
+  margin: 0;
+}
+
+.commission-requirement-table table tbody tr td {
+  /* 上 右 下 左 */
+  padding: 5px 20px 5px 20px;
+  margin: 0;
+  border: 1px solid #e1e1e1;
+
+}

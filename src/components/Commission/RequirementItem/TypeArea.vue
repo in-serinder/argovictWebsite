@@ -14,7 +14,6 @@
             </div>
             <!-- 直接键入 -->
             <div class="commission-type-area-direct" v-show="!isAs">
-
                 <input type="text">
             </div>
         </div>

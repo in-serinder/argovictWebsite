@@ -14,8 +14,10 @@
                 <!-- 此处为row-reverse -->
                 <!-- 交互：生成报表，保存报表 -->
                 <div class="commission-requirements-bottom-interaction">
-                    <button style="background-color: #3673fe; color: #fff;">Generate Report</button>
-                    <button>Save Report</button>
+                    <!-- <button style="background-color: #3673fe; color: #fff;">Generate Report</button>
+                    <button>Save Report</button> -->
+                    <span style="background-color: #3673fe; color: #fff;">Generate Report</span>
+                    <span>Save Report</span>
                 </div>
                 <!-- 报价 -->
                 <span class="commission-requirements-bottom-price">
