@@ -2,7 +2,7 @@
     <div class="commission-checkbox">
         <!-- 项目 -->
         <div>
-            <p>CheckBox</p>
+            <p>{{ Config.item }}</p>
         </div>
         <!-- 描述 -->
         <img src="@/assets/svg/unkonw.svg" alt="">

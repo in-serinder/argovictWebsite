@@ -17,6 +17,19 @@
   position: relative;
 }
 
+.commission-checkbox img::before {
+  position: absolute;
+  content: "A dialog";
+  font-size: 1em;
+  width: auto;
+  height: 10px;
+  top: 0;
+  background-color: #3673FE;
+  transition: all 0.3s ease-in-out;
+}
+
+
+
 
 .commission-checkbox-box {
   margin-left: 16px;

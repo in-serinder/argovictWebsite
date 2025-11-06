@@ -5,7 +5,7 @@
             <!-- 标题 -->
             <p>TypeArea</p>
             <!-- 描述 -->
-            <img src="@/assets/svg/unkonw.svg" alt="">
+            <img src="@/assets/svg/unkonw.svg">
             <!-- 带有按键 -->
             <div class="commission-type-area-as" v-show="config.itemType === 'number'">
                 <div><img src="@/assets/svg/sub.svg" alt="" v-on:click="config.number--"> <input type="text"
