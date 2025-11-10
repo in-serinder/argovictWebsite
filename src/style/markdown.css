@@ -44,7 +44,26 @@
 }
 
 .table-data-cell {
+
   font-size: 15px;
+}
+
+.table-container table {
+  border: none;
+}
+
+.table-container table thead tr th {
+  text-align: center;
+
+  border: 1px solid #fff;
+  padding: 0 15px 0 15px;
+}
+
+
+.table-container table tbody tr td {
+  text-align: center;
+  border: 1px solid #c6c6c6;
+  padding: 0 15px 0 15px;
 }
 
 /* 代码块 */
@@ -69,6 +88,7 @@
   width: 100%;
   /* overflow-x: auto; */
 }
+
 .table-container table {
   /* width: 100%; */
   /* background-color: #262c36; */
@@ -263,142 +283,174 @@ pre:has(code[class*='language-'])::before {
 
 pre:has(code.language-html)::before {
   content: 'HTML';
-  background-color: #e34c26; /* HTML主题色 */
+  background-color: #e34c26;
+  /* HTML主题色 */
 }
+
 pre:has(code.language-css)::before {
   content: 'CSS';
-  background-color: #264de4; /* CSS主题色 */
+  background-color: #264de4;
+  /* CSS主题色 */
 }
+
 pre:has(code.language-javascript)::before {
   content: 'JS';
-  background-color: #f7df1e; /* JS主题色 */
+  background-color: #f7df1e;
+  /* JS主题色 */
 }
 
 pre:has(code.language-bash)::before {
   content: 'Bash';
-  background-color: #4eaa25; /* Bash主题色 */
+  background-color: #4eaa25;
+  /* Bash主题色 */
 }
+
 pre:has(code.language-json)::before {
   content: 'JSON';
-  background-color: #f7df1e; /* JSON主题色 */
+  background-color: #f7df1e;
+  /* JSON主题色 */
 }
 
 pre:has(code.language-plaintext)::before {
   content: 'Plain Text';
-  background-color: #999999; /* Plain Text主题色 */
+  background-color: #999999;
+  /* Plain Text主题色 */
 }
 
 pre:has(code.language-toml)::before {
   content: 'TOML';
-  background-color: #cb171e; /* TOML主题色 */
+  background-color: #cb171e;
+  /* TOML主题色 */
   color: #fff;
 }
 
 pre:has(code.language-xml)::before {
   content: 'XML';
-  background-color: #2b7489; /* XML主题色 */
+  background-color: #2b7489;
+  /* XML主题色 */
 }
 
 pre:has(code.language-ruby)::before {
   content: 'Ruby';
-  background-color: #701516; /* Ruby主题色 */
+  background-color: #701516;
+  /* Ruby主题色 */
 }
 
 pre:has(code.language-go)::before {
   content: 'Go';
-  background-color: #00add8; /* Go主题色 */
+  background-color: #00add8;
+  /* Go主题色 */
 }
 
 pre:has(code.language-python)::before {
   content: 'Python';
-  background-color: #3572a5; /* Python主题色 */
+  background-color: #3572a5;
+  /* Python主题色 */
 }
 
 pre:has(code.language-markdown)::before {
   content: 'Markdown';
   color: #fff;
-  background-color: #000000; /* Markdown主题色 */
+  background-color: #000000;
+  /* Markdown主题色 */
 }
 
 pre:has(code.language-shell)::before {
   content: 'Shell';
-  background-color: #4eaa25; /* Shell主题色 */
+  background-color: #4eaa25;
+  /* Shell主题色 */
 }
 
 pre:has(code.language-yaml)::before {
   content: 'YAML';
-  background-color: #cb171e; /* YAML主题色 */
+  background-color: #cb171e;
+  /* YAML主题色 */
 }
 
 pre:has(code.language-ini)::before {
   content: 'INI';
-  background-color: #cb171e; /* INI主题色 */
+  background-color: #cb171e;
+  /* INI主题色 */
 }
 
 pre:has(code.language-sql)::before {
   content: 'SQL';
-  background-color: #e38c00; /* SQL主题色 */
+  background-color: #e38c00;
+  /* SQL主题色 */
 }
 
 pre:has(code.language-cpp)::before {
   content: 'C++';
-  background-color: #00599c; /* C++主题色 */
+  background-color: #00599c;
+  /* C++主题色 */
 
   /* color: #00599c !important; */
 }
 
 pre:has(code.language-c)::before {
   content: 'C';
-  background-color: #00599c; /* C主题色 */
+  background-color: #00599c;
+  /* C主题色 */
 }
 
 pre:has(code.language-rust)::before {
   content: 'Rust';
-  background-color: #dea584; /* Rust主题色 */
+  background-color: #dea584;
+  /* Rust主题色 */
 }
 
 pre:has(code.language-csharp)::before {
   content: 'C#';
-  background-color: #239120; /* C#主题色 */
+  background-color: #239120;
+  /* C#主题色 */
 }
 
 pre:has(code.language-php)::before {
   content: 'PHP';
-  background-color: #777bb4; /* PHP主题色 */
+  background-color: #777bb4;
+  /* PHP主题色 */
 }
 
 pre:has(code.language-typescript)::before {
   content: 'TypeScript';
-  background-color: #2b7489; /* TypeScript主题色 */
+  background-color: #2b7489;
+  /* TypeScript主题色 */
 }
 
 pre:has(code.language-java)::before {
   content: 'Java';
-  background-color: #b07219; /* Java主题色 */
+  background-color: #b07219;
+  /* Java主题色 */
 }
 
 pre:has(code.language-swift)::before {
   content: 'Swift';
-  background-color: #f05138; /* Swift主题色 */
+  background-color: #f05138;
+  /* Swift主题色 */
 }
 
 pre:has(code.language-kotlin)::before {
   content: 'Kotlin';
-  background-color: #0095d5; /* Kotlin主题色 */
+  background-color: #0095d5;
+  /* Kotlin主题色 */
 }
+
 pre:has(code.language-dart)::before {
   content: 'Dart';
-  background-color: #00b4ab; /* Dart主题色 */
+  background-color: #00b4ab;
+  /* Dart主题色 */
 }
 
 pre:has(code.language-r)::before {
   content: 'R';
-  background-color: #239120; /* R主题色 */
+  background-color: #239120;
+  /* R主题色 */
 }
 
 pre:has(code.language-vue)::before {
   content: 'Vue';
-  background-color: #42b883; /* Vue主题色 */
+  background-color: #42b883;
+  /* Vue主题色 */
 }
 
 /* 代码块结束 */

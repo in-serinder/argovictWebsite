@@ -33,6 +33,7 @@ const chineseRegex = /[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef]/g
 export const userMarkDownFucker = defineStore('mdFucker', {
   state() {
     return {
+      MarkdownTitles: [] as string[],
       mdParser: new MarkdownIt({
         html: true,
         breaks: true,
@@ -179,6 +180,10 @@ export const userMarkDownFucker = defineStore('mdFucker', {
         token.attrSet('id', customId)
         return defaultHeadingOpen(tokens, idx, options, env, self)
       }
+    },
+    parseMarkdownTitle(markdown: string) {
+      this.MarkdownTitles = markdown.match(/^#+\s*(.*)$/gm) || []
+      console.log(this.MarkdownTitles)
     },
 
     // 不使用
