@@ -8,7 +8,7 @@
             <div class="blogDetail-content-container">
                 <!-- 标题 -->
                 <div class="blogDetail_title">
-                    <h1>{{ blogAttribut?.title }}</h1>
+                    <h1 id="blogtitle">{{ blogAttribut?.title }}</h1>
                 </div>
                 <!-- 文章信息 -->
                 <div class="blogDetail_info">
@@ -63,6 +63,16 @@
                 <!-- <div class="placeholder"> </div> -->
             </div>
         </span>
+        <div class="blogDetail-title-guidepost">
+            <!-- <h1>test</h1> -->
+            <a href="" @click="scrollToTop" style="font-size: 15px;">{{ blogAttribut?.title }}</a>
+            <ul v-for="title in mdFucker.MarkdownTitles" :key="title">
+                <li :style="`padding-left: ${title.match(/^#+/) ? title.match(/^#+/)![0].length * 10 : 0}px`">
+                    <a :href="`#${mdFucker.parseMarkdownTitleToAnchor(title.replace(/^#+\s*/, ''))}`">{{
+                        title.replace(/^#+\s*/, '') }}</a>
+                </li>
+            </ul>
+        </div>
 
     </div>
 
@@ -96,6 +106,7 @@ import { useRoute } from 'vue-router'
 import { useDarkModeStore } from '@/stores/darkmode'
 import { useGetContentFromServerStore } from '@/stores/getContentFromServer'
 import { useBlogCommentStore } from '@/stores/blogComment'
+import { userMarkDownFucker } from '@/stores/markdown-it_fucker'
 
 
 // const viewCountStore = useViewCountStore()
@@ -103,6 +114,9 @@ const miscStore = useMiscStore()
 const darkModeStore = useDarkModeStore()
 const getContetFromServerStore = useGetContentFromServerStore()
 const blogCommentStore = useBlogCommentStore()
+const mdFucker = userMarkDownFucker()
+
+const container = ref<HTMLDivElement | null>(null);
 
 
 
@@ -220,17 +234,12 @@ onMounted(() => {
     })
 
 
-
-
     setTimeout(() => {
         // initArtalk();
         blogCommentStore.initArtalk(blogAttribut.value?.ID as string)
     }, 1500)
+    container.value = document.getElementById('blogContainer') as HTMLDivElement | null;
 
-
-
-
-    //    viewCountStore.addViewCount
 
 
 
@@ -244,14 +253,20 @@ watch(() => miscStore.isImageDetailShow, (newVal) => {
     }
 })
 
-
+const scrollToTop = () => {
+    container.value?.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    // console.log(document.getElementById('blogContainer').clientHeight)
+};
 
 // 图片引入
 import printIcon from '@/assets/svg/print.svg'
 import printLightIcon from '@/assets/svg/light/print_light.svg'
 import shareIcon from '@/assets/svg/share.svg'
 import shareLightIcon from '@/assets/svg/light/share_light.svg'
-import { nextTick } from 'process'
+import { nextTick, title } from 'process'
 
 
 

@@ -66,9 +66,9 @@
   content: "Loading";
   font-size: 1.72em;
   text-align: center;
-  background-image: url(@/../../../assets/media/squareload.gif);
+  /* background-image: url(@/../../../assets/media/squareload.gif);
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 
   z-index: 20;
   transition: all 0.7s ease-in-out;

@@ -58,7 +58,7 @@ watch(
     () => md.value,
     (newValue) => {
         markdown.value = mdFucker.mdParser.render(newValue);
-
+        mdFucker.parseMarkdownTitle(newValue)
     },
     { immediate: true }
 );
@@ -74,7 +74,7 @@ watch(
             scrollStore.scrollToAnchor(route.hash); // shabi
 
             nextTick(() => {
-                console.log('加载md');
+                // console.log('加载md');
                 miscStore.disableAutoPlay()
             })
         });

@@ -182,8 +182,17 @@ export const userMarkDownFucker = defineStore('mdFucker', {
       }
     },
     parseMarkdownTitle(markdown: string) {
-      this.MarkdownTitles = markdown.match(/^#+\s*(.*)$/gm) || []
+      this.MarkdownTitles = markdown.match(/^(#{1,4})\s+(.*?)$/gm) || []
       console.log(this.MarkdownTitles)
+    },
+    parseMarkdownTitleToAnchor(title: string) {
+      // #21-nightcore---heart-to-heart
+      // #2.1%20Nightcore%20-%20Heart%20To%20Heart
+      return title
+        .replace(/(\d+)\./g, '$1')
+        .replace(/\s+/g, '-')
+        .toLowerCase()
+      // title = `<a href="#${id}">${title}</a>`
     },
 
     // 不使用

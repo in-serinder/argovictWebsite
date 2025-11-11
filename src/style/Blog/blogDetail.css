@@ -31,7 +31,7 @@
   flex-direction: column;
   justify-content: center;
   background-color: #fff;
-  width: 80vw;
+  width: 70vw;
   align-items: center;
   border-radius: 10px;
   padding-bottom: 20px;
@@ -198,4 +198,53 @@
   animation: bubbleDialog 1s ease-in-out forwards;
   /* transform: translateY(-100px); */
   /* top: 20px; */
+}
+
+/* 目录导航 */
+.blogDetail-title-guidepost {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 70px;
+  /* right: 20px; */
+  min-width: 180px;
+  max-width: 220px;
+  left: 10px;
+  height: fit-content;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 1000;
+
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.blogDetail-title-guidepost ul {
+  list-style: none;
+  /* padding: 10px; */
+  margin: 3px 0 3px 3px;
+  font-size: 10px;
+}
+
+.blogDetail-title-guidepost li a {
+  color: #666;
+}
+
+.blogDetail-title-guidepost li a:hover {
+  color: #ed8d0f;
+}
+
+.blogDetail-title-guidepost a {
+  color: #333;
+
+  font-weight: bold;
+  text-align: center;
+}
+
+@media(min-width: 1300px) {
+  .blogDetail-title-guidepost {
+    visibility: visible;
+  }
 }

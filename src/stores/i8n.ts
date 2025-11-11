@@ -9,7 +9,7 @@ type LocalesListType = (typeof LocalesList)[number]
 
 export const getBrowserLanguage = (): LocalesListType => {
   const browserLang = navigator.language.slice(0, 2) as LocalesListType
-  console.log(browserLang)
+  // console.log(browserLang)
   return LocalesList.includes(browserLang) ? browserLang : 'en'
 }
 
