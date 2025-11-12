@@ -208,6 +208,8 @@
   top: 70px;
   /* right: 20px; */
   min-width: 180px;
+  /*  */
+  width: 12vw;
   max-width: 220px;
   left: 10px;
   height: fit-content;

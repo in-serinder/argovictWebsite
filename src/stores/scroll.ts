@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { computed } from 'vue'
 
 const chineseRegex = /[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef]/g
 const englishRegex = /-([a-z])/g
@@ -83,6 +82,8 @@ export const useScrollStore = defineStore('scroll', {
         .join('-')
         .replace(/(?<=\d)-(?=\s*$)/, '')
         .replace(/-{2,}/g, '-')
+        .replace(/['/',',','(',')','<','>']/g, '')
+      // .replace(/\d+(?=-)/g, '')
       // .replace(englishRegex, (match, p1) => {
       //   return match.charAt(0) + p1.toUpperCase()
       // })
