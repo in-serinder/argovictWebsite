@@ -95,6 +95,11 @@ const pictureAssetList = ref<asset[]>([
         link: 'https://www.pixiv.net/artworks/130446730',
         description: 'Post Not Found - 🐱❓ 🌵❓',
     },
+    {
+        tagsIcon: '',
+        link: 'https://pixabay.com/zh/photos/towers-radio-tower-76511/',
+        description: 'Susie towers-radio-tower',
+    },
 ]);
 
 const otherAssetList = ref<asset[]>([

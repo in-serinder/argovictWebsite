@@ -15,6 +15,9 @@ import TestArea from '@/views/TestArea.vue'
 // child route
 import BlogDetail from '@/views/Blog/BlogDetail.vue'
 
+import ExamQBank from '@/views/Tools/ExamQBank.vue'
+import ExamQPage from '@/views/Tools/ExamQPage.vue'
+
 import Requirements from '@/views/Commission/Requirements.vue'
 import Preview from '@/views/Commission/Preview.vue'
 
@@ -35,6 +38,16 @@ const router = createRouter({
       path: '/tools',
       name: 'tools',
       component: Tools,
+    },
+    {
+      path: '/tools/exam',
+      name: 'examQBank',
+      component: ExamQBank,
+    },
+    {
+      path: '/tools/exam/page',
+      name: 'examQPage',
+      component: ExamQPage,
     },
     {
       path: '/blog',
