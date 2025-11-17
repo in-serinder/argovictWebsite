@@ -25,7 +25,7 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
     currentOptions: [] as string[],
     currentQuestionNum: 0,
     showAnswer: false,
-    isShuffled: true,
+    isShuffled: false,
     isSkipRight: false,
     isMultiChoice: false,
   }),
@@ -62,9 +62,9 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
       }
     },
     showCorrectAnswer() {
-      console.log('正确答案:', this.correctAnswer)
-      console.log('选择答案:', this.selectedOptions)
-      console.log('错误选项:', this.incorrectOptions)
+      // console.log('正确答案:', this.correctAnswer)
+      // console.log('选择答案:', this.selectedOptions)
+      // console.log('错误选项:', this.incorrectOptions)
 
       this.showAnswer = true
       //   排序去重
@@ -136,6 +136,9 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
       this.currentQuestionNum++
       this.getExamQList(this.currentQuestionNum.toString())
       this.initQuestion()
+
+      // 保存配置
+      this.saveExamConfig()
     },
     getPreviousQuestion() {
       if (this.currentQuestionNum === 1) {
@@ -144,6 +147,8 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
       this.currentQuestionNum--
       this.getExamQList(this.currentQuestionNum.toString())
       this.initQuestion()
+      // 保存配置
+      this.saveExamConfig()
     },
     /**
      * 混合选项
@@ -177,9 +182,9 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
         })
         .sort()
 
-      console.log('索引', Index)
-      console.log('正确答案', this.correctAnswer)
-      console.log('选项', shuffledOptions)
+      // console.log('索引', Index)
+      // console.log('正确答案', this.correctAnswer)
+      // console.log('选项', shuffledOptions)
 
       // 用索引数组重新排序选项
       // options = Index.map((index) => options[index])
@@ -209,13 +214,17 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
         }),
       )
     },
-    readExamConfig() {
+    readExamConfig(asqurey: boolean) {
       const config = localStorage.getItem('examconfig')
       if (config) {
         const { isShuffled, skipRight, questionNum } = JSON.parse(config)
         this.isShuffled = isShuffled
         this.isSkipRight = skipRight
-        this.currentQuestionNum = questionNum
+        if (!asqurey) {
+          this.currentQuestionNum = questionNum
+        }
+
+        console.log(isShuffled, skipRight, questionNum)
       }
     },
   },

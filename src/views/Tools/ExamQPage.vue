@@ -5,10 +5,10 @@
             <div class="examQPage-progress">
                 <!-- 进度条 -->
                 <div class="examQPage-progress-bar"
-                    :style="{ width: (currentQuestion?.questionnum ? currentQuestion?.questionnum : 0) / 500 * 100 + '%' }">
+                    :style="{ width: (currentQuestion?.questionnum ? currentQuestion?.questionnum : 0) / radioCount * 100 + '%' }">
                 </div>
                 <!-- 进度提示 -->
-                <p>当前进度：{{ currentQuestion?.questionnum }}/500</p>
+                <p>当前进度：{{ currentQuestion?.questionnum }}/{{ radioCount }}</p>
             </div>
             <!-- 题目 -->
             <div class="examQPage-question">
@@ -35,7 +35,8 @@
                         <p>您的选择：{{ getQuestionFromServerStore.selectedOptions.join('') }}</p>
                         <!-- 解析 -->
                         <p>{{ currentQuestion?.question }}:</p>
-                        <p style="margin-left: 20px;" v-for="(item, index) in currentQuestion?.answer" :key="index">
+                        <p style="margin-left: 20px;" v-for="(item, index) in getQuestionFromServerStore.correctAnswer"
+                            :key="index">
                             {{ currentQuestion?.options.at(index) }}</p>
                     </div>
                     <!-- 选项 -->
@@ -43,12 +44,12 @@
                         <button @click="getQuestionFromServerStore.getPreviousQuestion">上一题</button>
                         <!-- 多选题提供提交按钮 -->
                         <button
-                            v-show="currentQuestion?.answer.length && currentQuestion?.answer.length > 1 || !skipRight"
+                            v-show="currentQuestion?.answer.length && currentQuestion?.answer.length > 1 || !getQuestionFromServerStore.isSkipRight"
                             @click="getQuestionFromServerStore.verifySubmit">{{ $t('message.submit') }}</button>
                         <button @click="shuffleOptions"
                             :style="{ 'background-color': getQuestionFromServerStore.isShuffled ? '#721c24' : '#007bff' }">打乱选项</button>
                         <button @click="toggleSkipRight"
-                            :style="{ 'background-color': skipRight ? '#721c24' : '#007bff' }">单选答案正确自动跳过</button>
+                            :style="{ 'background-color': getQuestionFromServerStore.isSkipRight ? '#721c24' : '#007bff' }">单选答案正确自动跳过</button>
                         <button @click="getQuestionFromServerStore.getNextQuestion">下一题</button>
                         <!-- <p>选项A：这是一个关于业余无线电A的选项A，是正确的。</p> -->
                     </div>
@@ -68,14 +69,13 @@ import { useRouter, useRoute } from 'vue-router'
 import type { ExamQItem } from '@/stores/examback'
 import { nextTick } from 'process'
 
-
+const radioCount = ref(512)
 const getQuestionFromServerStore = useGetQuestionFromServerStore()
 const router = useRouter()
 const route = useRoute()
 
 
 
-const skipRight = ref(false)
 const currentQuestion = ref<ExamQItem>()
 
 window.document.title = `argovict - 考试 业余无线电A - ${currentQuestion.value?.questionnum}`
@@ -105,7 +105,7 @@ const verifyAnswer = (selectedAnswer: string, id: string) => {
         // 推入选中的选项id
         getQuestionFromServerStore.selectedOptions.push(selectedAnswer)
         // 选项添加选中类
-        console.log(selectedAnswer, id)
+        // console.log(selectedAnswer, id)
         document.getElementById(id)?.classList.add('selected')
 
 
@@ -119,20 +119,17 @@ const verifyAnswer = (selectedAnswer: string, id: string) => {
 }
 
 const toggleSkipRight = () => {
-    skipRight.value = !skipRight.value
-    getQuestionFromServerStore.isSkipRight = skipRight.value
-    // 保存配置
-    getQuestionFromServerStore.saveExamConfig()
+    getQuestionFromServerStore.isSkipRight = !getQuestionFromServerStore.isSkipRight
+
 }
 
 const shuffleOptions = () => {
     getQuestionFromServerStore.isShuffled = !getQuestionFromServerStore.isShuffled
-    // 保存配置
-    getQuestionFromServerStore.saveExamConfig()
+
 }
 
 const autoSkip = () => {
-    if (skipRight.value && !getQuestionFromServerStore.isMultiChoice) {
+    if (getQuestionFromServerStore.isSkipRight && !getQuestionFromServerStore.isMultiChoice) {
 
 
         // 答案正确
@@ -152,10 +149,7 @@ const autoSkip = () => {
 
 
 onMounted(() => {
-    getQuestionFromServerStore.readExamConfig()
 
-    // 配置
-    skipRight.value = getQuestionFromServerStore.isSkipRight
 
 
 
@@ -165,12 +159,22 @@ onMounted(() => {
         // 从url获取题目编号
         if (route.query.question) {
             // getQuestionFromServerStore.currentQuestionNum = Number(route.query.question)
+            getQuestionFromServerStore.currentQuestionNum = Number(route.query.question)
             getQuestionFromServerStore.getExamQList(route.query.question as string)
+            // 读取配置，当有query参数时，从query中获取题目编号
+            getQuestionFromServerStore.readExamConfig(true)
             return
         }
+
+        // 当没有query参数时，默认从1开始
+        getQuestionFromServerStore.readExamConfig(false)
+
+        // 配置
+        // skipRight.value = getQuestionFromServerStore.isSkipRight
         // 从配置获取题目编号
         if (getQuestionFromServerStore.currentQuestionNum) {
             getQuestionFromServerStore.getExamQList(getQuestionFromServerStore.currentQuestionNum.toString())
+
             return
         }
 
@@ -203,18 +207,6 @@ watch(() => getQuestionFromServerStore.examQList, (newVal) => {
         // console.log(correctAnswer.value)
     })
 
-
-
-
-    // console.log('正确答案', getQuestionFromServerStore.correctAnswer)
-    // console.log('选项', currentQuestion.value?.options)
-    // currentQuestion.value.options = getQuestionFromServerStore.shuffleOptions(currentQuestion.value?.options)
-    // console.log('索引', getQuestionFromServerStore.shuffledIndex)
-    // console.log('正确答案', getQuestionFromServerStore.correctAnswer)
-    // console.log('选项', currentQuestion.value?.options)
-
-
-    // window.location.href = "#option-" + currentQuestion.value?.answer
 }, { immediate: true, deep: true })
 
 watch(() => getQuestionFromServerStore.currentQuestionNum, (newVal) => {
@@ -224,7 +216,7 @@ watch(() => getQuestionFromServerStore.currentQuestionNum, (newVal) => {
             question: newVal,
         },
     })
-    console.log(newVal)
+    // console.log(newVal)
 })
 
 // watch(() => getQuestionFromServerStore.selectedOptions, (newVal) => {

@@ -20,10 +20,15 @@
   /* position: relative; */
 }
 
+.examQPage-container h3 {
+  transition: all 0.3s ease-in-out;
+}
+
 .examQPage-progress-bar {
   width: 50%;
   height: 5px;
   background-color: #007bff;
+  transition: width 0.5s ease-in-out;
 }
 
 .examQPage-progress p {
@@ -75,7 +80,7 @@
 }
 
 .examQPage-question ul li {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   width: 100%;
   cursor: pointer;
   height: auto;
