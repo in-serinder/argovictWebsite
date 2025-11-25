@@ -181,6 +181,15 @@
     box-shadow: #1f1e1e;
   }
 
+  .blogDetail-title-guidepost{
+    color: #fefefe;
+    background-color: #282727;
+  }
+
+  .blogDetail-title-guidepost a{
+    color: #fefefe;
+  }
+
   /* .blogMoveAss img{ */
     /* color: #fefefe; */
   /* } */
