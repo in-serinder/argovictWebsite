@@ -40,11 +40,16 @@
 }
 
 .table-header-cell {
+  /* line-height: 0px; */
+  
+  margin: 0;
   padding: 0;
 }
 
 .table-data-cell {
-
+  /* padding: 15px 0px 5px 0px; */
+  /* margin: 5px; */
+  line-height: 1.8;
   font-size: 15px;
 }
 
@@ -64,6 +69,8 @@
   text-align: center;
   border: 1px solid #c6c6c6;
   padding: 0 15px 0 15px;
+  /* margin-top: 0px; */
+  /* margin-bottom: 0px; */
 }
 
 /* 代码块 */

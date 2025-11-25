@@ -3,19 +3,19 @@
         <ul>
             <!-- 顶部 -->
             <li @click="scrollToTop">
-                <img src="@/assets/svg/top.svg" alt="top">
+                <img :src="darkMode.isDarkMode? top_light:top"  alt="top">
             </li>
-            <!-- 刷新 -->
+            <!-- 刷新 -->   
             <li @click="refresh">
-                <img src="@/assets/svg/refresh.svg" alt="refresh">
+                <img :src="darkMode.isDarkMode? refreshicon_light:refreshicon" alt="refresh">
             </li>
             <!-- 博客页 -->
             <li @click="goToBlog">
-                <img src="@/assets/svg/home2.svg" alt="blog">
+                <img :src="darkMode.isDarkMode? home_light:home" alt="blog">
             </li>
             <!-- 底部 -->
             <li @click="scrollToBottom">
-                <img src="@/assets/svg/bottom.svg" alt="bottom">
+                <img :src="darkMode.isDarkMode? bottom_light:bottom" alt="bottom">
             </li>
         </ul>
     </div>
@@ -24,9 +24,11 @@
 <script setup lang="ts">
 import '@/style/Blog/blogMoveass.css'
 import { ref, onMounted } from 'vue'
+import { useDarkModeStore } from '@/stores/darkmode';
 
 const container = ref<HTMLDivElement | null>(null);
 
+const darkMode = useDarkModeStore();
 onMounted(() => {
 
     container.value = document.getElementById('blogContainer') as HTMLDivElement | null;
@@ -62,5 +64,15 @@ const refresh = () => {
 const goToBlog = () => {
     window.location.href = '/blog';
 };
+
+import top from "@/assets/svg/top.svg";
+import refreshicon from "@/assets/svg/refresh.svg";
+import home from "@/assets/svg/home2.svg";
+import bottom from "@/assets/svg/bottom.svg";
+
+import top_light from "@/assets/svg/light/top_light.svg";
+import refreshicon_light from "@/assets/svg/light/refresh_light.svg";
+import home_light from "@/assets/svg/light/home_light.svg";
+import bottom_light from "@/assets/svg/light/bottom_light.svg";
 
 </script>
