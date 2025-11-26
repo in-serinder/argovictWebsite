@@ -150,6 +150,24 @@ const autoSkip = () => {
 
 onMounted(() => {
 
+    // 当挂载就查看是什么类型的考试
+    switch (true) {
+        case route.query.type === 'radioA':
+            getQuestionFromServerStore.examType = 'radioA'
+            radioCount.value = 512
+            break
+        case route.query.type === 'iotchoice':
+            getQuestionFromServerStore.examType = 'IOTRadio'
+            radioCount.value = 620
+            break
+        case route.query.type === 'iotradio':
+            getQuestionFromServerStore.examType = 'IOTJudge'
+            break
+    }
+
+
+
+
 
 
 
@@ -213,6 +231,7 @@ watch(() => getQuestionFromServerStore.currentQuestionNum, (newVal) => {
     router.push({
         name: 'examQPage',
         query: {
+            ...route.query,
             question: newVal,
         },
     })

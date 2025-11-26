@@ -23,6 +23,7 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
     correctAnswer: [] as string[],
     shuffledIndex: [] as number[],
     currentOptions: [] as string[],
+    examType: 'radioA', //默认无线电考试
     currentQuestionNum: 0,
     showAnswer: false,
     isShuffled: false,
@@ -33,7 +34,7 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
     async getExamQList(questionnum: string) {
       try {
         const res = await axios.get(
-          `http://8.130.191.142:6324/exam/radioA/questionnum/${questionnum}`,
+          `http://8.130.191.142:6324/exam/${this.examType}/questionnum/${questionnum}`,
         )
         // console.log(res.data)
         if (res.status === 200) {
