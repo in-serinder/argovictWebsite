@@ -35,9 +35,8 @@
                         <p>您的选择：{{ getQuestionFromServerStore.selectedOptions.join('') }}</p>
                         <!-- 解析 -->
                         <p>{{ currentQuestion?.question }}:</p>
-                        <p style="margin-left: 20px;" v-for="(item, index) in getQuestionFromServerStore.correctAnswer"
-                            :key="index">
-                            {{ currentQuestion?.options.at(index) }}</p>
+                        <p style="margin-left: 20px;" v-for="(item, index) in currentQuestion?.answer" :key="index">
+                            {{ currentQuestion?.options?.at(item.charCodeAt(0) - 65) }}</p>
                     </div>
                     <!-- 选项 -->
                     <div class="examQPage-option-container">
@@ -141,7 +140,7 @@ const autoSkip = () => {
 
         // 答案不正确
         getQuestionFromServerStore.showCorrectAnswer()
-        // 直接全错。后续自动纠正
+        // 直接全错。后续自动纠正,后续有把结果中和正确答案匹配的移除
         getQuestionFromServerStore.incorrectOptions = ['A', 'B', 'C', 'D']
 
     }
