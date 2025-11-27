@@ -11,47 +11,54 @@
                 <p>当前进度：{{ currentQuestion?.questionnum }}/{{ radioCount }}</p>
             </div>
             <!-- 题目 -->
+
             <div class="examQPage-question">
                 <div class="examQPage-question-container">
-                    <!-- 题目 -->
-                    <h3>{{ currentQuestion?.questionnum }}. {{ currentQuestion?.question }}</h3>
-                    <p>Archive - {{ currentQuestion?.standard }} - {{ currentQuestion?.answer.length ?
-                        currentQuestion?.answer.length > 1 ? '多选题' : '单选题' :
-                        '单选题' }}</p>
-                    <br>
-                    <!-- 选项 -->
-                    <ul>
-                        <li v-for="(option, index) in currentQuestion?.options" :key="index"
-                            :id="'option-' + String.fromCharCode(65 + index)"
-                            @click="verifyAnswer(String.fromCharCode(65 + index), 'option-' + String.fromCharCode(65 + index))">
-                            {{ String.fromCharCode(65 + index) }}. {{ option }}
-                        </li>
-                    </ul>
+                    <div class="examQPage-loading"
+                        v-show="currentQuestion?.questionnum != getQuestionFromServerStore.currentQuestionNum">
+                        <h3>加载中...</h3>
+                    </div>
+                    <span v-show="currentQuestion?.questionnum == getQuestionFromServerStore.currentQuestionNum">
+                        <!-- 题目 -->
+                        <h3>{{ currentQuestion?.questionnum }}. {{ currentQuestion?.question }}</h3>
+                        <p>Archive - {{ currentQuestion?.standard }} - {{ currentQuestion?.answer.length ?
+                            currentQuestion?.answer.length > 1 ? '多选题' : '单选题' :
+                            '单选题' }}</p>
+                        <br>
+                        <!-- 选项 -->
+                        <ul>
+                            <li v-for="(option, index) in currentQuestion?.options" :key="index"
+                                :id="'option-' + String.fromCharCode(65 + index)"
+                                @click="verifyAnswer(String.fromCharCode(65 + index), 'option-' + String.fromCharCode(65 + index))">
+                                {{ String.fromCharCode(65 + index) }}. {{ option }}
+                            </li>
+                        </ul>
 
-                    <!-- 答案与解析 -->
-                    <div class="examQPage-answer-container" v-if="getQuestionFromServerStore.showAnswer">
-                        <!-- 答案 -->
-                        <p>正确答案：{{ currentQuestion?.answer.join('') }}</p>
-                        <p>您的选择：{{ getQuestionFromServerStore.selectedOptions.join('') }}</p>
-                        <!-- 解析 -->
-                        <p>{{ currentQuestion?.question }}:</p>
-                        <p style="margin-left: 20px;" v-for="(item, index) in currentQuestion?.answer" :key="index">
-                            {{ currentQuestion?.options?.at(item.charCodeAt(0) - 65) }}</p>
-                    </div>
-                    <!-- 选项 -->
-                    <div class="examQPage-option-container">
-                        <button @click="getQuestionFromServerStore.getPreviousQuestion">上一题</button>
-                        <!-- 多选题提供提交按钮 -->
-                        <button
-                            v-show="currentQuestion?.answer.length && currentQuestion?.answer.length > 1 || !getQuestionFromServerStore.isSkipRight"
-                            @click="getQuestionFromServerStore.verifySubmit">{{ $t('message.submit') }}</button>
-                        <button @click="shuffleOptions"
-                            :style="{ 'background-color': getQuestionFromServerStore.isShuffled ? '#721c24' : '#007bff' }">打乱选项</button>
-                        <button @click="toggleSkipRight"
-                            :style="{ 'background-color': getQuestionFromServerStore.isSkipRight ? '#721c24' : '#007bff' }">单选答案正确自动跳过</button>
-                        <button @click="getQuestionFromServerStore.getNextQuestion">下一题</button>
-                        <!-- <p>选项A：这是一个关于业余无线电A的选项A，是正确的。</p> -->
-                    </div>
+                        <!-- 答案与解析 -->
+                        <div class="examQPage-answer-container" v-if="getQuestionFromServerStore.showAnswer">
+                            <!-- 答案 -->
+                            <p>正确答案：{{ currentQuestion?.answer.join('') }}</p>
+                            <p>您的选择：{{ getQuestionFromServerStore.selectedOptions.join('') }}</p>
+                            <!-- 解析 -->
+                            <p>{{ currentQuestion?.question }}:</p>
+                            <p style="margin-left: 20px;" v-for="(item, index) in currentQuestion?.answer" :key="index">
+                                {{ currentQuestion?.options?.at(item.charCodeAt(0) - 65) }}</p>
+                        </div>
+                        <!-- 选项 -->
+                        <div class="examQPage-option-container">
+                            <button @click="getQuestionFromServerStore.getPreviousQuestion">上一题</button>
+                            <!-- 多选题提供提交按钮 -->
+                            <button
+                                v-show="currentQuestion?.answer.length && currentQuestion?.answer.length > 1 || !getQuestionFromServerStore.isSkipRight"
+                                @click="getQuestionFromServerStore.verifySubmit">{{ $t('message.submit') }}</button>
+                            <button @click="shuffleOptions"
+                                :style="{ 'background-color': getQuestionFromServerStore.isShuffled ? '#721c24' : '#007bff' }">打乱选项</button>
+                            <button @click="toggleSkipRight"
+                                :style="{ 'background-color': getQuestionFromServerStore.isSkipRight ? '#721c24' : '#007bff' }">单选答案正确自动跳过</button>
+                            <button @click="getQuestionFromServerStore.getNextQuestion">下一题</button>
+                            <!-- <p>选项A：这是一个关于业余无线电A的选项A，是正确的。</p> -->
+                        </div>
+                    </span>
                 </div>
 
             </div>

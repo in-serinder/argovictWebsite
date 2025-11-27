@@ -156,3 +156,10 @@
   color: #fff;
   cursor: pointer;
 }
+
+.examQPage-loading {
+  display: flex;
+  height: inherit;
+  justify-content: center;
+  align-items: center;
+}
