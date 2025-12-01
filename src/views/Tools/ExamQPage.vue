@@ -171,6 +171,10 @@ onMounted(() => {
             break
     }
 
+    if (!route.query.question) {
+        getQuestionFromServerStore.currentQuestionNum = 1
+    }
+
 
 
 
