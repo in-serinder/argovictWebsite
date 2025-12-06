@@ -226,7 +226,10 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
         }
 
         console.log(isShuffled, skipRight, questionNum)
+        return
       }
+      // 当没有配置时，默认从1开始
+      this.currentQuestionNum = 1
     },
   },
 })

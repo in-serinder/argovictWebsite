@@ -171,9 +171,9 @@ onMounted(() => {
             break
     }
 
-    if (!route.query.question) {
-        getQuestionFromServerStore.currentQuestionNum = 1
-    }
+    // if (!route.query.question) {
+    //     getQuestionFromServerStore.currentQuestionNum = 1
+    // }
 
 
 
@@ -194,7 +194,8 @@ onMounted(() => {
             return
         }
 
-        // 当没有query参数时，默认从1开始
+
+        // 当没有query参数时，从配置中获取题目编号
         getQuestionFromServerStore.readExamConfig(false)
 
         // 配置
@@ -202,15 +203,14 @@ onMounted(() => {
         // 从配置获取题目编号
         if (getQuestionFromServerStore.currentQuestionNum) {
             getQuestionFromServerStore.getExamQList(getQuestionFromServerStore.currentQuestionNum.toString())
-
             return
         }
 
-        getQuestionFromServerStore.getExamQList('1')
-        nextTick(() => {
-            // correctAnswer.value = [...(currentQuestion.value?.answer ?? '').split('')].sort()
-            //     console.log(correctAnswer.value)
-        })
+        // getQuestionFromServerStore.getExamQList('1')
+        // nextTick(() => {
+        // correctAnswer.value = [...(currentQuestion.value?.answer ?? '').split('')].sort()
+        //     console.log(correctAnswer.value)
+        // })
     }, 1000)
 
 })
