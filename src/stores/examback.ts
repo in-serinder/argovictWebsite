@@ -12,6 +12,12 @@ export interface ExamQItem {
   answer: string[]
 }
 
+export interface aiQExplainItem {
+  questionnum: number
+  question: string
+  explanation: string
+}
+
 // 用布尔数组实现选项判断可能跟简单
 
 // 集中获取服务端api内容
@@ -23,6 +29,7 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
     correctAnswer: [] as string[],
     shuffledIndex: [] as number[],
     currentOptions: [] as string[],
+    aiQExplain: {} as aiQExplainItem,
     examType: 'radioA', //默认无线电考试
     currentQuestionNum: 0,
     showAnswer: false,
@@ -57,6 +64,24 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
           }
           this.isMultiChoice = this.correctAnswer.length > 1 ? true : false
           this.examQList.push(examQList)
+          // 参与ai解析
+          this.getAIQExplain(examQList.questionnum)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async getAIQExplain(questionnum: number) {
+      try {
+        const res = await axios.get(
+          `http://8.130.191.142:6324/exam/ai/parse/${this.examType}/questionnum/${questionnum}`,
+        )
+        if (res.status === 200) {
+          this.aiQExplain = {
+            questionnum: res.data.questionnum,
+            question: res.data.question,
+            explanation: res.data.analysis,
+          }
         }
       } catch (error) {
         console.log(error)

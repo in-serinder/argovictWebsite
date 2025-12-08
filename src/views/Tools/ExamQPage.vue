@@ -40,9 +40,13 @@
                             <p>正确答案：{{ currentQuestion?.answer.join('') }}</p>
                             <p>您的选择：{{ getQuestionFromServerStore.selectedOptions.join('') }}</p>
                             <!-- 解析 -->
-                            <p>{{ currentQuestion?.question }}:</p>
+                             <div class="ai-explain"><div v-html="currentHTML"></div>
+                             </div>
+                            <!-- <p>{{ currentQuestion?.question }}:</p>
                             <p style="margin-left: 20px;" v-for="(item, index) in currentQuestion?.answer" :key="index">
-                                {{ currentQuestion?.options?.at(item.charCodeAt(0) - 65) }}</p>
+                                {{ currentQuestion?.options?.at(item.charCodeAt(0) - 65) }}</p> -->
+                                 <!-- 改用ai解析器 -->
+
                         </div>
                         <!-- 选项 -->
                         <div class="examQPage-option-container">
@@ -70,7 +74,8 @@
 <script lang="ts" setup>
 import '@/style/Tools/examQPage.css'
 import { useGetQuestionFromServerStore } from '@/stores/examback'
-import { onMounted, ref, watch } from 'vue'
+import { userMarkDownFucker } from '@/stores/markdown-it_fucker'
+import { onMounted, ref, watch, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import type { ExamQItem } from '@/stores/examback'
 import { nextTick } from 'process'
@@ -79,6 +84,15 @@ const radioCount = ref(512)
 const getQuestionFromServerStore = useGetQuestionFromServerStore()
 const router = useRouter()
 const route = useRoute()
+const mdFucker = userMarkDownFucker()
+
+
+
+// 监听解析内容变化
+const currentHTML = computed(() => {
+    console.log('ai解析内容变化', getQuestionFromServerStore.aiQExplain.explanation)
+    return mdFucker.mdParser.render(getQuestionFromServerStore.aiQExplain.explanation);
+});
 
 
 

@@ -1,6 +1,7 @@
 .examQPage {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  overflow-y: auto;
   background-color: #f5f5f5;
 }
 
@@ -55,7 +56,9 @@
 .examQPage-question-container {
   background-color: #fff;
   width: 80%;
-  height: 80%;
+  /* height: 0%; */
+  min-height: 80%;
+  height: fit-content;
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px #ccc;
@@ -163,3 +166,57 @@
   justify-content: center;
   align-items: center;
 }
+
+
+
+.ai-explain{
+  background-color: #e6e5e5;
+  padding: 15px;
+  max-height: 20vh;
+  font-size: 0.85em;
+  width: 100%;
+  min-height: 20px;
+  overflow-y: auto;
+  margin-bottom: 50px;
+
+    scrollbar-color: #ccc transparent;
+  scrollbar-width: thin;
+  /* box-shadow: 20px 20px 30px #ccc; */
+}
+
+.ai-explain table{
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  border-radius: 6px;
+  overflow: hidden;
+  table-layout: auto;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); */
+  border: #000 1px solid;
+}
+
+.ai-explain th {
+  background-color: #333;
+  color: #fff;
+  min-width: 120px;
+  font-weight: 600;
+  padding: 5px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 2px solid #c6c6c6;
+}
+
+.ai-explain td {
+  padding: 5px;
+  min-width: 120px;
+  border-bottom: 1px solid #c6c6c6;
+}
+
+.ai-explain pre {
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+

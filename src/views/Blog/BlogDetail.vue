@@ -63,6 +63,7 @@
                 <!-- <div class="placeholder"> </div> -->
             </div>
         </span>
+        <!-- 导航栏 -->
         <div class="blogDetail-title-guidepost">
             <!-- <h1>test</h1> -->
             <a href="" @click="scrollToTop" style="font-size: 15px;">{{ blogAttribut?.title }}</a>
@@ -266,7 +267,7 @@ import printIcon from '@/assets/svg/print.svg'
 import printLightIcon from '@/assets/svg/light/print_light.svg'
 import shareIcon from '@/assets/svg/share.svg'
 import shareLightIcon from '@/assets/svg/light/share_light.svg'
-import { nextTick, title } from 'process'
+import { nextTick} from 'process'
 
 
 
