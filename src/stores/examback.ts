@@ -44,6 +44,8 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
           `http://8.130.191.142:6324/exam/${this.examType}/questionnum/${questionnum}`,
         )
         // console.log(res.data)
+        console.log(this.examType)
+
         if (res.status === 200) {
           const examQList = {
             id: res.data.id,

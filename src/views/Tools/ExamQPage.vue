@@ -170,13 +170,14 @@ const autoSkip = () => {
 
 onMounted(() => {
 
+    console.log(route.query.type )
     // 当挂载就查看是什么类型的考试
     switch (true) {
         case route.query.type === 'radioA':
             getQuestionFromServerStore.examType = 'radioA'
             radioCount.value = 512
             break
-        case route.query.type === 'iotchoice':
+        case route.query.type === 'iotIOTRadio':
             getQuestionFromServerStore.examType = 'IOTRadio'
             radioCount.value = 620
             break
