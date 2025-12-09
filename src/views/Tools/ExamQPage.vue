@@ -5,10 +5,10 @@
             <div class="examQPage-progress">
                 <!-- 进度条 -->
                 <div class="examQPage-progress-bar"
-                    :style="{ width: (currentQuestion?.questionnum ? currentQuestion?.questionnum : 0) / radioCount * 100 + '%' }">
+                    :style="{ width: (currentQuestion?.questionnum ? currentQuestion?.questionnum : 0) / getQuestionFromServerStore.questionTotalNum * 100 + '%' }">
                 </div>
                 <!-- 进度提示 -->
-                <p>当前进度：{{ currentQuestion?.questionnum }}/{{ radioCount }}</p>
+                <p>当前进度：{{ currentQuestion?.questionnum }}/{{ getQuestionFromServerStore.questionTotalNum }}</p>
             </div>
             <!-- 题目 -->
 
@@ -67,6 +67,7 @@
 
             </div>
         </div>
+        <PopUp v-show="getQuestionFromServerStore.isLastQuestion" content="已是最后一题"></PopUp>
     </div>
 </template>
 
@@ -80,7 +81,8 @@ import { useRouter, useRoute } from 'vue-router'
 import type { ExamQItem } from '@/stores/examback'
 import { nextTick } from 'process'
 
-const radioCount = ref(512)
+import PopUp from '@/components/Pop-up.vue'
+
 const getQuestionFromServerStore = useGetQuestionFromServerStore()
 const router = useRouter()
 const route = useRoute()
@@ -90,7 +92,15 @@ const mdFucker = userMarkDownFucker()
 
 // 监听解析内容变化
 const currentHTML = computed(() => {
-    console.log('ai解析内容变化', getQuestionFromServerStore.aiQExplain.explanation)
+    // console.log('ai解析内容变化', getQuestionFromServerStore.aiQExplain.explanation)
+    try {
+        if (!getQuestionFromServerStore.aiQExplain.explanation) {
+            return '<p>暂无解析</p>'
+        }
+    } catch (error) {
+        console.error('获取解析内容出错：', error)
+        return '<p>暂无解析</p>'
+    }
     return mdFucker.mdParser.render(getQuestionFromServerStore.aiQExplain.explanation);
 });
 
@@ -175,11 +185,11 @@ onMounted(() => {
     switch (true) {
         case route.query.type === 'radioA':
             getQuestionFromServerStore.examType = 'radioA'
-            radioCount.value = 512
+            getQuestionFromServerStore.questionTotalNum = 512
             break
         case route.query.type === 'iotIOTRadio':
             getQuestionFromServerStore.examType = 'IOTRadio'
-            radioCount.value = 620
+            getQuestionFromServerStore.questionTotalNum = 620
             break
         case route.query.type === 'iotradio':
             getQuestionFromServerStore.examType = 'IOTJudge'

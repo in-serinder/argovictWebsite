@@ -32,10 +32,12 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
     aiQExplain: {} as aiQExplainItem,
     examType: 'radioA', //默认无线电考试
     currentQuestionNum: 0,
+    questionTotalNum: 0,
     showAnswer: false,
     isShuffled: false,
     isSkipRight: false,
     isMultiChoice: false,
+    isLastQuestion: false,
   }),
   actions: {
     async getExamQList(questionnum: string) {
@@ -161,6 +163,14 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
       })
     },
     getNextQuestion() {
+      if (this.currentQuestionNum >= this.questionTotalNum ){
+        this.isLastQuestion = true
+        // 三秒动画
+          setTimeout(() => {
+            this.isLastQuestion = false
+          }, 4000);
+        return
+      } 
       this.currentQuestionNum++
       this.getExamQList(this.currentQuestionNum.toString())
       this.initQuestion()
@@ -230,7 +240,7 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
     },
 
     /**
-     * 报错配置
+     * 保存配置
      */
     saveExamConfig() {
       localStorage.setItem(

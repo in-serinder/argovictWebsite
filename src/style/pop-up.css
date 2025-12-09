@@ -1,0 +1,77 @@
+.pop-up {
+    position: fixed;
+    width: 300px;
+    height: 60px;
+    background-color: #fff;
+    /* border-radius: 10px; */
+    box-shadow: 20px 20px 30px #ccc;
+    right: -300px;
+    top: 150px;
+
+    animation: popin-animation 1s ease-in-out forwards,
+        popout-animation 1s ease-in-out 3s forwards;
+
+
+}
+
+.pop-up-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.popout-progress-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 6px;
+    background-color: #4e7aeb;
+    border-radius: 5px;
+    animation: popout-progress-animation 3s linear forwards;
+    overflow: hidden;
+}
+
+@keyframes popout-progress-animation {
+    0% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0%;
+    }
+}
+
+@keyframes popin-animation {
+    0% {    
+        top: 150px;
+        right: -300px;
+    }
+/* 
+    90% {
+        top: 80px;
+    } */
+
+    100% {
+        right: 10px;
+        top: 80px;
+    }
+}
+
+
+@keyframes popout-animation {
+    0% {
+        right: 10px;
+        top: 80px;
+    }
+
+    100% {
+        right: -300px;
+         top: 80px;
+    }
+}
