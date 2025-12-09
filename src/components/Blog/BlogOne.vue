@@ -9,7 +9,7 @@
             </div>
             <!-- 博客内容 -->
             <div class="blogOne_content_abstract">
-                {{ miscStore.adjustBlogTitleLength(blog.description, 256) }}
+                {{ miscStore.adjustBlogTitleLength(blog.description, 200) }}
             </div>
             <!-- 发布时间 -->
             <div class="blogOne_content_time"><img src="@/assets/svg/time.svg" alt="">{{ blog.date }}</div>
