@@ -32,13 +32,13 @@
         <!-- 标签筛选 -->
         <div class="tagFilter">
             <div class="tagFilter_title">
-                <img :src="darkMode.isDarkMode ? tagsIconLight : tagsIcon" alt="tag">
+                <img :src="darkMode.isDarkMode ? tagsIconLight : tagsIcon"  alt="tag">
                 <span>{{ $t('message.tag') }}</span>
             </div>
             <div class="tagFilter_content">
                 <!-- 标签存放 -->
                 <div class="tagFilter_content_item" v-for="tag in tagList" :key="tag.name">
-                    <BlogOnTags :tag="tag.count > 1 ? `${tag.name}(${tag.count})` : tag.name" />
+                    <BlogOnTags :tag="tag.count > 1 ? `${tag.name}(${tag.count})` : tag.name" :bgColor="miscStore.getRandomColor()" />
                 </div>
 
 
@@ -58,10 +58,12 @@ import type { TagItem, SearchResult, BlogItem } from '@/interface';
 import { useGetDataByServerStore } from '@/stores/getdatabyserver'
 import { useDarkModeStore } from '@/stores/darkmode'
 import { useGetContentFromServerStore } from '@/stores/getContentFromServer'
+import { useMiscStore } from '@/stores/misc'
 
 const getContentFromServerStore = useGetContentFromServerStore()
 const getdatabyserver = useGetDataByServerStore()
 const darkMode = useDarkModeStore()
+const miscStore = useMiscStore()
 
 const datePick = ref(new Date());
 const tagList = ref<TagItem[]>([]);

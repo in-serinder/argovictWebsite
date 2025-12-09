@@ -15,7 +15,7 @@
             <div class="blogOne_content_time"><img src="@/assets/svg/time.svg" alt="">{{ blog.date }}</div>
             <!-- 标签 -->
             <div class="blogOne_content_tag">
-                <BlogOnTags v-for="tag in blog.tags" :key="tag" :tag="tag" />
+                <BlogOnTags v-for="tag in blog.tags" :key="tag" :tag="tag" :bgColor="miscStore.getRandomColor()" />
             </div>
         </div>
         <!-- 头图 -->

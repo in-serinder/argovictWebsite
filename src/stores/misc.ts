@@ -149,5 +149,13 @@ export const useMiscStore = defineStore('misc', {
       }
       return title.substring(0, maxLength) + '...'
     },
+    getRandomColor() {
+      const letters = '0123456789ABCDEF'
+      let color = '#'
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)]
+      }
+      return color
+    }
   },
 })
