@@ -4,6 +4,7 @@ import axios from 'axios'
 export const useViewCountStore = defineStore('viewCount', {
   state() {
     return {
+        baseURL:'https://argovict.asia/blog-api',
       viewCount: 0,
     }
   },
@@ -12,7 +13,7 @@ export const useViewCountStore = defineStore('viewCount', {
       if (!id) return
       try {
         // console.log('addViewCount', id)
-        await axios.get(`http://8.130.191.142:6324/blog/count/view/${id}`)
+        await axios.get(`${this.baseURL}/blog/count/view/${id}`)
       } catch (error) {
         console.error('Failed to add view count', error)
       }
