@@ -92,7 +92,7 @@ function handleClick(type: string) {
       briefSelfStore.showMatrixContent()
       break;
     case 'discord':
-      window.open('https://discord.com/users/853245228442292224', '_blank');
+      window.open('https://discord.com/users/serial_aden', '_blank');
       break;
     case 'bilibili':
       window.open('https://space.bilibili.com/569365028', '_blank');
