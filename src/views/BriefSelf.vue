@@ -68,11 +68,10 @@
 
 <script setup lang="ts">
 import '@/style/briefselfPage.css'
-import Blog from './Blog.vue';
-import { onMounted, onUnmounted } from 'vue';
+import { onMounted } from 'vue';
 import { useDarkModeStore } from '@/stores/darkmode';
 import { useBriefSelfStore } from '@/stores/briefSelf';
-import { useLoadingStore } from '@/stores/loading'
+
 // import VueLazyload from 'vue-lazyload';
 
 
@@ -80,7 +79,7 @@ document.title = 'Argovict - Welcome'
 
 const darkModeStore = useDarkModeStore()
 const briefSelfStore = useBriefSelfStore()
-const loadingStore = useLoadingStore()
+
 
 function handleClick(type: string) {
   switch (type) {
