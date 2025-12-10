@@ -13,12 +13,13 @@ import { useRoute } from 'vue-router';
 import { useScrollStore } from '@/stores/scroll';
 import { userMarkDownFucker } from '@/stores/markdown-it_fucker';
 import { useMiscStore } from '@/stores/misc';
+import { useGetContentFromServerStore } from '@/stores/getContentFromServer';
 
 
 const scrollStore = useScrollStore();
 const mdFucker = userMarkDownFucker();
 const miscStore = useMiscStore();
-
+const getContentFromServerStore = useGetContentFromServerStore();
 
 
 
@@ -92,11 +93,11 @@ onMounted(async () => {
 
     // 测试
     try {
-        const response = await axios.get('http://8.130.191.142:6324/blog/markdown/' + route.params.id, {
-            responseType: 'text'
-        });
+        // const response = await getContentFromServerStore.getMarkdownContent(route.params.id as string);
+        //     responseType: 'text'
+        // });
 
-        md.value = response.data;
+        md.value = await getContentFromServerStore.getMarkdownContent(route.params.id as string);
         // console.log('获取到的内容:', md.value);
         // 载入界面
 

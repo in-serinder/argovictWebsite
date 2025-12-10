@@ -23,6 +23,7 @@ export interface aiQExplainItem {
 // 集中获取服务端api内容
 export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer', {
   state: () => ({
+    baseURL:'https://argovict.asia/blog-api',
     examQList: [] as ExamQItem[],
     selectedOptions: [] as string[],
     incorrectOptions: [] as string[],
@@ -43,7 +44,7 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
     async getExamQList(questionnum: string) {
       try {
         const res = await axios.get(
-          `http://8.130.191.142:6324/exam/${this.examType}/questionnum/${questionnum}`,
+          `${this.baseURL}/exam/${this.examType}/questionnum/${questionnum}`,
         )
         // console.log(res.data)
         console.log(this.examType)
@@ -78,7 +79,7 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
     async getAIQExplain(questionnum: number) {
       try {
         const res = await axios.get(
-          `http://8.130.191.142:6324/exam/ai/parse/${this.examType}/questionnum/${questionnum}`,
+          `${this.baseURL}/exam/ai/parse/${this.examType}/questionnum/${questionnum}`,
         )
         if (res.status === 200) {
           this.aiQExplain = {

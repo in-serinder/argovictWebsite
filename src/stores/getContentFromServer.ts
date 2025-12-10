@@ -7,6 +7,7 @@ import axios from 'axios'
 // 集中获取服务端api内容
 export const useGetContentFromServerStore = defineStore('getContentFromServer', {
   state: () => ({
+    baseURL:'https://argovict.asia/blog-api',
     blogList: [] as BlogItem[],
     blogAttribut: null as BlogItem | null,
     asPostExist: false,
@@ -24,7 +25,7 @@ export const useGetContentFromServerStore = defineStore('getContentFromServer', 
     async getBlogDetail(id: string) {
       const viewCountStore = useViewCountStore()
       try {
-        const res = await axios.get(`http://8.130.191.142:6324/blog/info/${id}`)
+        const res = await axios.get(`${this.baseURL}/blog/info/${id}`)
         // console.log(res.data)
         // console.log("huoq", res)
         // blogID.value = res.data.ID
@@ -50,7 +51,7 @@ export const useGetContentFromServerStore = defineStore('getContentFromServer', 
         return this.blogList
       }
       try {
-        const res = await axios.get('http://8.130.191.142:6324/master/info/tables/post')
+        const res = await axios.get(`${this.baseURL}/master/info/tables/post`)
         // console.log(res.data)
         this.blogList = res.data.map(
           (item: RawBlogItem) =>
@@ -83,7 +84,7 @@ export const useGetContentFromServerStore = defineStore('getContentFromServer', 
     */
     async getBlogTagList() {
       try {
-        const res = await axios.get('http://8.130.191.142:6324/master/info/tables/tags')
+        const res = await axios.get(`${this.baseURL}/master/info/tables/tags`)
         this.tagList = res.data as TagItem[]
         // console.log(tagList.value)
         return this.tagList
@@ -98,7 +99,7 @@ export const useGetContentFromServerStore = defineStore('getContentFromServer', 
      */
     async getProjectList() {
       try {
-        const response = await axios.get('http://8.130.191.142:6324/master/info/tables/project')
+        const response = await axios.get(`${this.baseURL}/master/info/tables/project`)
         this.projectList = response.data.map((item: ProjectItem) => ({
           name: item.name,
           title: item.title,
@@ -123,7 +124,7 @@ export const useGetContentFromServerStore = defineStore('getContentFromServer', 
 
     async getToolList() {
       try {
-        const response = await axios.get('http://8.130.191.142:6324/master/info/tables/tools')
+        const response = await axios.get(`${this.baseURL}/master/info/tables/tools`)
         this.toolList = response.data.map((item: ToolItem) => ({
           name: item.name,
           description: item.description,
@@ -137,5 +138,14 @@ export const useGetContentFromServerStore = defineStore('getContentFromServer', 
         console.error('获取工具列表失败:', error)
       }
     },
+    async getMarkdownContent(id: string) {
+      try {
+        const response = await axios.get(`${this.baseURL}/blog/markdown/${id}`)
+        return response.data as string
+      } catch (error) {
+        console.error('获取Markdown内容失败:', error)
+        return ''
+      }
+    }
   },
 })
