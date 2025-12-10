@@ -10,6 +10,7 @@ import router from '@/router'
 export const useGetDataByServerStore = defineStore('getdatabyserver', {
   state() {
     return {
+      baseURL: 'https://argovict.asia/blog-api',
       isMobile: false,
       blogList: [] as BlogItem[],
       searchResult: {} as SearchResult,
@@ -23,7 +24,7 @@ export const useGetDataByServerStore = defineStore('getdatabyserver', {
      */
     async getBlogBySearch(keyword: string) {
       try {
-        const res = await axios.get(`http://8.130.191.142:6324/blog/search/${keyword}`)
+        const res = await axios.get(`${this.baseURL}/blog/search/${keyword}`)
         // console.log(res.data)
         // this.searchResult = res.data //原始数据
         // console.log('原始数据', this.searchResult)
