@@ -53,7 +53,7 @@ import BlogOne from '@/components/Blog/BlogOne.vue'
 import BlogFilter from '@/components/Blog/BlogFilter.vue'
 import NoSearchResult from '@/components/NoSearchResult.vue'
 import type { BlogItem } from '@/interface'
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, defineProps } from 'vue'
 import type { Ref } from 'vue'
 import { useLoadingStore } from '@/stores/loading'
 import { useMiscStore } from '@/stores/misc'
@@ -62,6 +62,7 @@ import { useGetContentFromServerStore } from '@/stores/getContentFromServer'
 import { useGetDataByServerStore } from '@/stores/getdatabyserver'
 import { useMoeCounterGirlStore } from '@/stores/moeCounterGirl'
 import { nextTick } from 'process'
+// import { init } from 'artalk'
 
 
 const router = useRouter()
@@ -94,25 +95,39 @@ const toPostDetail = (blog: BlogItem) => {
     })
 }
 
-// 搜索结果后更改blogOne目标
-const searchBlog = (Goalblog: BlogItem[]) => {
+// 搜索结果后更改blogOne目标 notSearch参数用于区分是否为搜索内容 没有内容直接返回原始博客列表
+const searchBlog = (Goalblog: BlogItem[],notSearch: boolean) => {
 
     blogList.value = Goalblog;
 
-    if (Goalblog.length === 0) {
+    if (Goalblog.length === 0 && !notSearch) {
         // 无搜索结果占位
         noSearch_flag.value = true;
     } else {
+        if(!notSearch){
+            // 置空搜索结果占位
+            noSearch_flag.value = false;
+        }
+        // noSearch_flag.value = false;
+    }
+    console.log('searchBlog',notSearch)
+    if(notSearch) {
+        // 置空搜索结果占位
         noSearch_flag.value = false;
+        initBlogList();
     }
     // console.log(Goalblog)
 }
 
-onMounted(() => {
-    getContentFromServerStore.getBlogList().then((res) => {
+// 初始化博客列表
+const initBlogList = () => {
+   getContentFromServerStore.getBlogList().then((res) => {
         blogList.value = res as BlogItem[]
 
+        
+
         nextTick(() => {
+            // 图片z加载统计
             const blogContainer = document.querySelector('.blogPage') as HTMLElement
             loadingStore.initTotalImage(blogContainer)
             console.log(loadingStore.totalImage)
@@ -131,6 +146,12 @@ onMounted(() => {
 
         })
     })
+}
+
+onMounted(() => {
+
+    initBlogList();
+    
 
 
 })
@@ -156,6 +177,13 @@ watch(() => loadingStore.allLoaded, (newVal) => {
         }, 500)
     }
 })
+// 外部决定变化
+// watch(()=> getContentFromServerStore, (newVal) => {
+//   console.info("主动加载")
+//         blogList.value = newVal.blogList as BlogItem[]
+    
+// },{deep: true})
+
 
 // 通过标签搜索的另一种实现,另一种于getDataByServerStore数据同步，但可能出现冲突
 watch(() => getDataByServerStore.blogList, (newVal) => {

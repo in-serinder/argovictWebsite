@@ -18,10 +18,11 @@ import '@/style/Componets/search.css'
 import { ref, defineProps, onMounted } from 'vue'
 import { useGetDataByServerStore } from '@/stores/getdatabyserver'
 import { useGetContentFromServerStore } from '@/stores/getContentFromServer'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 
 const route = useRoute()
+const router = useRouter()
 
 
 const getdatabyserverStore = useGetDataByServerStore()
@@ -31,6 +32,7 @@ const getContentFromServerStore = useGetContentFromServerStore()
 
 const searchContent = ref('');
 
+// 上层组建为博客筛选面板
 const { searchBlog, getSearchResult } = defineProps({
     searchBlog: {
         type: Function,
@@ -51,7 +53,7 @@ const searchAssociate = (() => {
         // 调用store中的方法搜索
         getdatabyserverStore.getBlogBySearch(searchContent.value).then((res) => {
             // console.log(res)
-            searchBlog(res)
+            searchBlog(res, searchContent.value.length==0? true : false)
             // 搜索组件本地用传到上层显示搜索结果
             getSearchResult(res)
         })
@@ -59,6 +61,8 @@ const searchAssociate = (() => {
 
 
     } else {
+
+        // 对于空搜索，震动输入框提示
         const searchInput: HTMLInputElement | null = document.getElementById('search-input') as HTMLInputElement
         if (searchInput) {
             // console.log('searchInput', searchInput)
@@ -67,6 +71,23 @@ const searchAssociate = (() => {
                 searchInput.style.animation = 'none'
             }, 500)
         }
+        console.warn("Empty search content")
+        // 置空路由
+        router.replace({ query: {} })
+        router.push({ name: 'blog' })
+        // 置空搜索内容
+        searchContent.value = ""
+
+        setTimeout(() => {
+         location.reload()
+
+        }, 500)
+        // getSearchResult(null)
+        // 暂时用刷新页面的方式，后续优化为直接置空博客列表
+        
+
+        // 重新拉取博客列表，显示全部
+        // getContentFromServerStore.getBlogList();
     }
 });
 

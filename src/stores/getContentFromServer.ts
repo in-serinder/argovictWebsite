@@ -7,7 +7,7 @@ import axios from 'axios'
 // 集中获取服务端api内容
 export const useGetContentFromServerStore = defineStore('getContentFromServer', {
   state: () => ({
-    baseURL:'https://argovict.asia/blog-api',
+    baseURL:'http://8.130.191.142:6324',
     blogList: [] as BlogItem[],
     blogAttribut: null as BlogItem | null,
     asPostExist: false,

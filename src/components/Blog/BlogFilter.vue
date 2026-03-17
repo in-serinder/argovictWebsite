@@ -90,7 +90,7 @@ const getSerchResult = (SearchResult: SearchResult) => {
     searchResult.value = SearchResult;
     // console.log(searchResult.value)
     // 数据向父控件传递，收到后修改展示
-    searchBlog(searchResult.value.results)
+    searchBlog(searchResult.value.results, searchResult.value.keyword.length==0? true : false)
 }
 
 

@@ -10,7 +10,7 @@ import router from '@/router'
 export const useGetDataByServerStore = defineStore('getdatabyserver', {
   state() {
     return {
-      baseURL: 'https://argovict.asia/blog-api',
+      baseURL: 'http://8.130.191.142:6324',
       isMobile: false,
       blogList: [] as BlogItem[],
       searchResult: {} as SearchResult,
