@@ -102,6 +102,7 @@
 }
 
 .blog-footer {
+  user-select: none;
   width: 100%;
   /* height: px; */
   display: flex;
@@ -115,6 +116,7 @@
 /*  */
 
 .blog-view-moe-counter {
+  user-select: none;
   margin-top: 45px;
   /* background-color: red; */
   width: 100%;

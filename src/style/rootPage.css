@@ -10,6 +10,7 @@
 
 /* 标题栏 */
 .Router_title {
+  user-select: none;
   position: static;
   display: flex;
   flex-direction: row;
@@ -49,6 +50,7 @@
   cursor: pointer;
   font-size: 1.1em;
   font-weight: bold;
+  user-select: none;
 }
 
 .Router_title ul li img {

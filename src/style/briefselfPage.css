@@ -147,6 +147,7 @@
 }
 
 .brief_contact ul li p {
+  user-select: none;
   position: absolute;
   display: flex;
   left: 0;
@@ -166,11 +167,13 @@
 
 .brief_contact ul li:hover p {
   /* transform: translateY(-5px); */
+  user-select: none;
   color: #000;
   top: 40px;
 }
 
 .brief_contact ul li img {
+  user-select: none;
   width: 35px;
   height: 35px;
   transform: scale(1);
