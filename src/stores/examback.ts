@@ -23,7 +23,7 @@ export interface aiQExplainItem {
 // 集中获取服务端api内容
 export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer', {
   state: () => ({
-    baseURL:'https://argovict.asia/blog-api',
+    baseURL: 'http://8.130.191.142:6324',
     examQList: [] as ExamQItem[],
     selectedOptions: [] as string[],
     incorrectOptions: [] as string[],
@@ -164,14 +164,14 @@ export const useGetQuestionFromServerStore = defineStore('getQuestionFromServer'
       })
     },
     getNextQuestion() {
-      if (this.currentQuestionNum >= this.questionTotalNum ){
+      if (this.currentQuestionNum >= this.questionTotalNum) {
         this.isLastQuestion = true
         // 三秒动画
-          setTimeout(() => {
-            this.isLastQuestion = false
-          }, 4000);
+        setTimeout(() => {
+          this.isLastQuestion = false
+        }, 4000)
         return
-      } 
+      }
       this.currentQuestionNum++
       this.getExamQList(this.currentQuestionNum.toString())
       this.initQuestion()
