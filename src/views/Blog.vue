@@ -2,7 +2,9 @@
     <div class="blogPage">
 
         <div class="blog-loading">
-            <img src="@/assets/media/oiia.gif">
+            <!-- <img src="@/assets/media/oiia.gif"> -->
+            <img src="@/assets/media/djgun.gif">
+
             <h2>{{ $t('message.loading') }}...</h2>
         </div>
 
@@ -96,7 +98,7 @@ const toPostDetail = (blog: BlogItem) => {
 }
 
 // 搜索结果后更改blogOne目标 notSearch参数用于区分是否为搜索内容 没有内容直接返回原始博客列表
-const searchBlog = (Goalblog: BlogItem[],notSearch: boolean) => {
+const searchBlog = (Goalblog: BlogItem[], notSearch: boolean) => {
 
     blogList.value = Goalblog;
 
@@ -104,14 +106,14 @@ const searchBlog = (Goalblog: BlogItem[],notSearch: boolean) => {
         // 无搜索结果占位
         noSearch_flag.value = true;
     } else {
-        if(!notSearch){
+        if (!notSearch) {
             // 置空搜索结果占位
             noSearch_flag.value = false;
         }
         // noSearch_flag.value = false;
     }
-    console.log('searchBlog',notSearch)
-    if(notSearch) {
+    console.log('searchBlog', notSearch)
+    if (notSearch) {
         // 置空搜索结果占位
         noSearch_flag.value = false;
         initBlogList();
@@ -121,10 +123,10 @@ const searchBlog = (Goalblog: BlogItem[],notSearch: boolean) => {
 
 // 初始化博客列表
 const initBlogList = () => {
-   getContentFromServerStore.getBlogList().then((res) => {
+    getContentFromServerStore.getBlogList().then((res) => {
         blogList.value = res as BlogItem[]
 
-        
+
 
         nextTick(() => {
             // 图片z加载统计
@@ -151,7 +153,7 @@ const initBlogList = () => {
 onMounted(() => {
 
     initBlogList();
-    
+
 
 
 })
@@ -181,7 +183,7 @@ watch(() => loadingStore.allLoaded, (newVal) => {
 // watch(()=> getContentFromServerStore, (newVal) => {
 //   console.info("主动加载")
 //         blogList.value = newVal.blogList as BlogItem[]
-    
+
 // },{deep: true})
 
 
