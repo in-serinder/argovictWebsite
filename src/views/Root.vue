@@ -114,7 +114,8 @@ import rssLight from '@/assets/svg/light/rss_light.svg'
 import darkIcon from '@/assets/svg/light.svg'
 import darkIconLight from '@/assets/svg/light/dark.svg'
 
-import websiteIcon from '@/assets/picture/ArgovictLogo.png'
+// import websiteIcon from '@/assets/picture/ArgovictLogo.png'
+import websiteIcon from '@/assets/svg/argovict_osc.svg'
 import websiteIconLight from '@/assets/picture/ArgovictLogo_light.png'
 
 
